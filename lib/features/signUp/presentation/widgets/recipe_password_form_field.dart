@@ -5,7 +5,7 @@ import '../../../../core/sizes.dart';
 import '../../../../core/utils/app_colors.dart';
 
 class RecipePasswordFormField extends StatelessWidget {
- const RecipePasswordFormField({super.key, required this.controller, required this.validator});
+  const RecipePasswordFormField({super.key, required this.controller, required this.validator});
 
   final TextEditingController controller;
   final String? Function(String? value) validator;

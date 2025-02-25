@@ -18,7 +18,7 @@ class SecureStorage{
     return{"login": login, "password": password};
   }
 
-  static Future<void>deleteCredetails() async{
+  static Future<void>deleteCredentials() async{
     await _storage.delete(key: _loginKey);
     await _storage.delete(key: _passwordKey);
   }

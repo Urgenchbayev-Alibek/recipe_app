@@ -7,7 +7,7 @@ class RecipeElevatedButton extends StatelessWidget {
     super.key,
     this.size = const Size(207, 45),
     this.foregroundColor = AppColors.PinkSub,
-    this.backgraundColor = AppColors.Pink,
+    this.backGroundColor = AppColors.Pink,
     this.fontSize = 20,
     this.elevation = 0,
     required this.text,
@@ -17,7 +17,7 @@ class RecipeElevatedButton extends StatelessWidget {
   final Size size;
   final VoidCallback callback;
   final String text;
-  final Color foregroundColor, backgraundColor;
+  final Color foregroundColor, backGroundColor;
   final double fontSize;
   final double elevation;
 
@@ -31,7 +31,7 @@ class RecipeElevatedButton extends StatelessWidget {
           onPressed: callback,
           style: ElevatedButton.styleFrom(
             foregroundColor: foregroundColor,
-            backgroundColor: backgraundColor,
+            backgroundColor: backGroundColor,
             fixedSize: size,
             elevation:  elevation,
           ),

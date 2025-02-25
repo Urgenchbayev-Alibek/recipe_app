@@ -1,9 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:recipe_app/core/exceptions/auth_exception.dart';
-import 'package:recipe_app/features/singUp/data/models/user_model.dart';
+
+import '../features/signUp/data/models/user_model.dart';
+
 
 class ApiClient {
-  final Dio dio = Dio(BaseOptions(baseUrl: "http://172.22.32.1:8888/api/v1", validateStatus: (status) => true));
+  final Dio dio = Dio(BaseOptions(baseUrl: "http://10.10.1.55:8888/api/v1", validateStatus: (status) => true));
 
   Future<String> login(String login, String password) async {
     var response = await dio.post(

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/features/singUp//data/repositories/auth_repository.dart';
+import 'package:recipe_app/features/signUp/data/repositories/auth_repository.dart' show AuthRepository;
+
+
+
 
 class SingUpViewModel extends ChangeNotifier {
   SingUpViewModel({required AuthRepository authRepo}) : _authRepo = authRepo;

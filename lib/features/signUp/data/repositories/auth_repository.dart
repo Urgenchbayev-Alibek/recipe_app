@@ -1,7 +1,9 @@
 import 'package:recipe_app/core/client.dart';
-import 'package:recipe_app/features/singUp/data/models/user_model.dart';
+import 'package:recipe_app/core/secure_storage.dart';
 
-import '../../../../core/secure_storage.dart';
+
+import '../models/user_model.dart';
+
 
 class AuthRepository {
   AuthRepository({required this.client});
@@ -12,14 +14,14 @@ class AuthRepository {
   Future<void> login(String login, String password) async {
     final String token = await client.login(login, password);
     await SecureStorage.deleteToken();
-    await SecureStorage.deleteCredetails();
+    await SecureStorage.deleteCredentials();
     await SecureStorage.saveCredentials(login: login, password: password);
     await SecureStorage.saveToken(token);
   }
 
   Future<void> logout() async {
     await SecureStorage.deleteToken();
-    await SecureStorage.deleteCredetails();
+    await SecureStorage.deleteCredentials();
   }
 
   Future<bool> singUp({

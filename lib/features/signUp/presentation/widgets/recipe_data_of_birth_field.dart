@@ -5,7 +5,9 @@ import '../../../../core/utils/app_colors.dart';
 import '../manager/singUp_view_model.dart';
 
 class RecipeDataOfBirthField extends StatelessWidget {
-  const RecipeDataOfBirthField({super.key});
+  const RecipeDataOfBirthField({super.key, required this.title});
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {

@@ -88,4 +88,3 @@ class LoginView extends StatelessWidget {
     );
   }
 }
-

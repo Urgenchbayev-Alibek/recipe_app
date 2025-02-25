@@ -5,6 +5,6 @@ class Routes{
   static const profile = '/profile';
   static const onboarding_end =' /onboarding_end';
   static const  categories = '/categories';
-  static const singup = '/singup';
+  static const signup = '/signup';
   static const categoryDetail = 'categories/:id';
 }

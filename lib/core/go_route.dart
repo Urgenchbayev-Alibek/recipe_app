@@ -1,6 +1,5 @@
 import 'package:go_router/go_router.dart';
 import 'package:recipe_app/core/routess.dart';
-import 'package:recipe_app/features/singUp/presentation/pages/singup_view.dart';
 import '../features/categories/data/repositories/categories_repository.dart';
 import '../features/categories/presentation/manager/categories_view_model.dart';
 import '../features/categories/presentation/pages/categories_page.dart';
@@ -12,9 +11,10 @@ import '../features/profile/data/repositories/profile_repository.dart';
 import '../features/profile/data/repositories/recipes_repository.dart';
 import '../features/profile/presentation/pages/profile_page.dart';
 import '../features/profile/presentation/pages/profile_view_model.dart';
-import '../features/singUp/data/repositories/auth_repository.dart';
-import '../features/singUp/presentation/manager/login_view_model.dart';
-import '../features/singUp/presentation/pages/login_view.dart';
+import '../features/signUp/data/repositories/auth_repository.dart';
+import '../features/signUp/presentation/manager/login_view_model.dart';
+import '../features/signUp/presentation/pages/login_view.dart';
+import '../features/signUp/presentation/pages/singup_view.dart';
 import 'client.dart';
 
 class GoRoutes {
@@ -22,8 +22,8 @@ class GoRoutes {
     initialLocation: Routes.login,
     routes: [
       GoRoute(
-        path: Routes.singup,
-        builder: (context, state) => SingUpView(),
+        path: Routes.signup,
+        builder: (context, state) => SignUpView(),
       ),
       GoRoute(
         path: Routes.profile,
