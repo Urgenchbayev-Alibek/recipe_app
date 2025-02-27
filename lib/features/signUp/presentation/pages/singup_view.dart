@@ -31,13 +31,13 @@ class SignUpView extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () {
-              context.watch<LocalizationViewModel>().currentLocale;
+              context.read<LocalizationViewModel>().currentLocale = Locale("uz");
             },
             child: Text("uz"),
           ),
           TextButton(
             onPressed: () {
-              context.read<LocalizationViewModel>().currentLocale;
+              context.read<LocalizationViewModel>().currentLocale = Locale("en");
             },
             child: Text("en"),
           ),

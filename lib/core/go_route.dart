@@ -13,13 +13,14 @@ import '../features/profile/presentation/pages/profile_page.dart';
 import '../features/profile/presentation/pages/profile_view_model.dart';
 import '../features/signUp/data/repositories/auth_repository.dart';
 import '../features/signUp/presentation/manager/login_view_model.dart';
+import '../features/signUp/presentation/pages/complete_profile_view.dart';
 import '../features/signUp/presentation/pages/login_view.dart';
 import '../features/signUp/presentation/pages/singup_view.dart';
 import 'client.dart';
 
 class GoRoutes {
   static final GoRouter router = GoRouter(
-    initialLocation: Routes.login,
+    initialLocation: Routes.completeProfile,
     routes: [
       GoRoute(
         path: Routes.signup,
@@ -33,6 +34,10 @@ class GoRoutes {
             profileRepo: ProfileRepository(client: ApiClient()),
           ),
         ),
+      ),
+      GoRoute(
+        path: Routes.completeProfile,
+        builder: (context, state) => const CompleteProfileView(),
       ),
       GoRoute(
         path: Routes.onboarding,

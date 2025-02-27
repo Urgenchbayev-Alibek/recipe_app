@@ -76,7 +76,7 @@ class LoginView extends StatelessWidget {
             RecipeElevatedButton(
               text: "Sing Up",
               callback: () {
-                context.go('/singup');
+                context.go('/signup');
               },
               fontSize: 20,
             ),

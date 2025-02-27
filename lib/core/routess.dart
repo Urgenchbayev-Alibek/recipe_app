@@ -3,6 +3,7 @@ class Routes{
   static const login = '/login';
   static const onboarding = '/onboarding';
   static const profile = '/profile';
+  static const completeProfile = '/completeProfile';
   static const onboarding_end =' /onboarding_end';
   static const  categories = '/categories';
   static const signup = '/signup';

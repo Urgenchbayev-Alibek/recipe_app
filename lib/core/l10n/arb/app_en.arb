@@ -1,0 +1,19 @@
+{
+  "sign_up": "Sign Up",
+  "full_name": "Full Name",
+  "email": "Email",
+  "mobile_number": "Mobile Number",
+  "date_of_birth": "Date Of Birth",
+  "password": "Password",
+  "confirm_password": "Confirm Password",
+  "terms": "By continuing, you agree to\nTerms of Use and Privacy Policy.",
+  "already_have_account": "Already have an account? Log In",
+  "profileTitle": "Profile",
+  "gender": "Gender",
+  "bio": "Bio",
+  "continues": "Continue",
+  "completeProfileTitle": "Complete your profile",
+  "completeProfileDescription": "Lorem ipsum dolor sit amet pretium cras id dui pellentesque ornare. Quisque malesuada netus pulvinar diam."
+
+}
+

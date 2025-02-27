@@ -1,0 +1,18 @@
+{
+  "sign_up": "Ro‘yxatdan o‘tish",
+  "full_name": "To‘liq ism",
+  "email": "Elektron pochta",
+  "mobile_number": "Telefon raqam",
+  "date_of_birth": "Tug‘ilgan sana",
+  "password": "Parol",
+  "confirm_password": "Parolni tasdiqlang",
+  "terms": "Davom etish orqali siz\nFoydalanish shartlari va Maxfiylik siyosatiga rozilik bildirasiz.",
+  "already_have_account": "Hisobingiz bormi? Kirish",
+  "profileTitle": "Profil",
+  "gender": "Jinsi",
+  "bio": "Biografiya",
+  "continues": "Davom etish",
+  "completeProfileTitle": "Profilingizni to'ldiring",
+  "completeProfileDescription": "Lorem ipsum dolor sit amet pretium cras id dui pellentesque ornare. Quisque malesuada netus pulvinar diam."
+
+}
