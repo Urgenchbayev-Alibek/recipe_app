@@ -20,16 +20,16 @@ class RecipeBioField extends StatelessWidget {
         TextField(
           maxLines: 5,
           minLines: 5,
-          style: TextStyle(color: AppColors.MainColor),
+          style: TextStyle(color: AppColors.beigeColor),
           keyboardType: TextInputType.text,
           decoration: InputDecoration(
               contentPadding:
               EdgeInsets.symmetric(horizontal: 24, vertical: 10),
               filled: true,
-              fillColor: AppColors.Pink,
+              fillColor: AppColors.pink,
               hintText: 'About Yourself',
               hintStyle: TextStyle(
-                color: AppColors.MainColor.withValues(alpha: 0.5),
+                color: AppColors.beigeColor.withValues(alpha: 0.5),
               ),
               border: OutlineInputBorder(
                 borderSide: BorderSide.none,

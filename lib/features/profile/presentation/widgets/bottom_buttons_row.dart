@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/features/profile/presentation/widgets/profile_elevated_button.dart';
-class bottom_buttons_row extends StatelessWidget {
-  const bottom_buttons_row({
+class BottomButtonsRow extends StatelessWidget {
+  const BottomButtonsRow({
     super.key,
   });
 
@@ -10,8 +10,8 @@ class bottom_buttons_row extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        profile_elevated_button(text: 'Edit Profile'),
-        profile_elevated_button(text: 'Share Profile'),
+        ProfileElevatedButton(text: 'Edit Profile'),
+        ProfileElevatedButton(text: 'Share Profile'),
       ],
     );
   }

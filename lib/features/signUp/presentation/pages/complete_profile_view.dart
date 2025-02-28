@@ -17,12 +17,12 @@ class CompleteProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     final localization = AppLocalizations.of(context)!;
     return Scaffold(
-      backgroundColor: AppColors.MainColor,
+      backgroundColor: AppColors.beigeColor,
       appBar: AppBar(
         title: Text(
           localization.profileTitle,
           style: TextStyle(
-            color: AppColors.ReddishPink,
+            color: AppColors.redPinkMain,
             fontWeight: FontWeight.w600,
             fontSize: 20,
           ),

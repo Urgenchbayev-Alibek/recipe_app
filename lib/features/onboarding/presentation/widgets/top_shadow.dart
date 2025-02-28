@@ -16,7 +16,7 @@ class BottomShadow extends StatelessWidget {
           begin: Alignment.bottomCenter,
           end: Alignment.topCenter,
           colors: [
-            AppColors.MainColor,
+            AppColors.beigeColor,
             Colors.transparent,
           ],
         ),

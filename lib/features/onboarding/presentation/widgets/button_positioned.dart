@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import '../manager/onboarding_view_model.dart';
 import 'elevatedbutton_widget.dart';
 
-class button_positioned extends StatelessWidget {
-  const button_positioned({
+class ButtonPositioned extends StatelessWidget {
+  const ButtonPositioned({
     super.key,
     required this.ovm,
     required this.index,

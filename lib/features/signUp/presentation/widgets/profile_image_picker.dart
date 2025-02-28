@@ -23,7 +23,7 @@ class ProfileImagePicker extends StatelessWidget {
                 width: 120,
                 height: 120,
                 decoration: BoxDecoration(
-                  color: AppColors.Pink,
+                  color: AppColors.pink,
                 ),
                 child: Center(
                   child: SvgPicture.asset(
@@ -33,7 +33,7 @@ class ProfileImagePicker extends StatelessWidget {
                     height: 55,
                     fit: BoxFit.cover,
                     colorFilter: ColorFilter.mode(
-                        AppColors.ReddishPink, BlendMode.srcIn),
+                        AppColors.redPinkMain, BlendMode.srcIn),
                   ),
                 ),
               ),
@@ -54,7 +54,7 @@ class ProfileImagePicker extends StatelessWidget {
                   width: 36,
                   height: 36,
                   decoration: BoxDecoration(
-                    color: AppColors.ReddishPink,
+                    color: AppColors.redPinkMain,
                     borderRadius: BorderRadius.circular(18),
                   ),
                   child: Center(

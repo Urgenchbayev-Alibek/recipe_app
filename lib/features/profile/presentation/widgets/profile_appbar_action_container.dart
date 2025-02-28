@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:recipe_app/core/utils/app_colors.dart';
 
-class ProfileAppBarActionContainer extends StatelessWidget {
-  const ProfileAppBarActionContainer({super.key, required this.svg});
+class AppBarActionContainer extends StatelessWidget {
+  const AppBarActionContainer({super.key, required this.svg});
 
   final String svg;
 
@@ -13,11 +13,11 @@ class ProfileAppBarActionContainer extends StatelessWidget {
       width: 28,
       height: 28,
       decoration: BoxDecoration(
-        color: AppColors.Pink,
+        color: AppColors.redPinkMain,
         borderRadius: BorderRadius.circular(14),
       ),
       alignment: Alignment.center,
-      child: SvgPicture.asset(svg),
+      child: SvgPicture.asset(svg, width: 15, height: 16),
     );
   }
 }

@@ -10,7 +10,7 @@ class BottomTabBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return TabBar(
       indicatorSize: TabBarIndicatorSize.tab,
-      indicatorColor: AppColors.ReddishPink,
+      indicatorColor: AppColors.redPinkMain,
       tabs: [
         Text(
           "Recipe",

@@ -27,13 +27,13 @@ class CompleteProfileGender extends StatelessWidget {
           height: 40,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(18),
-            color: AppColors.Pink,
+            color: AppColors.pink,
           ),
           padding: EdgeInsets.symmetric(horizontal: 24, vertical: 10),
           child: Text(
             'Male/Female',
             style: TextStyle(
-              color: AppColors.MainColor.withValues(alpha: 0.5),
+              color: AppColors.beigeColor.withValues(alpha: 0.5),
               fontWeight: FontWeight.w500,
               fontSize: 15,
             ),

@@ -3,8 +3,8 @@ import 'package:recipe_app/core/utils/app_colors.dart';
 
 import '../manager/onboarding_view_model.dart';
 
-class onboarding_imageAndGradient extends StatelessWidget {
-  const onboarding_imageAndGradient({
+class OnboardingImageAndGradient extends StatelessWidget {
+  const OnboardingImageAndGradient({
     super.key,
     required this.ovm, required this.index,
   });
@@ -29,8 +29,8 @@ final int index;
               begin: Alignment.topCenter,
               end: Alignment.center,
               colors: [
-                AppColors.MainColor,
-                AppColors.MainColor.withValues(alpha: 0.1)
+                AppColors.beigeColor,
+                AppColors.beigeColor.withValues(alpha: 0.1)
               ],
             ),
           ),

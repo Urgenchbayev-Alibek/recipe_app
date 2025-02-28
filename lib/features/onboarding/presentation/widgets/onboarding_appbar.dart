@@ -11,7 +11,7 @@ class OnboardingAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColors.MainColor,
+      backgroundColor: AppColors.beigeColor,
       leading: currentIndex > 0
           ? IconButton(
               onPressed: () {

@@ -23,7 +23,7 @@ class SignUpView extends StatelessWidget {
         title: Text(
           localization.sign_up,
           style: TextStyle(
-            color: AppColors.ReddishPink,
+            color: AppColors.redPinkMain,
             fontWeight: FontWeight.w600,
             fontSize: 20,
           ),
@@ -96,7 +96,7 @@ class SignUpView extends StatelessWidget {
                   text: localization.sign_up,
                   size: const Size(195, 45),
                   foregroundColor: Colors.white,
-                  backGroundColor: AppColors.ReddishPink,
+                  backGroundColor: AppColors.redPinkMain,
                   callback: () async {
                     if (vm.formKey.currentState!.validate()) {
                       if (await vm.singUp() && context.mounted) {

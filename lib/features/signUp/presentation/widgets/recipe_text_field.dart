@@ -36,7 +36,7 @@ class RecipeTextField extends StatelessWidget {
             ),
             decoration: InputDecoration(
                 filled: true,
-                fillColor: AppColors.Pink,
+                fillColor: AppColors.pink,
                 hintText: text,
                 hintStyle: TextStyle(color: AppColors.textColor.withValues(alpha: 0.45), fontWeight: FontWeight.w500, fontSize: 16, height: 1),
                 contentPadding: EdgeInsets.symmetric(horizontal: AppSizes.padding36),

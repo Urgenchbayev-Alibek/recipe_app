@@ -41,7 +41,7 @@ class ProfileBodyRecipe extends StatelessWidget {
                 height: 28,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(14),
-                  color: AppColors.ReddishPink,
+                  color: AppColors.redPinkMain,
                 ),
                 alignment: Alignment.center,
                 child: SvgPicture.asset("assets/icons/heart.svg"),
@@ -62,7 +62,7 @@ class ProfileBodyRecipe extends StatelessWidget {
               bottomLeft: Radius.circular(14),
             ),
             border: Border.all(
-              color: AppColors.PinkSub,
+              color: AppColors.pinkSub,
             ),
           ),
           child: Column(
@@ -94,7 +94,7 @@ class ProfileBodyRecipe extends StatelessWidget {
                       Text(
                         rating.toString(),
                         style: TextStyle(
-                          color: AppColors.PinkSub,
+                          color: AppColors.pinkSub,
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
                         ),
@@ -109,9 +109,9 @@ class ProfileBodyRecipe extends StatelessWidget {
                         "assets/icons/clock.svg",
                       ),
                       Text(
-                        time.toString() + "min",
+                        "${time}min",
                         style: TextStyle(
-                          color: AppColors.PinkSub,
+                          color: AppColors.pinkSub,
                           fontWeight: FontWeight.w400,
                           fontSize: 12,
                         ),

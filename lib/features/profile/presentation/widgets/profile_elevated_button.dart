@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:recipe_app/core/sizes.dart';
 import 'package:recipe_app/core/utils/app_colors.dart';
 
-class profile_elevated_button extends StatelessWidget {
-  const profile_elevated_button({super.key, required this.text});
+class ProfileElevatedButton extends StatelessWidget {
+  const ProfileElevatedButton({super.key, required this.text});
 
   final String text;
 
@@ -15,8 +15,8 @@ class profile_elevated_button extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {},
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.Pink,
-          foregroundColor: AppColors.PinkSub,
+          backgroundColor: AppColors.pink,
+          foregroundColor: AppColors.pinkSub,
         ),
         child: Text(text),
       ),

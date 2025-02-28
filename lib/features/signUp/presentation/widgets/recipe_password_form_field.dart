@@ -37,7 +37,7 @@ class RecipePasswordFormField extends StatelessWidget {
               ),
               decoration: InputDecoration(
                 filled: true,
-                fillColor: AppColors.Pink,
+                fillColor: AppColors.pink,
                 hintText: '●●●●●●●●',
                 hintStyle: TextStyle(
                   color: AppColors.textColor.withValues(alpha: 0.45),

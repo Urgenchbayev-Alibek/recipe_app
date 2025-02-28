@@ -25,7 +25,7 @@ class CategoriesPage extends StatelessWidget {
             ),
             title: Text(
               "Categories",
-              style: TextStyle(color: AppColors.ReddishPink),
+              style: TextStyle(color: AppColors.redPinkMain),
             ),
             centerTitle: true,
           ),

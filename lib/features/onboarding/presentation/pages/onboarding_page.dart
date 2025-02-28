@@ -18,7 +18,7 @@ class OnboardingPage extends StatelessWidget {
     return ListenableBuilder(
       listenable: ovm,
       builder: (context, child) => Scaffold(
-        backgroundColor: AppColors.MainColor,
+        backgroundColor: AppColors.beigeColor,
         appBar: OnboardingAppBar(
           currentIndex: ovm.currentIndex,
         ),
@@ -31,9 +31,9 @@ class OnboardingPage extends StatelessWidget {
           itemBuilder: (context, index) => Stack(
             alignment: Alignment.bottomCenter,
             children: [
-              onboarding_imageAndGradient(ovm: ovm, index: index),
+              OnboardingImageAndGradient(ovm: ovm, index: index),
               BottomShadow(),
-              button_positioned(
+              ButtonPositioned(
                 ovm: ovm,
                 index: index,
               ),

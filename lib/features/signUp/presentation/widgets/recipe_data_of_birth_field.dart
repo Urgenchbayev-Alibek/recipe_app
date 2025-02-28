@@ -38,7 +38,7 @@ class RecipeDataOfBirthField extends StatelessWidget {
               width: 357 * AppSizes.wRatio,
               height: 41 * AppSizes.hRatio,
               decoration: BoxDecoration(
-                color: AppColors.Pink,
+                color: AppColors.pink,
                 borderRadius: BorderRadius.circular(18),
               ),
               child: Text(

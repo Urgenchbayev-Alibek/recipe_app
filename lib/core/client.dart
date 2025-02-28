@@ -68,14 +68,23 @@ class ApiClient {
       throw Exception("Error");
     }
   }
+
+  Future<List<dynamic>> fetchRecipesByCategory(int categoryId) async {
+    var response = await dio.get('/recipes/list?Category=$categoryId');
+    if (response.statusCode == 200) {
+      return response.data as List<dynamic>;
+    } else {
+      throw Exception("/recipes/list?Category=$categoryId so'rovimiz o'xshamadi");
+    }
+  }
   
-  // Future<dynamic> fetchRecipeById(int recipeId) async {
-  //   var response = await dio.get('/recipe/detail/$recipeId');
-  //   if (response.statusCode == 200) {
-  //     Map<String, dynamic> data = response.data;
-  //     return data;
-  //   } else {
-  //     throw Exception("Nimadur xato ketdi recipe olib kelishda");
-  //   }
-  // }
+  Future<dynamic> fetchRecipeById(int recipeId) async {
+    var response = await dio.get('/recipe/detail/$recipeId');
+    if (response.statusCode == 200) {
+      Map<String, dynamic> data = response.data;
+      return data;
+    } else {
+      throw Exception("Nimadur xato ketdi recipe olib kelishda");
+    }
+  }
 }

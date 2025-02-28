@@ -4,8 +4,9 @@ class Routes{
   static const onboarding = '/onboarding';
   static const profile = '/profile';
   static const completeProfile = '/completeProfile';
-  static const onboarding_end =' /onboarding_end';
+  static const onboardingEnd =' /onboarding_end';
   static const  categories = '/categories';
+  static const String categoryDetail = '/category-detail';
   static const signup = '/signup';
-  static const categoryDetail = 'categories/:id';
+  static const recipeDetail = '/recipe-detail/:recipeId';
 }

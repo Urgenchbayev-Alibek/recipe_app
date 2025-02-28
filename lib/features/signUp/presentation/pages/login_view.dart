@@ -17,13 +17,13 @@ class LoginView extends StatelessWidget {
     return ListenableBuilder(
       listenable: vm,
       builder: (context, child) => Scaffold(
-        backgroundColor: AppColors.MainColor,
+        backgroundColor: AppColors.beigeColor,
         appBar: AppBar(
           centerTitle: true,
           title: Text(
             'Login',
             style: TextStyle(
-              color: AppColors.ReddishPink,
+              color: AppColors.redPinkMain,
               fontWeight: FontWeight.w600,
               fontSize: 20,
             ),
