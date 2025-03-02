@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
 import '../../../categories/data/models/categories_model.dart';
 import '../../../categories/data/repositories/categories_repository.dart';
-import '../../../profile/data/repositories/recipe_repository.dart';
 import '../../data/models/recipe_model.dart';
+import '../../data/repositories/recipe_repository.dart';
 class CategoryDetailViewModel with ChangeNotifier {
   CategoryDetailViewModel({
     required CategoryRepository catRepo,

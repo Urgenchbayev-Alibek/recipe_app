@@ -23,6 +23,15 @@ class RecipeRepository {
     return recipes;
   }
 
+  List<RecipeModel> recipes = [];
+
+  Future<List<RecipeModel>> fetchRecipes() async {
+    List<dynamic> recipesRaw = await client.fetchRecipes();
+    recipes = recipesRaw.map((recipe) => RecipeModel.fromJson(recipe)).toList();
+    return recipes;
+  }
+
+
   Future<RecipeDetailModel> fetchRecipeById(int recipeId) async {
     final rawRecipe = await client.fetchRecipeById(recipeId);
     recipe = RecipeDetailModel.fromJson(rawRecipe);

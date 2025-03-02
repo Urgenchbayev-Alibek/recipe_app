@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class LoginOstki extends StatelessWidget {
-  const LoginOstki({super.key});
+import '../../../../core/l10n/app_localizations.dart';
+
+class LoginEnd extends StatelessWidget {
+  const LoginEnd({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
     return Column(children: [
       Text(
-        'Forget password',
+        localization.forgotPassword,
         style: TextStyle(
           fontWeight: FontWeight.w500,
           fontSize: 13,
@@ -30,7 +33,7 @@ class LoginOstki extends StatelessWidget {
           SvgPicture.asset('assets/icons/instagram.svg'),
           SvgPicture.asset('assets/icons/google.svg'),
           SvgPicture.asset('assets/icons/facebook.svg'),
-          SvgPicture.asset('assets/icons/watsapp.svg'),
+          SvgPicture.asset('assets/icons/whatsapp.svg'),
         ],
       ),
       SizedBox(height: 39),

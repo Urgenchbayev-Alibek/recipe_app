@@ -1,7 +1,7 @@
 // ignore: unused_import
 import 'package:flutter/foundation.dart';
 
-class RecipesModel {
+class RecipeModel {
   final int id;
   final int categoryId;
   final String title;
@@ -10,7 +10,7 @@ class RecipesModel {
   final int timeRequired;
   final double rating;
 
-  RecipesModel({
+  RecipeModel({
     required this.id,
     required this.categoryId,
     required this.title,
@@ -20,8 +20,8 @@ class RecipesModel {
     required this.rating,
   });
 
-  factory RecipesModel.fromJson(Map<String, dynamic> json) {
-    return RecipesModel(
+  factory RecipeModel.fromJson(Map<String, dynamic> json) {
+    return RecipeModel(
       id: json['id'],
       categoryId: json['categoryId'],
       title: json['title'],

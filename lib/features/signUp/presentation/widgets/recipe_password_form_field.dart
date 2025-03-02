@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../core/l10n/app_localizations.dart';
 import '../../../../core/sizes.dart';
 import '../../../../core/utils/app_colors.dart';
 
@@ -12,13 +13,14 @@ class RecipePasswordFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
     return Center(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 10,
         children: [
           Text(
-            'Password',
+            localization.password,
             style: TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 15,

@@ -52,4 +52,40 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get completeProfileDescription => 'Lorem ipsum dolor sit amet pretium cras id dui pellentesque ornare. Quisque malesuada netus pulvinar diam.';
+
+  @override
+  String get getInspired => 'Get Inspired';
+
+  @override
+  String get getInspiredDescription => 'Get inspired with our daily recipe recommendations.';
+
+  @override
+  String get increaseSkills => 'Increase Your Skills';
+
+  @override
+  String get increaseSkillsDescription => 'Learn essential cooking techniques at your own pace.';
+
+  @override
+  String get welcome => 'Welcome';
+
+  @override
+  String get welcomeDescription => 'Find the best recipes that the world can provide you. Learn to increase your cooking skills step by step.';
+
+  @override
+  String get imNew => 'I’m New';
+
+  @override
+  String get iveBeenHere => 'I’ve Been Here';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get logIn => 'Log In';
+
+  @override
+  String get signUp => 'Sign Up';
+
+  @override
+  String get forgotPassword => 'Forgot Password?';
 }

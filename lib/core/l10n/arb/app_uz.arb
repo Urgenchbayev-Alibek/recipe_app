@@ -13,6 +13,17 @@
   "bio": "Biografiya",
   "continues": "Davom etish",
   "completeProfileTitle": "Profilingizni to'ldiring",
-  "completeProfileDescription": "Lorem ipsum dolor sit amet pretium cras id dui pellentesque ornare. Quisque malesuada netus pulvinar diam."
-
+  "completeProfileDescription": "Lorem ipsum dolor sit amet pretium cras id dui pellentesque ornare. Quisque malesuada netus pulvinar diam.",
+  "getInspired": "Ilhom oling",
+  "getInspiredDescription": "Har kuni yangi retsept tavsiyalari bilan ilhom oling.",
+  "increaseSkills": "Ko'nikmalaringizni oshiring",
+  "increaseSkillsDescription": "O'zingizga qulay sur'atda muhim pazandalik texnikalarini o'rganing.",
+  "welcome": "Xush kelibsiz",
+  "welcomeDescription": "Dunyo sizga taqdim eta oladigan eng yaxshi retseptlarni toping. Qadam-baqadam pazandalik mahoratingizni oshiring.",
+  "imNew": "Men yangiman",
+  "iveBeenHere": "Men bu yerda bo'lganman",
+  "login": "Kirish",
+  "logIn": "Kirish",
+  "signUp": "Ro‘yxatdan o‘tish",
+  "forgotPassword": "Parolni unutdingizmi?"
 }

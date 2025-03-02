@@ -3,9 +3,8 @@ import 'package:recipe_app/core/exceptions/auth_exception.dart';
 
 import '../features/signUp/data/models/user_model.dart';
 
-
 class ApiClient {
-  final Dio dio = Dio(BaseOptions(baseUrl: "http://10.10.3.113:8888/api/v1", validateStatus: (status) => true));
+  final Dio dio = Dio(BaseOptions(baseUrl: "http://192.168.100.59:8888/api/v1", validateStatus: (status) => true));
 
   Future<String> login(String login, String password) async {
     var response = await dio.post(
@@ -25,7 +24,7 @@ class ApiClient {
       '/auth/register',
       data: model.toJson(model),
     );
-    return response.statusCode == 201 ? true :false;
+    return response.statusCode == 201 ? true : false;
   }
 
   Future<Map<String, dynamic>> fetchMyProfile() async {
@@ -77,7 +76,13 @@ class ApiClient {
       throw Exception("/recipes/list?Category=$categoryId so'rovimiz o'xshamadi");
     }
   }
-  
+
+  Future<List<dynamic>> fetchRecipe(int categoryId) async {
+    var response = await dio.get('/recipes/list?Category=$categoryId');
+    List<dynamic> data = response.data;
+    return data;
+  }
+
   Future<dynamic> fetchRecipeById(int recipeId) async {
     var response = await dio.get('/recipe/detail/$recipeId');
     if (response.statusCode == 200) {

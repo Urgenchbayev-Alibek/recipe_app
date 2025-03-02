@@ -13,7 +13,18 @@
   "bio": "Bio",
   "continues": "Continue",
   "completeProfileTitle": "Complete your profile",
-  "completeProfileDescription": "Lorem ipsum dolor sit amet pretium cras id dui pellentesque ornare. Quisque malesuada netus pulvinar diam."
-
+  "completeProfileDescription": "Lorem ipsum dolor sit amet pretium cras id dui pellentesque ornare. Quisque malesuada netus pulvinar diam.",
+  "getInspired": "Get Inspired",
+  "getInspiredDescription": "Get inspired with our daily recipe recommendations.",
+  "increaseSkills": "Increase Your Skills",
+  "increaseSkillsDescription": "Learn essential cooking techniques at your own pace.",
+  "welcome": "Welcome",
+  "welcomeDescription": "Find the best recipes that the world can provide you. Learn to increase your cooking skills step by step.",
+  "imNew": "I’m New",
+  "iveBeenHere": "I’ve Been Here",
+  "login": "Login",
+  "logIn": "Log In",
+  "signUp": "Sign Up",
+  "forgotPassword": "Forgot Password?"
 }
 

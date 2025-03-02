@@ -1,10 +1,6 @@
 import 'package:recipe_app/core/client.dart';
 import 'package:recipe_app/core/secure_storage.dart';
-
-
-import '../models/user_model.dart';
-
-
+import 'package:recipe_app/features/signUp/data/models/user_model.dart';
 class AuthRepository {
   AuthRepository({required this.client});
 

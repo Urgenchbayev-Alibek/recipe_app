@@ -184,6 +184,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Lorem ipsum dolor sit amet pretium cras id dui pellentesque ornare. Quisque malesuada netus pulvinar diam.'**
   String get completeProfileDescription;
+
+  /// No description provided for @getInspired.
+  ///
+  /// In en, this message translates to:
+  /// **'Get Inspired'**
+  String get getInspired;
+
+  /// No description provided for @getInspiredDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Get inspired with our daily recipe recommendations.'**
+  String get getInspiredDescription;
+
+  /// No description provided for @increaseSkills.
+  ///
+  /// In en, this message translates to:
+  /// **'Increase Your Skills'**
+  String get increaseSkills;
+
+  /// No description provided for @increaseSkillsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn essential cooking techniques at your own pace.'**
+  String get increaseSkillsDescription;
+
+  /// No description provided for @welcome.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome'**
+  String get welcome;
+
+  /// No description provided for @welcomeDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Find the best recipes that the world can provide you. Learn to increase your cooking skills step by step.'**
+  String get welcomeDescription;
+
+  /// No description provided for @imNew.
+  ///
+  /// In en, this message translates to:
+  /// **'I’m New'**
+  String get imNew;
+
+  /// No description provided for @iveBeenHere.
+  ///
+  /// In en, this message translates to:
+  /// **'I’ve Been Here'**
+  String get iveBeenHere;
+
+  /// No description provided for @login.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get login;
+
+  /// No description provided for @logIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Log In'**
+  String get logIn;
+
+  /// No description provided for @signUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Up'**
+  String get signUp;
+
+  /// No description provided for @forgotPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot Password?'**
+  String get forgotPassword;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

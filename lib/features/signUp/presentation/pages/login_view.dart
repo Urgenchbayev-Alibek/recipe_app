@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:recipe_app/core/utils/app_colors.dart';
+import '../../../../core/l10n/app_localizations.dart';
 import '../manager/login_view_model.dart';
-import '../widgets/login_ostki.dart';
+import '../widgets/login_end.dart';
 import '../widgets/recipe_elevated_button.dart';
 import '../widgets/recipe_password_form_field.dart';
 import '../widgets/recipe_text_field.dart';
@@ -14,6 +15,7 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
     return ListenableBuilder(
       listenable: vm,
       builder: (context, child) => Scaffold(
@@ -21,7 +23,7 @@ class LoginView extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           title: Text(
-            'Login',
+            localization.login,
             style: TextStyle(
               color: AppColors.redPinkMain,
               fontWeight: FontWeight.w600,
@@ -37,7 +39,7 @@ class LoginView extends StatelessWidget {
               child: Column(
                 children: [
                   RecipeTextField(
-                    title: 'Email',
+                    title: localization.email,
                     text: "exmple@example.com",
                     validator: (value) => null,
                     controller: vm.loginController,
@@ -54,8 +56,7 @@ class LoginView extends StatelessWidget {
               ),
             SizedBox(height: 90),
             RecipeElevatedButton(
-              text: "Log In",
-
+              text: localization.logIn,
               callback: () async {
                 if (vm.formKey.currentState!.validate()) {
                   if (await vm.login() && context.mounted) {
@@ -74,14 +75,14 @@ class LoginView extends StatelessWidget {
             ),
             SizedBox(height: 27),
             RecipeElevatedButton(
-              text: "Sing Up",
+              text: localization.signUp,
               callback: () {
                 context.go('/signup');
               },
               fontSize: 20,
             ),
             SizedBox(height: 58),
-            LoginOstki()
+            LoginEnd()
           ],
         ),
       ),
