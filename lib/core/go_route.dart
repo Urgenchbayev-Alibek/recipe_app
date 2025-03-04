@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app/core/routess.dart';
-import 'package:recipe_app/features/recipe_detail/presentation/manager/recipe_view_model.dart';
+import 'package:recipe_app/features/recipe_detail/presentation/manager/recipe_detail_view_model.dart';
 
 import '../features/categories/data/models/categories_model.dart';
 import '../features/categories/data/repositories/categories_repository.dart';
@@ -27,7 +27,7 @@ import 'client.dart';
 
 class GoRoutes {
   static final GoRouter router = GoRouter(
-    initialLocation: Routes.onboardingEnd,
+    initialLocation: Routes.signup,
     routes: [
       GoRoute(
         path: Routes.signup,
