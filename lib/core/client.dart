@@ -4,7 +4,7 @@ import 'package:recipe_app/core/exceptions/auth_exception.dart';
 import '../features/signUp/data/models/user_model.dart';
 
 class ApiClient {
-  final Dio dio = Dio(BaseOptions(baseUrl: "http://192.168.100.59:8888/api/v1", validateStatus: (status) => true));
+  final Dio dio = Dio(BaseOptions(baseUrl: "http://192.168.87.118:8888/api/v1", validateStatus: (status) => true));
 
   Future<String> login(String login, String password) async {
     var response = await dio.post(

@@ -13,11 +13,11 @@ class AppBarActionContainer extends StatelessWidget {
       width: 28,
       height: 28,
       decoration: BoxDecoration(
-        color: AppColors.redPinkMain,
+        color: AppColors.pink,
         borderRadius: BorderRadius.circular(14),
       ),
       alignment: Alignment.center,
-      child: SvgPicture.asset(svg, width: 15, height: 16),
+      child: SvgPicture.asset(svg, width: 20, height: 20),
     );
   }
 }
