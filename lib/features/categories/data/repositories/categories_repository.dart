@@ -1,4 +1,5 @@
 import 'package:recipe_app/core/client.dart';
+
 import '../models/categories_model.dart';
 
 class CategoryRepository {
@@ -6,14 +7,13 @@ class CategoryRepository {
 
   final ApiClient client;
 
-  List<CategoryModel> categoriesModel = [];
+  List<CategoryModel> categories = [];
 
   Future<List<CategoryModel>> fetchCategories() async {
     var rawCategories = await client.fetchCategories();
 
-    categoriesModel =
-        rawCategories.map((json) => CategoryModel.fromJson(json)).toList();
+    categories = rawCategories.map((json) => CategoryModel.fromJson(json)).toList();
 
-    return categoriesModel;
+    return categories;
   }
 }

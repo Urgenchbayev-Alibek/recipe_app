@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import '../../../../core/routess.dart';
+import '../../../../core/routing/routes.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../common/recipe_app_bar_navigation_bar.dart';
 import '../manager/recipe_detail_view_model.dart';

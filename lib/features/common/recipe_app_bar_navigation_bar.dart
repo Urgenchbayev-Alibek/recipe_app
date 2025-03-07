@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:recipe_app/features/common/recipe_icon_button.dart';
 
-import '../../core/routess.dart';
+import '../../core/routing/routes.dart';
 import '../../core/utils/app_colors.dart';
 
 class RecipeBottomNavigationBar extends StatelessWidget {

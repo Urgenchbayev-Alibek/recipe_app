@@ -1,5 +1,3 @@
-
-
 import '../../../../core/client.dart';
 import '../../../recipe_detail/data/models/recipe_detail_model.dart';
 import '../models/recipe_model.dart';
@@ -8,12 +6,28 @@ class RecipeRepository {
   RecipeRepository({required this.client});
 
   final ApiClient client;
+  List<RecipeModel> recipes = [];
+  List<RecipeModel> yourRecipes = [];
 
   Map<int, List<RecipeModel>> recipesByCategory = {};
   RecipeDetailModel? recipe;
 
+  RecipeModel? trendingRecipe;
+
+  Future<RecipeModel?> fetchTrendingRecipe() async {
+    var rawRecipe = await client.fetchTrendingRecipe();
+    trendingRecipe = RecipeModel.fromJson(rawRecipe);
+    return trendingRecipe;
+  }
+
+  Future<List<RecipeModel>> fetchYourRecipes() async {
+    var rawRecipes = await client.fetchYourRecipes();
+    yourRecipes = rawRecipes.map((recipe) => RecipeModel.fromJson(recipe)).toList();
+    return yourRecipes;
+  }
+
   Future<List<RecipeModel>> fetchRecipesByCategory(int categoryId) async {
-    if (recipesByCategory.containsKey(categoryId) && recipesByCategory[categoryId] != null){
+    if (recipesByCategory.containsKey(categoryId) && recipesByCategory[categoryId] != null) {
       return recipesByCategory[categoryId]!;
     }
 
@@ -23,14 +37,11 @@ class RecipeRepository {
     return recipes;
   }
 
-  List<RecipeModel> recipes = [];
-
   Future<List<RecipeModel>> fetchRecipes() async {
     List<dynamic> recipesRaw = await client.fetchRecipes();
     recipes = recipesRaw.map((recipe) => RecipeModel.fromJson(recipe)).toList();
     return recipes;
   }
-
 
   Future<RecipeDetailModel> fetchRecipeById(int recipeId) async {
     final rawRecipe = await client.fetchRecipeById(recipeId);

@@ -7,7 +7,7 @@ import 'package:recipe_app/core/sizes.dart';
 import 'package:recipe_app/core/utils/theme.dart';
 import 'package:recipe_app/features/categories/data/models/categories_model.dart';
 import 'package:recipe_app/features/category_detail/data/repositories/recipe_repository.dart';
-import 'core/go_route.dart';
+import 'core/routing/go_route.dart';
 import 'features/categories/data/repositories/categories_repository.dart';
 import 'features/category_detail/presentation/manager/category_detail_view_model.dart';
 import 'features/signUp/data/models/localization_view_model.dart';

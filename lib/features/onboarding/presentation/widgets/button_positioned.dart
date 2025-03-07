@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:recipe_app/core/routess.dart';
+import 'package:recipe_app/core/routing/routes.dart';
 
 import '../../../../core/l10n/app_localizations.dart';
 import '../manager/onboarding_view_model.dart';

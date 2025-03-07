@@ -4,7 +4,7 @@ import 'package:recipe_app/core/exceptions/auth_exception.dart';
 import '../features/signUp/data/models/user_model.dart';
 
 class ApiClient {
-  final Dio dio = Dio(BaseOptions(baseUrl: "http://192.168.87.118:8888/api/v1", validateStatus: (status) => true));
+  final Dio dio = Dio(BaseOptions(baseUrl: "http://192.168.100.59:8888/api/v1", validateStatus: (status) => true));
 
   Future<String> login(String login, String password) async {
     var response = await dio.post(
@@ -57,6 +57,26 @@ class ApiClient {
     }
   }
 
+  Future<dynamic> fetchTrendingRecipe() async {
+    var response = await dio.get('/recipes/trending-recipe');
+    if (response.statusCode == 200) {
+      Map<String, dynamic> data = response.data;
+      return data;
+    } else {
+      throw Exception('Nimadur xato ketti trending-recipe ni olib kelishda');
+    }
+  }
+
+  Future<List<dynamic>> fetchYourRecipes() async {
+    var response = await dio.get('/recipes/list?Limit=2');
+    if (response.statusCode == 200) {
+      List<dynamic> data = response.data;
+      return data;
+    } else {
+      throw Exception("your-recipes da xatolik");
+    }
+  }
+
   Future<List<Map<String, dynamic>>> fetchCategories() async {
     var responseCategories = await dio.get('/categories/list');
 
@@ -91,5 +111,11 @@ class ApiClient {
     } else {
       throw Exception("Nimadur xato ketdi recipe olib kelishda");
     }
+  }
+
+  Future<List<dynamic>> fetchTopChefs(int limit) async {
+    var response = await dio.get('/auth/top-chefs?Limit=$limit');
+    List<dynamic> data = response.data;
+    return data;
   }
 }

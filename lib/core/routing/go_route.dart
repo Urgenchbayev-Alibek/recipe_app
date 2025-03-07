@@ -1,29 +1,30 @@
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:recipe_app/core/routess.dart';
+import 'package:recipe_app/core/routing/routes.dart';
+import 'package:recipe_app/features/home/presentation/manager/home_view_model.dart';
 import 'package:recipe_app/features/home/presentation/pages/home_view.dart';
 import 'package:recipe_app/features/recipe_detail/presentation/manager/recipe_detail_view_model.dart';
-import '../features/categories/data/models/categories_model.dart';
-import '../features/categories/data/repositories/categories_repository.dart';
-import '../features/categories/presentation/manager/categories_view_model.dart';
-import '../features/categories/presentation/pages/categories_page.dart';
-import '../features/category_detail/data/repositories/recipe_repository.dart' show RecipeRepository;
-import '../features/category_detail/presentation/manager/category_detail_view_model.dart';
-import '../features/category_detail/presentation/pages/category_detail_view.dart';
-import '../features/onboarding/data/repositories/onboarding_repository.dart';
-import '../features/onboarding/presentation/manager/onboarding_view_model.dart';
-import '../features/onboarding/presentation/pages/onboarding_end.dart';
-import '../features/onboarding/presentation/pages/onboarding_page.dart';
-import '../features/profile/data/repositories/profile_repository.dart';
-import '../features/profile/presentation/pages/profile_page.dart';
-import '../features/profile/presentation/pages/profile_view_model.dart';
-import '../features/recipe_detail/presentation/pages/recipe_detail_view.dart';
-import '../features/signUp/data/repositories/auth_repository.dart';
-import '../features/signUp/presentation/manager/login_view_model.dart';
-import '../features/signUp/presentation/pages/complete_profile_view.dart';
-import '../features/signUp/presentation/pages/login_view.dart';
-import '../features/signUp/presentation/pages/singup_view.dart';
-import 'client.dart';
+import '../../features/categories/data/models/categories_model.dart';
+import '../../features/categories/data/repositories/categories_repository.dart';
+import '../../features/categories/presentation/manager/categories_view_model.dart';
+import '../../features/categories/presentation/pages/categories_page.dart';
+import '../../features/category_detail/data/repositories/recipe_repository.dart' show RecipeRepository;
+import '../../features/category_detail/presentation/manager/category_detail_view_model.dart';
+import '../../features/category_detail/presentation/pages/category_detail_view.dart';
+import '../../features/onboarding/data/repositories/onboarding_repository.dart';
+import '../../features/onboarding/presentation/manager/onboarding_view_model.dart';
+import '../../features/onboarding/presentation/pages/onboarding_end.dart';
+import '../../features/onboarding/presentation/pages/onboarding_page.dart';
+import '../../features/profile/data/repositories/profile_repository.dart';
+import '../../features/profile/presentation/pages/profile_page.dart';
+import '../../features/profile/presentation/pages/profile_view_model.dart';
+import '../../features/recipe_detail/presentation/pages/recipe_detail_view.dart';
+import '../../features/signUp/data/repositories/auth_repository.dart';
+import '../../features/signUp/presentation/manager/login_view_model.dart';
+import '../../features/signUp/presentation/pages/complete_profile_view.dart';
+import '../../features/signUp/presentation/pages/login_view.dart';
+import '../../features/signUp/presentation/pages/singup_view.dart';
+import '../client.dart';
 
 class GoRoutes {
   static final GoRouter router = GoRouter(
@@ -31,7 +32,14 @@ class GoRoutes {
     routes: [
       GoRoute(
         path: Routes.home,
-        builder: (context, state) => HomeView(),
+        builder: (context, state) => ChangeNotifierProvider(
+          create: (context) => HomeViewModel(
+            catsRepo: context.read(),
+            recipeRepo: context.read(),
+            // selected: context.watch(),
+          ),
+          child: HomeView(),
+        ),
       ),
       GoRoute(
         path: Routes.signup,
