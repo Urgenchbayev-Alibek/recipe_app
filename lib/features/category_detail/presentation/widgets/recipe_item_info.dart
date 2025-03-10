@@ -4,7 +4,7 @@ import 'package:recipe_app/features/category_detail/presentation/widgets/recipe_
 import '../../../../core/utils/app_colors.dart';
 import '../../../common/recipe_rating.dart';
 import '../../../common/recipe_time.dart';
-import '../../data/models/recipe_model.dart';
+import '../../../../data/models/recipe_model.dart';
 
 class RecipeItemInfo extends StatelessWidget {
   const RecipeItemInfo({

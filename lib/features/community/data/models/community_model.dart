@@ -1,12 +1,12 @@
 import 'package:recipe_app/features/recipe_detail/data/models/user_model_small.dart';
 
-class CommunityModel {
+class CommunityRecipeModel {
   int id;
   String title, description, created, photo;
   num timeRequired, rating, reviewsCount;
   final UserModelInRecipe user;
 
-  CommunityModel({
+  CommunityRecipeModel({
     required this.id,
     required this.title,
     required this.description,
@@ -18,8 +18,8 @@ class CommunityModel {
     required this.user,
   });
 
-  factory CommunityModel.fromJson(Map<String, dynamic> json) {
-    return CommunityModel(
+  factory CommunityRecipeModel.fromJson(Map<String, dynamic> json) {
+    return CommunityRecipeModel(
       id: json['id'],
       title: json['title'],
       description: json['description'],

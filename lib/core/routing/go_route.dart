@@ -1,20 +1,17 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app/core/routing/routes.dart';
-import 'package:recipe_app/features/home/presentation/manager/home_view_model.dart';
 import 'package:recipe_app/features/home/presentation/pages/home_view.dart';
 import 'package:recipe_app/features/recipe_detail/presentation/manager/recipe_detail_view_model.dart';
-
-import '../../features/categories/data/models/categories_model.dart';
-import '../../features/categories/data/repositories/categories_repository.dart';
-import '../../features/categories/presentation/manager/categories_view_model.dart';
-import '../../features/categories/presentation/pages/categories_page.dart';
-import '../../features/category_detail/data/repositories/recipe_repository.dart' show RecipeRepository;
+import '../../data/repositories/recipe_repository.dart';
+import '../../features/categories/presentation/manager/categories_cubit.dart';
+import '../../features/categories/presentation/pages/categories_view.dart';
 import '../../features/category_detail/presentation/manager/category_detail_view_model.dart';
 import '../../features/category_detail/presentation/pages/category_detail_view.dart';
-import '../../features/community/data/repositories/community_repository.dart';
 import '../../features/community/presentation/manager/community_view_model.dart';
 import '../../features/community/presentation/pages/community_view.dart';
+import '../../features/home/presentation/manager/home_view_model.dart';
 import '../../features/onboarding/data/repositories/onboarding_repository.dart';
 import '../../features/onboarding/presentation/manager/onboarding_view_model.dart';
 import '../../features/onboarding/presentation/pages/onboarding_end.dart';
@@ -36,7 +33,14 @@ class GoRoutes {
     routes: [
       GoRoute(
         path: Routes.home,
-        builder: (context, state) => HomeView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => HomeBloc(
+            catRepo: context.read(),
+            recipeRepo: context.read(),
+            chefRepo: context.read(),
+          ),
+          child: HomeView(),
+        ),
       ),
       GoRoute(
         path: Routes.signup,
@@ -74,21 +78,20 @@ class GoRoutes {
       ),
       GoRoute(
         path: Routes.categoryDetail,
-        builder: (context, state) => ChangeNotifierProvider(
-          create: (context) => CategoryDetailViewModel(
+        builder: (context, state) => BlocProvider(
+          create: (context) => CategoryDetailBloc(
             catRepo: context.read(),
             recipeRepo: context.read(),
-            selected: state.extra as CategoryModel,
-          )..load(),
+            selectedId: int.parse(state.pathParameters['categoryId']!),
+          ),
           child: CategoryDetailView(),
         ),
       ),
       GoRoute(
         path: Routes.categories,
-        builder: (context, state) => CategoriesPage(
-          cvm: CategoriesViewModel(
-            repo: CategoryRepository(client: ApiClient()),
-          ),
+        builder: (context, state) => BlocProvider(
+          create: (context) => CategoriesBloc(catRepo: context.read()),
+          child: CategoriesView(),
         ),
       ),
       GoRoute(
@@ -111,7 +114,7 @@ class GoRoutes {
         path: Routes.community,
         builder: (context, state) => ChangeNotifierProvider(
           create: (context) => CommunityViewModel(
-            comRepo: context.read<CommunityRepository>(),
+            comRepo: context.read<RecipeRepository>(),
             order: "date",
             limit: 10,
             descending: true,

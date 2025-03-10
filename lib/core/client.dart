@@ -67,7 +67,7 @@ class ApiClient {
     }
   }
 
-  Future<List<dynamic>> fetchYourRecipes(int limit) async {
+  Future<List<dynamic>> fetchYourRecipes({int? limit}) async {
     var response = await dio.get('/recipes/my-recipes?Limit=$limit');
     if (response.statusCode == 200) {
       List<dynamic> data = response.data;
@@ -77,33 +77,19 @@ class ApiClient {
     }
   }
 
-  Future<List<dynamic>> fetchTopChefs(int limit) async {
-    var response = await dio.get('/auth/top-chefs?Limit=$limit');
+  Future<List<dynamic>> fetchTopChefs({int? limit}) async {
+    var response = await dio.get('/auth/top-chefs?Limit=${limit ?? ''}');
     List<dynamic> data = response.data;
     return data;
   }
 
-  Future<List<dynamic>> fetchRecentRecipes(int limit) async {
-    return [
-      {
-        "id": 4,
-        "title": "Lemonade",
-        "description": "This is a quick overview of the ingredients for the recipe",
-        "photo": "assets/images/salami_pizza.png",
-        "timeRequired": 30,
-        "rating": 4.0,
-        "isLiked": false,
-      },
-      {
-        "id": 5,
-        "title": "Chicken Burger",
-        "description": "This is a quick overview of the ingredients for the recipe",
-        "photo": "assets/images/salami_pizza.png",
-        "timeRequired": 25,
-        "rating": 4.3,
-        "isLiked": true,
-      },
-    ];
+  Future<List<dynamic>> fetchRecentlyAddedRecipes({int? limit}) async {
+    final response = await dio.get('/recipes/list?Order=date&Limit=${limit ?? ''}');
+    if (response.statusCode == 200) {
+      return response.data as List<dynamic>;
+    } else {
+      throw Exception("/recipes/list?Order=date&Limit=${limit ?? ''} so'rovimiz xato ketti!");
+    }
   }
 
   Future<List<Map<String, dynamic>>> fetchCategories() async {

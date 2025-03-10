@@ -10,4 +10,6 @@ class Routes{
   static const signup = '/signup';
   static const recipeDetail = '/recipe-detail/:recipeId';
   static const community = '/recipe/community';
+
+  static String getCategoryDetail(int categoryId) => '/category-detail/$categoryId';
 }

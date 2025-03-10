@@ -1,46 +1,62 @@
-import 'package:flutter/cupertino.dart';
-import 'package:recipe_app/core/data/models/top_chef_model_small.dart';
-import 'package:recipe_app/core/data/repositories/top_chef_repository.dart';
-import 'package:recipe_app/features/categories/data/repositories/categories_repository.dart';
-import '../../../categories/data/models/categories_model.dart';
-import '../../../category_detail/data/models/recipe_model.dart';
-import '../../../category_detail/data/repositories/recipe_repository.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../data/models/categories_model.dart';
+import '../../../../data/models/recipe_model.dart';
+import '../../../../data/models/top_chef_model_small.dart';
+import '../../../../data/repositories/categories_repository.dart';
+import '../../../../data/repositories/recipe_repository.dart';
+import '../../../../data/repositories/top_chef_repository.dart';
+import 'home_events.dart';
 
-class HomeViewModel extends ChangeNotifier {
-  HomeViewModel({
-    required CategoryRepository catsRepo,
+part 'home_state.dart';
+
+class HomeBloc extends Bloc<HomeEvent, HomeState> {
+  HomeBloc({
+    required CategoryRepository catRepo,
     required RecipeRepository recipeRepo,
-    required TopChefRepository topChefRepo,
-  })  : _catsRepo = catsRepo,
+    required ChefRepository chefRepo,
+  })  : _catRepo = catRepo,
         _recipeRepo = recipeRepo,
-        _topChefRepo = topChefRepo {
-    load();
+        _chefRepo = chefRepo,
+        super(
+        HomeState(
+          status: HomeStatus.loading,
+          categories: [],
+          yourRecipes: [],
+          trendingRecipe: null,
+          topChefs: [],
+          recentlyAddedRecipes: [],
+        ),
+      ) {
+    on<HomeLoad>(_onLoad);
+    add(HomeLoad());
   }
 
-  bool isLoading = true;
-
-  final CategoryRepository _catsRepo;
+  final CategoryRepository _catRepo;
   final RecipeRepository _recipeRepo;
-  final TopChefRepository _topChefRepo;
+  final ChefRepository _chefRepo;
 
-  CategoryModel? selected;
-  List<CategoryModel> categories = [];
-  List<RecipeModel> yourRecipes = [];
-  List<RecipeModel> recentRecipes = [];
-
-  RecipeModel? trendingRecipe;
-  List<TopChefModelSmall> topChefsHome = [];
-
-  Future<void> load() async {
-    isLoading = true;
-    notifyListeners();
-    categories = await _catsRepo.fetchCategories();
-    trendingRecipe = await _recipeRepo.fetchTrendingRecipe();
-    yourRecipes = await _recipeRepo.fetchYourRecipes(2);
-    topChefsHome = await _topChefRepo.fetchTopChefs(4);
-    recentRecipes = await _recipeRepo.fetchRecentRecipes(2);
-    selected = categories.firstOrNull;
-    isLoading = false;
-    notifyListeners();
+  Future _onLoad(HomeLoad event, Emitter<HomeState> emit) async {
+    emit(
+      HomeState(
+        status: HomeStatus.loading,
+        categories: [],
+        yourRecipes: [],
+        trendingRecipe: null,
+        topChefs: [],
+        recentlyAddedRecipes: [],
+      ),
+    );
+    emit(
+      HomeState(
+        status: HomeStatus.idle,
+        categories: await _catRepo.fetchCategories(),
+        yourRecipes: await _recipeRepo.fetchYourRecipes(limit: 2),
+        trendingRecipe: await _recipeRepo.fetchTrendingRecipe(),
+        topChefs: await _chefRepo.fetchTopChefs(limit: 4),
+        recentlyAddedRecipes: await _recipeRepo.fetchRecentlyAddedRecipes(limit: 2),
+      ),
+    );
   }
 }

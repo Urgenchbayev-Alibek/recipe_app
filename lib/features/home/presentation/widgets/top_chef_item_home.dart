@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/core/data/models/top_chef_model_small.dart';
 import '../../../../core/sizes.dart';
+import '../../../../data/models/top_chef_model_small.dart';
 
 class TopChefItemHome extends StatelessWidget {
   const TopChefItemHome({

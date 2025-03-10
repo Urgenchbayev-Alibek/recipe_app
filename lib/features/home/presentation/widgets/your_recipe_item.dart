@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/features/category_detail/data/models/recipe_model.dart';
+import 'package:recipe_app/data/models/recipe_model.dart';
 import '../../../../core/sizes.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../common/recipe_icon_button_container.dart';

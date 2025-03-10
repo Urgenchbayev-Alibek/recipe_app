@@ -1,36 +1,48 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../core/routing/routes.dart';
+import '../../../../data/models/categories_model.dart';
 
-import '../manager/categories_view_model.dart';
-
-// ignore: camel_case_types
-class category_item extends StatelessWidget {
-  const category_item({
+class CategoryItem extends StatelessWidget {
+  const CategoryItem({
     super.key,
-    required this.cvm,
-    required this.index, required this.image, required this.text,
+    required this.category,
   });
 
-  final int index;
-  final CategoriesViewModel cvm;
-  final String image;
-  final String text;
+  final CategoryModel category;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      spacing: 8,
-      children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(13),
-          child: Image.network(
-            cvm.categories[index].image,
-            width: 158,
-            height: 145,
-            fit: BoxFit.cover,
-          ),
+    final categoryTitle = Text(
+      category.title,
+      style: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+      ),
+    );
+
+    final categoryImage = ClipRRect(
+      borderRadius: BorderRadius.circular(13),
+      child: CachedNetworkImage(
+        imageUrl: category.image,
+        width: category.isMain ? 356 : 160,
+        height: category.isMain ? 150 : 145,
+        fit: BoxFit.cover,
+      ),
+    );
+
+    return Center(
+      child: GestureDetector(
+        onTap: () => context.push(Routes.getCategoryDetail(category.id)),
+        child: Column(
+          spacing: category.isMain ? 3 : 6,
+          children: [
+            category.isMain ? categoryTitle : categoryImage,
+            category.isMain ? categoryImage : categoryTitle,
+          ],
         ),
-        Text(cvm.categories[index].title),
-      ],
+      ),
     );
   }
 }

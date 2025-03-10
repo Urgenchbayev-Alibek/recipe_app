@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../../features/categories/data/models/categories_model.dart';
+import '../../../data/models/categories_model.dart';
 import '../../routing/routes.dart';
 import '../../utils/app_colors.dart';
 
