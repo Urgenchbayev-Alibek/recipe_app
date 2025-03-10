@@ -23,7 +23,7 @@ class ProfileAppBarTitle extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            vm.myProfile!.fullName,
+            vm.myProfile!.firstName,
             style: TextStyle(
               color: AppColors.redPinkMain,
               fontWeight: FontWeight.w500,

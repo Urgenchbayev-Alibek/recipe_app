@@ -36,7 +36,7 @@ class RecipeDetailChefInfo extends StatelessWidget {
                       fontWeight: FontWeight.w400
                   ),
                 ),
-                Text(user.fullName,
+                Text(user.firstName,
                   style: TextStyle(
                       color: AppColors.redPinkMain,
                       fontSize: 14,

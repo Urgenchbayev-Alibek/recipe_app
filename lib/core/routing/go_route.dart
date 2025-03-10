@@ -4,6 +4,7 @@ import 'package:recipe_app/core/routing/routes.dart';
 import 'package:recipe_app/features/home/presentation/manager/home_view_model.dart';
 import 'package:recipe_app/features/home/presentation/pages/home_view.dart';
 import 'package:recipe_app/features/recipe_detail/presentation/manager/recipe_detail_view_model.dart';
+
 import '../../features/categories/data/models/categories_model.dart';
 import '../../features/categories/data/repositories/categories_repository.dart';
 import '../../features/categories/presentation/manager/categories_view_model.dart';
@@ -11,6 +12,9 @@ import '../../features/categories/presentation/pages/categories_page.dart';
 import '../../features/category_detail/data/repositories/recipe_repository.dart' show RecipeRepository;
 import '../../features/category_detail/presentation/manager/category_detail_view_model.dart';
 import '../../features/category_detail/presentation/pages/category_detail_view.dart';
+import '../../features/community/data/repositories/community_repository.dart';
+import '../../features/community/presentation/manager/community_view_model.dart';
+import '../../features/community/presentation/pages/community_view.dart';
 import '../../features/onboarding/data/repositories/onboarding_repository.dart';
 import '../../features/onboarding/presentation/manager/onboarding_view_model.dart';
 import '../../features/onboarding/presentation/pages/onboarding_end.dart';
@@ -28,18 +32,11 @@ import '../client.dart';
 
 class GoRoutes {
   static final GoRouter router = GoRouter(
-    initialLocation: Routes.home,
+    initialLocation: Routes.community,
     routes: [
       GoRoute(
         path: Routes.home,
-        builder: (context, state) => ChangeNotifierProvider(
-          create: (context) => HomeViewModel(
-            catsRepo: context.read(),
-            recipeRepo: context.read(),
-            // selected: context.watch(),
-          ),
-          child: HomeView(),
-        ),
+        builder: (context, state) => HomeView(),
       ),
       GoRoute(
         path: Routes.signup,
@@ -101,7 +98,7 @@ class GoRoutes {
         ),
       ),
       GoRoute(
-        path: Routes.recipeDetail,
+        path: '${Routes.recipeDetail}/:recipeId',
         builder: (context, state) => ChangeNotifierProvider(
           create: (context) => RecipeDetailViewModel(
             recipeRepo: context.read(),
@@ -109,7 +106,19 @@ class GoRoutes {
           ),
           child: RecipeDetailView(),
         ),
-      )
+      ),
+      GoRoute(
+        path: Routes.community,
+        builder: (context, state) => ChangeNotifierProvider(
+          create: (context) => CommunityViewModel(
+            comRepo: context.read<CommunityRepository>(),
+            order: "date",
+            limit: 10,
+            descending: true,
+          ),
+          child: CommunityView(),
+        ),
+      ),
     ],
   );
 }

@@ -20,8 +20,8 @@ class RecipeRepository {
     return trendingRecipe;
   }
 
-  Future<List<RecipeModel>> fetchYourRecipes() async {
-    var rawRecipes = await client.fetchYourRecipes();
+  Future<List<RecipeModel>> fetchYourRecipes(int limit) async {
+    var rawRecipes = await client.fetchYourRecipes(limit);
     yourRecipes = rawRecipes.map((recipe) => RecipeModel.fromJson(recipe)).toList();
     return yourRecipes;
   }
@@ -47,5 +47,11 @@ class RecipeRepository {
     final rawRecipe = await client.fetchRecipeById(recipeId);
     recipe = RecipeDetailModel.fromJson(rawRecipe);
     return recipe!;
+  }
+
+  Future<List<RecipeModel>> fetchRecentRecipes(int limit) async {
+    var rawRecipes = await client.fetchRecentRecipes(limit);
+    recipes = rawRecipes.map((recipe) => RecipeModel.fromJson(recipe)).toList();
+    return recipes;
   }
 }

@@ -9,4 +9,5 @@ class Routes{
   static const String categoryDetail = '/category-detail';
   static const signup = '/signup';
   static const recipeDetail = '/recipe-detail/:recipeId';
+  static const community = '/recipe/community';
 }

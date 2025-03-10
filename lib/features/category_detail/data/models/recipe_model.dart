@@ -4,8 +4,10 @@ class RecipeModel {
   final String title;
   final String description;
   final String photo;
-  final num timeRequired;
+  final int timeRequired;
   final num rating;
+
+  final bool isLiked;
 
   RecipeModel({
     required this.id,
@@ -15,6 +17,7 @@ class RecipeModel {
     required this.photo,
     required this.timeRequired,
     required this.rating,
+    required this.isLiked,
   });
 
   factory RecipeModel.fromJson(Map<String, dynamic> json) {
@@ -26,6 +29,7 @@ class RecipeModel {
       photo: json["photo"],
       timeRequired: json["timeRequired"],
       rating: json["rating"],
+      isLiked: json['isLiked'] ?? false,
     );
   }
 }

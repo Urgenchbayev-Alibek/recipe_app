@@ -28,7 +28,7 @@ class ApiClient {
   }
 
   Future<Map<String, dynamic>> fetchMyProfile() async {
-    var response = await dio.get('/auth/details/1');
+    var response = await dio.get('/auth/me');
     if (response.statusCode == 200) {
       Map<String, dynamic> data = response.data;
       return data;
@@ -67,14 +67,43 @@ class ApiClient {
     }
   }
 
-  Future<List<dynamic>> fetchYourRecipes() async {
-    var response = await dio.get('/recipes/list?Limit=2');
+  Future<List<dynamic>> fetchYourRecipes(int limit) async {
+    var response = await dio.get('/recipes/my-recipes?Limit=$limit');
     if (response.statusCode == 200) {
       List<dynamic> data = response.data;
       return data;
     } else {
       throw Exception("your-recipes da xatolik");
     }
+  }
+
+  Future<List<dynamic>> fetchTopChefs(int limit) async {
+    var response = await dio.get('/auth/top-chefs?Limit=$limit');
+    List<dynamic> data = response.data;
+    return data;
+  }
+
+  Future<List<dynamic>> fetchRecentRecipes(int limit) async {
+    return [
+      {
+        "id": 4,
+        "title": "Lemonade",
+        "description": "This is a quick overview of the ingredients for the recipe",
+        "photo": "assets/images/salami_pizza.png",
+        "timeRequired": 30,
+        "rating": 4.0,
+        "isLiked": false,
+      },
+      {
+        "id": 5,
+        "title": "Chicken Burger",
+        "description": "This is a quick overview of the ingredients for the recipe",
+        "photo": "assets/images/salami_pizza.png",
+        "timeRequired": 25,
+        "rating": 4.3,
+        "isLiked": true,
+      },
+    ];
   }
 
   Future<List<Map<String, dynamic>>> fetchCategories() async {
@@ -113,8 +142,9 @@ class ApiClient {
     }
   }
 
-  Future<List<dynamic>> fetchTopChefs(int limit) async {
-    var response = await dio.get('/auth/top-chefs?Limit=$limit');
+  Future<List<dynamic>> fetchCommunityRecipes(int limit, String order, bool descending) async {
+    var response = await dio.get(
+        '/recipes/community/list?Limit=$limit&Order$order&Descending$descending');
     List<dynamic> data = response.data;
     return data;
   }

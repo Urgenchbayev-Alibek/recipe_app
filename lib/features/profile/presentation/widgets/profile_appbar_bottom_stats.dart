@@ -28,17 +28,17 @@ class ProfileAppBarBottomStats extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           BottomStats(
-            number: vm.myProfile!.recipeCount,
+            number: vm.myProfile!.recipes,
             subtitle: "Recipes",
           ),
           Container(height: 26, width: 2, color: AppColors.pink),
           BottomStats(
-            number: vm.myProfile!.followingCount,
+            number: vm.myProfile!.following,
             subtitle: "Following",
           ),
           Container(height: 26, width: 2, color: AppColors.pink),
           BottomStats(
-            number: vm.myProfile!.followerCount,
+            number: vm.myProfile!.followers,
             subtitle: "Followers",
           ),
         ],
