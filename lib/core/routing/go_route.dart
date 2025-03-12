@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:recipe_app/core/routing/routes.dart';
 import 'package:recipe_app/features/home/presentation/pages/home_view.dart';
 import 'package:recipe_app/features/recipe_detail/presentation/manager/recipe_detail_view_model.dart';
+import 'package:recipe_app/features/reviews/presentation/pages/review_view.dart';
+
 import '../../data/repositories/recipe_repository.dart';
 import '../../features/categories/presentation/manager/categories_cubit.dart';
 import '../../features/categories/presentation/pages/categories_view.dart';
@@ -29,7 +31,7 @@ import '../client.dart';
 
 class GoRoutes {
   static final GoRouter router = GoRouter(
-    initialLocation: Routes.community,
+    initialLocation: Routes.reviews,
     routes: [
       GoRoute(
         path: Routes.home,
@@ -41,6 +43,10 @@ class GoRoutes {
           ),
           child: HomeView(),
         ),
+      ),
+      GoRoute(
+        path: Routes.reviews,
+        builder: (context, state) => ReviewView(),
       ),
       GoRoute(
         path: Routes.signup,
@@ -100,16 +106,16 @@ class GoRoutes {
           vm: LoginViewModel(repo: AuthRepository(client: ApiClient())),
         ),
       ),
-      GoRoute(
-        path: '${Routes.recipeDetail}/:recipeId',
-        builder: (context, state) => ChangeNotifierProvider(
-          create: (context) => RecipeDetailViewModel(
-            recipeRepo: context.read(),
-            recipeId: int.parse(state.pathParameters['recipeId']!),
-          ),
-          child: RecipeDetailView(),
-        ),
-      ),
+      // GoRoute(
+      //   path: '${Routes.recipeDetail}/:recipeId',
+      //   builder: (context, state) => ChangeNotifierProvider(
+      //     create: (context) => RecipeDetailViewModel(
+      //       recipeRepo: context.read(),
+      //       recipeId: int.parse(state.pathParameters['recipeId']!),
+      //     ),
+      //     child: RecipeDetailView(),
+      //   ),
+      // ),
       GoRoute(
         path: Routes.community,
         builder: (context, state) => ChangeNotifierProvider(

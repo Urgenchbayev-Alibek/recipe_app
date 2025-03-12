@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-  import 'package:recipe_app/core/dependencies.dart';
+import 'package:recipe_app/core/dependencies.dart';
 import 'package:recipe_app/core/l10n/app_localizations.dart';
 import 'package:recipe_app/core/sizes.dart';
 import 'package:recipe_app/core/utils/theme.dart';
