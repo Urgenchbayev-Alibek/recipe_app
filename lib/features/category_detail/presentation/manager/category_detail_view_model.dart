@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../data/models/categories_model.dart';
 import '../../../../data/models/recipe_model.dart';
+import '../../../../data/repositories/categories_repository.dart';
 import '../../../../data/repositories/recipe_repository.dart';
-import '../../../categories/data/repositories/categories_repository.dart';
+
 
 class CategoryDetailEvent {}
 
