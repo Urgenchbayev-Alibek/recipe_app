@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/features/signUp/data/repositories/auth_repository.dart' show AuthRepository;
+import 'package:recipe_app/data/repositories/auth_repository.dart' show AuthRepository;
 
 
 class SingUpViewModel extends ChangeNotifier {

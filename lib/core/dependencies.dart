@@ -3,9 +3,9 @@ import 'package:provider/single_child_widget.dart';
 import '../data/repositories/categories_repository.dart';
 import '../data/repositories/recipe_repository.dart';
 import '../data/repositories/top_chef_repository.dart';
-import '../features/profile/data/repositories/profile_repository.dart';
-import '../features/signUp/data/models/localization_view_model.dart';
-import '../features/signUp/data/repositories/auth_repository.dart';
+import '../data/repositories/profile_repository.dart';
+import '../data/models/localization_view_model.dart';
+import '../data/repositories/auth_repository.dart';
 import '../features/signUp/presentation/manager/singUp_view_model.dart';
 import 'client.dart';
 

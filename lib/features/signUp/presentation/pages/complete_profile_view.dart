@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../core/l10n/app_localizations.dart';
 import '../../../../core/utils/app_colors.dart';
-import '../../data/models/localization_view_model.dart';
+import '../../../../data/models/localization_view_model.dart';
 import '../widgets/complete_profile_description.dart';
 import '../widgets/complete_profile_gender.dart';
 import '../widgets/profile_image_picker.dart';

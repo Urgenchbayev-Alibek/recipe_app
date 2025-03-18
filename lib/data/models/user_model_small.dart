@@ -1,7 +1,7 @@
 class UserModelInRecipe {
   // recipeDetailModel da ishlatilgan shuni ozgartirib qoy
   final int id;
-  final String profilePhoto;
+  final String image;
   final String username;
 
   // final String fullName;
@@ -11,7 +11,7 @@ class UserModelInRecipe {
 
   UserModelInRecipe({
     required this.id,
-    required this.profilePhoto,
+    required this.image,
     required this.username,
     // required this.fullName,
     required this.firstName,
@@ -21,7 +21,7 @@ class UserModelInRecipe {
   factory UserModelInRecipe.fromJson(Map<String, dynamic> json) {
     return UserModelInRecipe(
       id: json['id'],
-      profilePhoto: json['profilePhoto'],
+      image: json['profilePhoto'],
       username: json['username'],
       // fullName: json['fullName'],
       firstName: json['userName'],

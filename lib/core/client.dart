@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:recipe_app/core/exceptions/auth_exception.dart';
 
-import '../features/signUp/data/models/user_model.dart';
+import '../data/models/user_model.dart';
 
 class ApiClient {
-  final Dio dio = Dio(BaseOptions(baseUrl: "http:// 10.10.0.83:8888/api/v1", validateStatus: (status) => true));
+  final Dio dio = Dio(BaseOptions(baseUrl: "http://172.15.232.3:8888/api/v1", validateStatus: (status) => true));
 
   Future<String> login(String login, String password) async {
     var response = await dio.post(
@@ -129,9 +129,21 @@ class ApiClient {
   }
 
   Future<List<dynamic>> fetchCommunityRecipes(int limit, String order, bool descending) async {
-    var response = await dio.get(
-        '/recipes/community/list?Limit=$limit&Order$order&Descending$descending');
+    var response = await dio.get('/recipes/community/list?Limit=$limit&Order$order&Descending$descending');
     List<dynamic> data = response.data;
+    return data;
+  }
+  Future<Map<String, dynamic>> fetchRecipeForReviews(int recipeId) async {
+    var response = await dio.get('/recipes/reviews/detail/$recipeId');
+    if (response.statusCode == 200) {
+      return response.data;
+    } else {
+      throw Exception("recipes/reviews/detail/$recipeId so'rovimiz xato ketti!");
+    }
+  }
+  Future<List<dynamic>> fetchRecipeComments(int recipeId) async{
+    var response=await dio.get("/reviews/list?recipeId=$recipeId");
+    List<dynamic> data=response.data;
     return data;
   }
 }

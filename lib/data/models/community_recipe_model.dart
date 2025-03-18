@@ -1,4 +1,6 @@
-import 'package:recipe_app/features/recipe_detail/data/models/user_model_small.dart';
+
+
+import 'package:recipe_app/data/models/user_model_small.dart';
 
 class CommunityRecipeModel {
   int id;

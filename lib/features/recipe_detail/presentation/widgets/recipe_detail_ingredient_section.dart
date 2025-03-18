@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/features/recipe_detail/presentation/widgets/recipe_ingredients_item.dart';
 
-import '../../data/models/ingredient_model.dart';
+import '../../../../data/models/ingredient_model.dart';
 
 
 class RecipeDetailIngredientsSection extends StatelessWidget {

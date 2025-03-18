@@ -17,7 +17,7 @@ class RecipeAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double toolbarHeight;
   final PreferredSizeWidget? bottom;
 
-  final List<Widget> actions;
+  final List<Widget>? actions;
 
   @override
   Size get preferredSize {

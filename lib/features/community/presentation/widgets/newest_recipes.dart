@@ -47,7 +47,7 @@ class NewestRecipes extends StatelessWidget {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(18),
                           child: CachedNetworkImage(
-                            imageUrl: recipe.user.profilePhoto,
+                            imageUrl: recipe.user.image,
                             height: 35,
                             placeholder: (context, url) =>
                                 CircularProgressIndicator(),

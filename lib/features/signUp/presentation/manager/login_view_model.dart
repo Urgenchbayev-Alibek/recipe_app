@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../data/repositories/auth_repository.dart';
+import '../../../../data/repositories/auth_repository.dart';
 
 class LoginViewModel extends ChangeNotifier{
   LoginViewModel({required AuthRepository repo}): _repo = repo;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/data/repositories/recipe_repository.dart';
-import '../../data/models/community_model.dart';
+import '../../../../data/models/community_recipe_model.dart';
 
 class CommunityViewModel extends ChangeNotifier {
   CommunityViewModel({

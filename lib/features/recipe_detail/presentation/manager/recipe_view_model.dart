@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import '../../../../data/repositories/recipe_repository.dart';
-import '../../../profile/data/models/recipes_model.dart';
+import '../../../../data/models/recipes_model.dart';
 
 
 class RecipeViewModel extends ChangeNotifier {

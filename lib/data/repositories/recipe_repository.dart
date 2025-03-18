@@ -1,7 +1,9 @@
-import '../models/recipe_model.dart';
-import '../../../features/community/data/models/community_model.dart';
-import '../../../features/recipe_detail/data/models/recipe_detail_model.dart';
 import '../../core/client.dart';
+import '../models/community_recipe_model.dart';
+import '../models/recipe_detail_model.dart';
+import '../models/recipe_model.dart';
+import '../models/review_comment_model.dart';
+import '../models/reviews_recipe_model.dart';
 
 class RecipeRepository {
   RecipeRepository({required this.client});
@@ -9,13 +11,12 @@ class RecipeRepository {
   final ApiClient client;
   List<RecipeModel> recipes = [];
   List<CommunityRecipeModel> communityRecipes = [];
+  List<RecipeModel> recentlyAddedRecipes = [];
+  List<ReviewCommentModel> comments = [];
   Map<int, List<RecipeModel>> recipesByCategory = {};
   RecipeDetailModel? recipe;
-
-  List<RecipeModel> recentlyAddedRecipes = [];
-
+  ReviewsRecipeModel? reviewsRecipe;
   RecipeModel? trendingRecipe;
-
   Future<RecipeModel?> fetchTrendingRecipe() async {
     var rawRecipe = await client.fetchTrendingRecipe();
     trendingRecipe = RecipeModel.fromJson(rawRecipe);
@@ -23,7 +24,7 @@ class RecipeRepository {
   }
 
   Future<List<RecipeModel>> fetchYourRecipes({int? limit}) async {
-    var rawRecipes = await client.fetchYourRecipes(limit:limit);
+    var rawRecipes = await client.fetchYourRecipes(limit: limit);
     return rawRecipes.map((recipe) => RecipeModel.fromJson(recipe)).toList();
   }
 
@@ -60,5 +61,17 @@ class RecipeRepository {
     var rawCommunity = await client.fetchCommunityRecipes(limit, order, descending);
     communityRecipes = rawCommunity.map((community) => CommunityRecipeModel.fromJson(community)).toList();
     return communityRecipes;
+  }
+
+  Future<ReviewsRecipeModel> fetchRecipeForReviews(int recipeId) async {
+    var rawRecipe = await client.fetchRecipeForReviews(recipeId);
+    reviewsRecipe = ReviewsRecipeModel.fromJson(rawRecipe);
+    return reviewsRecipe!;
+  }
+
+  Future<List<ReviewCommentModel>> fetchComments(int recipeId) async {
+    var rawComments = await client.fetchRecipeComments(recipeId);
+    comments = rawComments.map((e) => ReviewCommentModel.fromJson(e)).toList();
+    return comments;
   }
 }

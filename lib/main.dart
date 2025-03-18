@@ -6,8 +6,8 @@ import 'package:recipe_app/core/dependencies.dart';
 import 'package:recipe_app/core/l10n/app_localizations.dart';
 import 'package:recipe_app/core/sizes.dart';
 import 'package:recipe_app/core/utils/theme.dart';
-import 'core/routing/go_route.dart';
-import 'features/signUp/data/models/localization_view_model.dart';
+import 'core/routing/router.dart';
+import 'data/models/localization_view_model.dart';
 
 void main() {
   runApp(

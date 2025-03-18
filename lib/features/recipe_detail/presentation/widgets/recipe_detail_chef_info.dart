@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/features/recipe_detail/data/models/user_model_small.dart';
 import 'package:recipe_app/features/recipe_detail/presentation/widgets/recipe_svg_image.dart';
 import '../../../../core/utils/app_colors.dart';
-import '../../../signUp/data/models/user_model.dart';
+import '../../../../data/models/user_model_small.dart';
+import '../../../../data/models/user_model.dart';
 
 class RecipeDetailChefInfo extends StatelessWidget {
   const RecipeDetailChefInfo({
@@ -20,7 +20,7 @@ class RecipeDetailChefInfo extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(31),
               child: Image(
-                image: NetworkImage(user.profilePhoto),
+                image: NetworkImage(user.image),
                 width: 62,
                 height: 62,
                 fit: BoxFit.cover,
