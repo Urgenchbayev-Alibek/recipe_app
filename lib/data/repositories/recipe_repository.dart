@@ -2,8 +2,8 @@ import '../../core/client.dart';
 import '../models/community_recipe_model.dart';
 import '../models/recipe_detail_model.dart';
 import '../models/recipe_model.dart';
-import '../models/review_comment_model.dart';
-import '../models/reviews_recipe_model.dart';
+import '../models/review_model/review_comment_model.dart';
+import '../models/review_model/reviews_recipe_model.dart';
 
 class RecipeRepository {
   RecipeRepository({required this.client});

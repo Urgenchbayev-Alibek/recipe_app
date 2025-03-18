@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:recipe_app/data/models/review_model/review_user_commetn_model.dart';
 import 'package:recipe_app/data/models/user_model_small.dart';
 import '../../../../../core/utils/app_colors.dart';
 
@@ -12,7 +13,7 @@ class ReviewsCommentUserItem extends StatelessWidget {
 
   final String  created;
 
-  final UserModelInRecipe user;
+  final ReviewCommentUserModel user;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class ReviewsCommentUserItem extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(16),
           child: CachedNetworkImage(
-            imageUrl: user.image,
+            imageUrl: user.profilePhoto,
             fit: BoxFit.cover,
             height: 46.h,
             width: 46.w,

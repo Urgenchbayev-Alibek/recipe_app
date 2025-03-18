@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import '../../../../../data/models/review_comment_model.dart';
-import '../../../../../data/models/reviews_recipe_model.dart';
+import '../../../../../data/models/review_model/review_comment_model.dart';
+import '../../../../../data/models/review_model/reviews_recipe_model.dart';
 
 enum ReviewsStatus { idle, loading, error }
 

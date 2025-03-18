@@ -34,7 +34,7 @@ import '../client.dart';
 
 class GoRoutes {
   static final GoRouter router = GoRouter(
-    initialLocation: Routes.getReviews(1),
+    initialLocation: Routes.getReviews(2),
     routes: [
       GoRoute(
         path: Routes.home,

@@ -4,7 +4,7 @@ import 'package:recipe_app/core/exceptions/auth_exception.dart';
 import '../data/models/user_model.dart';
 
 class ApiClient {
-  final Dio dio = Dio(BaseOptions(baseUrl: "http://172.15.232.3:8888/api/v1", validateStatus: (status) => true));
+  final Dio dio = Dio(BaseOptions(baseUrl: "http://192.168.10.89:8888/api/v1", validateStatus: (status) => true));
 
   Future<String> login(String login, String password) async {
     var response = await dio.post(
@@ -141,9 +141,11 @@ class ApiClient {
       throw Exception("recipes/reviews/detail/$recipeId so'rovimiz xato ketti!");
     }
   }
+
   Future<List<dynamic>> fetchRecipeComments(int recipeId) async{
     var response=await dio.get("/reviews/list?recipeId=$recipeId");
     List<dynamic> data=response.data;
+    print(response.data);
     return data;
   }
 }

@@ -23,7 +23,7 @@ class ReviewsCommentStarsItem extends StatelessWidget {
             return SvgPicture.asset(
               width: 16,
               height: 16,
-              "assets/svg/star.svg",
+              "assets/icons/star.svg",
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
                 AppColors.redPinkMain,
@@ -34,7 +34,7 @@ class ReviewsCommentStarsItem extends StatelessWidget {
             return SvgPicture.asset(
               width: 16,
               height: 16,
-              "assets/svg/star-empty.svg",
+              "assets/icons/star-empty.svg",
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
                 AppColors.redPinkMain,

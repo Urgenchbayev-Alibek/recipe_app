@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:recipe_app/data/models/review_model/review_user_model.dart';
+import 'package:recipe_app/data/models/review_model/reviews_recipe_model.dart';
 import '../../../../../data/models/user_model_small.dart';
 
 class ReviewsRecipeItemUser extends StatelessWidget {
@@ -9,7 +11,7 @@ class ReviewsRecipeItemUser extends StatelessWidget {
     required this.user,
   });
 
-  final UserModelInRecipe user;
+  final ReviewerUserModel user;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class ReviewsRecipeItemUser extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(17.w),
           child: CachedNetworkImage(
-            imageUrl: user.image,
+            imageUrl: user.userPhoto,
             width: 34.w,
             height: 34.h,
             fit: BoxFit.cover,

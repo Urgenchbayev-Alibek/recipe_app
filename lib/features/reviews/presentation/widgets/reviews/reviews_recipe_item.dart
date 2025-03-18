@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/features/reviews/presentation/widgets/reviews/reviews_recipe_item_user.dart';
 import 'package:recipe_app/features/reviews/presentation/widgets/reviews/reviews_recipe_rating_and_reviews.dart';
 import '../../../../../core/utils/app_colors.dart';
-import '../../../../../data/models/reviews_recipe_model.dart';
+import '../../../../../data/models/review_model/reviews_recipe_model.dart';
 import '../../../../common/recipe_text_button_container.dart';
 class ReviewsRecipeItem extends StatelessWidget {
   const ReviewsRecipeItem({

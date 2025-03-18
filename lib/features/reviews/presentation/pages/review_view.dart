@@ -15,6 +15,7 @@ class ReviewsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       appBar: RecipeAppBar(title: "Reviews", actions: null),
       body: BlocBuilder<ReviewsBloc, ReviewsState>(
         builder: (context, state) {

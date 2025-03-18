@@ -1,3 +1,4 @@
+import 'package:recipe_app/data/models/review_model/review_user_commetn_model.dart';
 import 'package:recipe_app/data/models/user_model_small.dart';
 
 class ReviewCommentModel {
@@ -5,7 +6,7 @@ class ReviewCommentModel {
   final num rating;
   final String comment, image;
   final DateTime created;
-  final UserModelInRecipe user;
+  final ReviewCommentUserModel user;
 
   ReviewCommentModel({
     required this.id,
@@ -23,7 +24,7 @@ class ReviewCommentModel {
       comment: json['comment'],
       image: json['image'],
       created:DateTime.parse(json['created']),
-      user: UserModelInRecipe.fromJson(json['user']),
+      user: ReviewCommentUserModel.fromJson(json['user']),
     );
   }
 }

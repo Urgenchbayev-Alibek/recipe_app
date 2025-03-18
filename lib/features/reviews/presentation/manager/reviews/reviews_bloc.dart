@@ -1,6 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_app/features/reviews/presentation/manager/reviews/reviews_state.dart';
+
 import '../../../../../data/repositories/recipe_repository.dart';
+
 part 'reviews_event.dart';
 
 class ReviewsBloc extends Bloc<ReviewsEvent, ReviewsState> {
@@ -9,21 +11,15 @@ class ReviewsBloc extends Bloc<ReviewsEvent, ReviewsState> {
   ReviewsBloc({required RecipeRepository recipeRepo, required int recipeId})
       : _recipeRepo = recipeRepo,
         super(ReviewsState.initialize()) {
-    on<ReviewsLoading>(load);
+    on<ReviewsLoading>(_load);
     add(ReviewsLoading(recipeId: recipeId));
-    on<ReviewsShowAllComment>(showComment);
   }
 
-  Future load(ReviewsLoading event, Emitter emit) async {
+  Future _load(ReviewsLoading event, Emitter emit) async {
     emit(state.copyWith(status: ReviewsStatus.loading));
-    emit(ReviewsState.initialize());
     final recipe = await _recipeRepo.fetchRecipeForReviews(event.recipeId);
     final comments = await _recipeRepo.fetchComments(event.recipeId);
-    emit(ReviewsState(
-      recipeModel: recipe,
-      status: ReviewsStatus.idle,
-      comments: comments,
-    ));
+    emit(ReviewsState(recipeModel: recipe, status: ReviewsStatus.idle, comments: comments));
   }
 
   static String sinceCreated({required String createdText}) {
@@ -38,7 +34,7 @@ class ReviewsBloc extends Bloc<ReviewsEvent, ReviewsState> {
     return "${diff.inSeconds} second${diff.inSeconds == 1 ? '' : 's'} ago";
   }
 
-  Future showComment(ReviewsShowAllComment event,Emitter emit) async{
-    emit(state.copyWith());
-  }
+  // Future showComment(ReviewsShowAllComment event, Emitter emit) async {
+  //   emit(state.copyWith());
+  // }
 }

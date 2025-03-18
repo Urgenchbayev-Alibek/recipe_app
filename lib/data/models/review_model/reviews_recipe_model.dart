@@ -1,3 +1,4 @@
+import 'package:recipe_app/data/models/review_model/review_user_model.dart';
 import 'package:recipe_app/data/models/user_model_small.dart';
 
 class ReviewsRecipeModel {
@@ -6,7 +7,7 @@ class ReviewsRecipeModel {
   final String image;
   final double rating;
   final int reviewsCount;
-  final UserModelInRecipe user;
+  final ReviewerUserModel user;
 
   ReviewsRecipeModel({
     required this.id,
@@ -24,7 +25,7 @@ class ReviewsRecipeModel {
       image: json['photo'],
       rating: json['rating'].toDouble(),
       reviewsCount: json['reviewsCount'],
-      user: UserModelInRecipe.fromJson(json['user']),
+      user: ReviewerUserModel.fromJson(json['user']),
     );
   }
 }

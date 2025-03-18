@@ -21,7 +21,7 @@ class ReviewsRecipeStars extends StatelessWidget {
             return SvgPicture.asset(
               width: 11.w,
               height: 11.w,
-              "assets/svg/star.svg",
+              "assets/icons/star.svg",
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
                 Colors.white,
@@ -33,7 +33,7 @@ class ReviewsRecipeStars extends StatelessWidget {
             return SvgPicture.asset(
               width: 11.w,
               height: 11.h,
-              "assets/svg/star_free.svg",
+              "assets/icons/star-empty.svg",
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
                 Colors.white,

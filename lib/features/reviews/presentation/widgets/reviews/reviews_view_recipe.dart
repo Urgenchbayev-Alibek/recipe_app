@@ -4,7 +4,7 @@ import 'package:recipe_app/features/reviews/presentation/widgets/reviews/review_
 import 'package:recipe_app/features/reviews/presentation/widgets/reviews/reviews_recipe_item_user.dart';
 import 'package:recipe_app/features/reviews/presentation/widgets/reviews/reviews_recipe_stars_item.dart';
 import '../../../../../core/utils/app_colors.dart';
-import '../../../../../data/models/reviews_recipe_model.dart';
+import '../../../../../data/models/review_model/reviews_recipe_model.dart';
 import '../../../../signUp/presentation/widgets/recipe_elevated_button.dart';
 
 class ReviewsViewRecipe extends StatelessWidget {
