@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/core/utils/app_colors.dart';
+import 'package:recipe_app/core/utils/colors.dart';
 
 class BottomStats extends StatelessWidget {
   const BottomStats({
@@ -17,7 +17,7 @@ class BottomStats extends StatelessWidget {
         Text(
           number.toString(),
           style: TextStyle(
-            color: AppColors.milkWhite,
+            color: AppColors.pinkSub,
             fontWeight: FontWeight.w500,
             fontSize: 15,
           ),
@@ -25,7 +25,7 @@ class BottomStats extends StatelessWidget {
         Text(
           subtitle,
           style: TextStyle(
-            color: AppColors.milkWhite,
+            color: AppColors.pinkSub,
             fontWeight: FontWeight.w400,
             fontSize: 12,
             height: 1,

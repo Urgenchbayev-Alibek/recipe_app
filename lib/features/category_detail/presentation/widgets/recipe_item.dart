@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/features/category_detail/presentation/widgets/recipe_item_image.dart';
-import 'package:recipe_app/features/category_detail/presentation/widgets/recipe_item_info.dart';
-
-import '../../../common/recipe_icon_button_container.dart';
-import '../../../../data/models/recipe_model.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../core/routing/routes.dart';
+import '../../../../data/models/recipe/recipe_model.dart';
+import '../../../common/widgets/recipe_icon_button_container.dart';
+import 'recipe_item_image.dart';
+import 'recipe_item_info.dart';
 
 class RecipeItem extends StatelessWidget {
   const RecipeItem({
@@ -15,26 +16,29 @@ class RecipeItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SizedBox(
-        width: 169,
-        height: 226,
-        child: Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            RecipeItemInfo(recipe: recipe),
-            RecipeItemImage(recipe: recipe),
-            Positioned(
-              top: 7,
-              right: 8,
-              child: RecipeIconButtonContainer(
-                image: "assets/icons/heart.svg",
-                callback: () {},
-                iconWidth: 16,
-                iconHeight: 15,
+    return GestureDetector(
+      onTap: ()=>context.push(Routes.getRecipeDetail(recipe.id)),
+      child: Center(
+        child: SizedBox(
+          width: 169,
+          height: 226,
+          child: Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              RecipeItemInfo(recipe: recipe),
+              RecipeItemImage(image: recipe.photo),
+              Positioned(
+                top: 7,
+                right: 8,
+                child: RecipeIconButtonContainer(
+                  image: "assets/icons/heart.svg",
+                  callback: () {},
+                  iconWidth: 16,
+                  iconHeight: 15,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

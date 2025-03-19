@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/utils/app_colors.dart';
-import '../../../../data/models/recipe_model.dart';
-import '../../../common/recipe_rating.dart';
-import '../../../common/recipe_time.dart';
+import 'package:recipe_app/core/utils/colors.dart';
+import 'package:recipe_app/data/models/recipe/recipe_model.dart';
+import 'package:recipe_app/features/common/widgets/recipe_rating.dart';
+import 'package:recipe_app/features/common/widgets/recipe_time.dart';
 
 class TrendingRecipeItem extends StatelessWidget {
   const TrendingRecipeItem({

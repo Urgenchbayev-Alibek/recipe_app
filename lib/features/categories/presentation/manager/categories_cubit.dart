@@ -1,14 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../data/models/categories_model.dart';
-import '../../../../data/repositories/categories_repository.dart';
+
+import '../../../../data/models/category_model.dart';
+import '../../../../data/repositories/category_repository.dart';
 
 part 'categories_state.dart';
 
 class CategoriesEvent {}
 
-class CategoriesLoading extends CategoriesEvent {
-
-}
+class CategoriesLoading extends CategoriesEvent {}
 
 class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
   CategoriesBloc({required CategoryRepository catRepo})

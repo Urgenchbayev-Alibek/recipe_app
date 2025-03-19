@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:recipe_app/core/sizes.dart';
 
-import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/colors.dart';
 
 class ProfileBodyRecipe extends StatelessWidget {
   const ProfileBodyRecipe({
@@ -71,7 +71,7 @@ class ProfileBodyRecipe extends StatelessWidget {
               Text(
                 title,
                 style: TextStyle(
-                  color: AppColors.textColor,
+                  color: AppColors.pinkSub,
                   fontWeight: FontWeight.w400,
                   fontSize: 12,
                 ),
@@ -80,7 +80,7 @@ class ProfileBodyRecipe extends StatelessWidget {
                 maxLines: 2,
                 description,
                 style: TextStyle(
-                  color: AppColors.textColor,
+                  color: AppColors.pinkSub,
                   fontWeight: FontWeight.w300,
                   fontSize: 13,
                 ),

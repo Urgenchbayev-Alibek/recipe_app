@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:recipe_app/core/utils/app_colors.dart';
+import 'package:recipe_app/core/utils/colors.dart';
 
 class OnboardingAppBar extends StatelessWidget implements PreferredSizeWidget {
   const OnboardingAppBar({super.key, required this.currentIndex});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/core/utils/app_colors.dart';
+import 'package:recipe_app/core/utils/colors.dart';
 import '../pages/profile_view_model.dart';
 import 'bottom_stats.dart';
 

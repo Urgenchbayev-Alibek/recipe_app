@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../data/models/recipe_detail_model.dart';
-import '../../../../data/repositories/recipe_repository.dart';
-
+import 'package:recipe_app/data/models/recipe/recipe_detail_model.dart';
+import 'package:recipe_app/data/repositories/recipe_repository.dart';
 
 class RecipeDetailViewModel extends ChangeNotifier {
   RecipeDetailViewModel({
@@ -23,5 +22,10 @@ class RecipeDetailViewModel extends ChangeNotifier {
     recipe = await _recipeRepo.fetchRecipeById(recipeId);
     isLoading = false;
     notifyListeners();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 }

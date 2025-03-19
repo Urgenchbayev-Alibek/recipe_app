@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:recipe_app/data/models/recipe/reviews_recipe_model.dart';
 import 'package:recipe_app/features/reviews/presentation/widgets/reviews/reviews_recipe_item_user.dart';
 import 'package:recipe_app/features/reviews/presentation/widgets/reviews/reviews_recipe_rating_and_reviews.dart';
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../data/models/review_model/reviews_recipe_model.dart';
-import '../../../../common/recipe_text_button_container.dart';
+import '../../../../../core/utils/colors.dart';
+import '../../../../common/widgets/recipe_text_button_container.dart';
 class ReviewsRecipeItem extends StatelessWidget {
   const ReviewsRecipeItem({
     super.key,

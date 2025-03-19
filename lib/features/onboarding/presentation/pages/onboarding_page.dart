@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/core/utils/app_colors.dart';
+import 'package:recipe_app/core/utils/colors.dart';
 import '../manager/onboarding_view_model.dart';
 import '../widgets/button_positioned.dart';
 import '../widgets/onboarding_appbar.dart';

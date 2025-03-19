@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:recipe_app/core/routing/routes.dart';
-import 'package:recipe_app/data/models/user_model_small.dart';
+import 'package:recipe_app/data/models/recipe/user_model_in_recipe.dart';
 
 class ReviewsRecipeUser extends StatelessWidget {
   const ReviewsRecipeUser({

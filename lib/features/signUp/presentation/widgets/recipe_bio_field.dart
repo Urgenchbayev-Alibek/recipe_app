@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/l10n/app_localizations.dart';
-import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/colors.dart';
 
 class RecipeBioField extends StatelessWidget {
   const RecipeBioField({

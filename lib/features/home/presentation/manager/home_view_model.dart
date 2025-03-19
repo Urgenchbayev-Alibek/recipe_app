@@ -1,13 +1,13 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../data/models/categories_model.dart';
-import '../../../../data/models/recipe_model.dart';
-import '../../../../data/models/top_chef_model_small.dart';
-import '../../../../data/repositories/categories_repository.dart';
-import '../../../../data/repositories/recipe_repository.dart';
-import '../../../../data/repositories/top_chef_repository.dart';
-import 'home_events.dart';
+import 'package:recipe_app/data/models/category_model.dart';
+import 'package:recipe_app/data/models/recipe/recipe_model.dart';
+import 'package:recipe_app/data/models/top_chef_model_small.dart';
+import 'package:recipe_app/data/repositories/category_repository.dart';
+import 'package:recipe_app/data/repositories/chef_repository.dart';
+import 'package:recipe_app/data/repositories/recipe_repository.dart';
+import 'package:recipe_app/features/home/presentation/manager/home_events.dart';
 
 part 'home_state.dart';
 
@@ -54,7 +54,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         categories: await _catRepo.fetchCategories(),
         yourRecipes: await _recipeRepo.fetchYourRecipes(limit: 2),
         trendingRecipe: await _recipeRepo.fetchTrendingRecipe(),
-        topChefs: await _chefRepo.fetchTopChefs(limit: 4),
+        topChefs: await _chefRepo.fetchTopChefsForHome(limit: 4),
         recentlyAddedRecipes: await _recipeRepo.fetchRecentlyAddedRecipes(limit: 2),
       ),
     );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../core/utils/app_colors.dart';
-import '../../../../data/models/recipe_model.dart';
+import '../../../../core/utils/colors.dart';
+import '../../../../data/models/recipe/recipe_model.dart';
 
 class RecipeItemTitle extends StatelessWidget {
   const RecipeItemTitle({

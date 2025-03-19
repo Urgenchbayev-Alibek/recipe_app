@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:recipe_app/data/models/recipe/recipe_model.dart';
 import 'package:recipe_app/features/home/presentation/widgets/your_recipe_item.dart';
-import '../../../../data/models/recipe_model.dart';
 
 class YourRecipesSection extends StatelessWidget {
   const YourRecipesSection({

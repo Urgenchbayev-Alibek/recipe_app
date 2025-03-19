@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../common/recipe_app_bar.dart';
-import '../../../common/recipe_app_bar_navigation_bar.dart';
-import '../../../common/recipe_icon_button_container.dart';
+import '../../../common/widgets/recipe_app_bar.dart';
+import '../../../common/widgets/recipe_bottom_navigation_bar.dart';
+import '../../../common/widgets/recipe_icon_button_container.dart';
 import '../manager/categories_cubit.dart';
 import '../widgets/category_item.dart';
 
@@ -48,7 +48,7 @@ class CategoriesView extends StatelessWidget {
                 sliver: SliverGrid(
                   delegate: SliverChildBuilderDelegate(
                     childCount: state.categories.length,
-                    (context, index) => CategoryItem(category: state.categories[index]),
+                        (context, index) => CategoryItem(category: state.categories[index]),
                   ),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,

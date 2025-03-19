@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../data/models/recipe_model.dart';
-import '../../../category_detail/presentation/widgets/recipe_item.dart';
+import 'package:recipe_app/data/models/recipe/recipe_model.dart';
+import 'package:recipe_app/features/category_detail/presentation/widgets/recipe_item.dart';
+
 import '../manager/home_view_model.dart';
 
 class RecentlyAddedSection extends StatelessWidget {

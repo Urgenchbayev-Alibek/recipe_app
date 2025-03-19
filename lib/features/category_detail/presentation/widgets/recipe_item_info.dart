@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/features/category_detail/presentation/widgets/recipe_item_description.dart';
 import 'package:recipe_app/features/category_detail/presentation/widgets/recipe_item_title.dart';
-import '../../../../core/utils/app_colors.dart';
-import '../../../common/recipe_rating.dart';
-import '../../../common/recipe_time.dart';
-import '../../../../data/models/recipe_model.dart';
+import '../../../../core/utils/colors.dart';
+import '../../../../data/models/recipe/recipe_model.dart';
+import '../../../common/widgets/recipe_rating.dart';
+import '../../../common/widgets/recipe_time.dart';
 
 class RecipeItemInfo extends StatelessWidget {
   const RecipeItemInfo({
@@ -38,7 +38,7 @@ class RecipeItemInfo extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               RecipeRating(rating: recipe.rating),
-              RecipeTime(timeRequired: recipe.timeRequired.toInt()),
+              RecipeTime(timeRequired: recipe.timeRequired),
             ],
           ),
         ],

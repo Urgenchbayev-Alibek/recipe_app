@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/core/sizes.dart';
-import 'package:recipe_app/core/utils/app_colors.dart';
+import 'package:recipe_app/core/utils/colors.dart';
 
 class ProfileElevatedButton extends StatelessWidget {
   const ProfileElevatedButton({super.key, required this.text});

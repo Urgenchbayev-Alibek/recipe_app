@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../data/models/recipe_model.dart';
+
+import '../../../../data/models/recipe/recipe_model.dart';
 import '../manager/category_detail_view_model.dart';
 import '../widgets/recipe_item.dart';
 

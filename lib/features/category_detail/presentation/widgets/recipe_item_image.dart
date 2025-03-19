@@ -1,15 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:recipe_app/core/utils/app_colors.dart';
-import '../../../../data/models/recipe_model.dart';
+
+import '../../../../core/utils/colors.dart';
 
 class RecipeItemImage extends StatelessWidget {
   const RecipeItemImage({
     super.key,
-    required this.recipe,
+    required this.image,
   });
 
-  final RecipeModel recipe;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class RecipeItemImage extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(14),
           child: Image(
-            image: CachedNetworkImageProvider(recipe.photo),
+            image: CachedNetworkImageProvider(image),
             width: 169,
             height: 153,
             fit: BoxFit.cover,

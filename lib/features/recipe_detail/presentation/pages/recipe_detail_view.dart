@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import '../../../../core/routing/routes.dart';
-import '../../../../core/utils/app_colors.dart';
-import '../../../common/recipe_app_bar_navigation_bar.dart';
+import 'package:recipe_app/core/utils/colors.dart';
+import 'package:recipe_app/features/common/widgets/recipe_app_bar.dart';
+import 'package:recipe_app/features/common/widgets/recipe_bottom_navigation_bar.dart';
+import 'package:recipe_app/features/common/widgets/recipe_icon_button_container.dart';
+import 'package:recipe_app/features/common/widgets/recipe_time.dart';
+import 'package:recipe_app/features/recipe_detail/presentation/widgets/instruction_item.dart';
+import 'package:recipe_app/features/recipe_detail/presentation/widgets/recipe_detail_user_section.dart';
 import '../manager/recipe_detail_view_model.dart';
-import '../widgets/recipe_detail_app_bar.dart';
-import '../widgets/recipe_detail_chef_info.dart';
-import '../widgets/recipe_detail_ingredient_section.dart';
-import '../widgets/recipe_detail_instructions_section.dart';
-import '../widgets/recipe_detail_mage_info.dart';
-import '../widgets/recipe_detail_section.dart';
+import '../widgets/recipe_detail_image_and_video.dart';
+
 
 class RecipeDetailView extends StatelessWidget {
   const RecipeDetailView({super.key});
@@ -18,48 +18,117 @@ class RecipeDetailView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final vm = context.watch<RecipeDetailViewModel>();
-    if(vm.isLoading){
+    if (vm.isLoading) {
       return Center(child: CircularProgressIndicator());
-    }else {
+    } else {
       return Scaffold(
         extendBody: true,
-        backgroundColor: AppColors.beigeColor,
-        appBar: RecipeDetailAppBar(
-          callback: () => context.go(Routes.categoryDetail),
+        appBar: RecipeAppBar(
           title: vm.recipe.title,
-        ),
-        body: ListView(
-          padding: EdgeInsets.only(top:100,right: 36, left: 36,bottom: 20),
-          children: [
-            RecipeDetailImageInfo(),
-            SizedBox(
-              height: 26,
+          actions: [
+            RecipeIconButtonContainer(
+              image: "assets/icons/heart.svg",
+              iconWidth: 16,
+              iconHeight: 15,
+              callback: () {},
             ),
-            RecipeDetailChefInfo(
-              user: vm.recipe.user,
+            SizedBox(width: 5),
+            RecipeIconButtonContainer(
+              image: "assets/icons/share.svg",
+              iconWidth: 12,
+              iconHeight: 18,
+              callback: () {},
             ),
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              width: double.infinity,
-              height: 2,
-              color: AppColors.pinkSub,
-            ),
-            SizedBox(
-              height: 31,
-            ),
-            RecipeDetailDetailsSection(
-              desc: vm.recipe.description,
-              timeRequired: vm.recipe.timeRequired,
-            ),
-            SizedBox(
-              height: 31,
-            ),
-            RecipeDetailIngredientsSection(ingredients: vm.recipe.ingredients,),
-            SizedBox(height: 31,),
-            RecipeDetailInstructionsSection(instruction:  vm.recipe.instructions,)
           ],
+        ),
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 36.w),
+          child: CustomScrollView(
+            slivers: [
+              SliverList(
+                delegate: SliverChildListDelegate(
+                  [
+                    RecipeDetailImageAndVideo(),
+                    SizedBox(height: 20),
+                    RecipeDetailUserSection(user: vm.recipe.user),
+                    SizedBox(height: 20),
+                    Divider(color: AppColors.redPinkMain),
+                    SizedBox(height: 20),
+                    Column(
+                      spacing: 5,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          spacing: 15,
+                          children: [
+                            Text(
+                              'Details',
+                              style: TextStyle(
+                                color: AppColors.redPinkMain,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            RecipeTime(
+                              timeRequired: vm.recipe.timeRequired,
+                              color: Colors.white,
+                            ),
+                          ],
+                        ),
+                        Text(
+                          vm.recipe.description,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      'Ingredients',
+                      style: TextStyle(
+                        color: AppColors.redPinkMain,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        for (var ingredient in vm.recipe.ingredients)
+                          Row(
+                            spacing: 3,
+                            children: [
+                              Icon(Icons.circle,
+                                  size: 6, color: AppColors.redPinkMain),
+                              if (ingredient.amount != null)
+                                Text(
+                                  ingredient.amount!,
+                                  style:
+                                  TextStyle(color: AppColors.redPinkMain),
+                                ),
+                              Text(ingredient.name),
+                            ],
+                          ),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    Column(
+                      spacing: 11.h,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: List.generate(
+                        vm.recipe.instructions.length,
+                            (index) => InstructionItem(instruction: vm.recipe.instructions[index], index: index),
+                      ),
+                    ),
+                    SizedBox(height: 100),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
         bottomNavigationBar: RecipeBottomNavigationBar(),
       );

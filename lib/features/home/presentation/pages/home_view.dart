@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../common/recipe_app_bar_navigation_bar.dart';
-import '../manager/home_view_model.dart';
-import '../widgets/home_view_app_bar.dart';
-import '../widgets/recently_added_section.dart';
-import '../widgets/top_chefs_section.dart';
-import '../widgets/trending_recipe_section_home.dart';
-import '../widgets/your_recipes_section.dart';
+import 'package:recipe_app/features/common/widgets/recipe_bottom_navigation_bar.dart';
+import 'package:recipe_app/features/home/presentation/widgets/recently_added_section.dart';
+import 'package:recipe_app/features/home/presentation/widgets/top_chefs_section.dart';
+import 'package:recipe_app/features/home/presentation/widgets/trending_recipe_section.dart';
+import 'package:recipe_app/features/home/presentation/widgets/your_recipes_section.dart';
 
+import '../manager/home_view_model.dart';
+import '../widgets/app_bar/home_view_app_bar.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});

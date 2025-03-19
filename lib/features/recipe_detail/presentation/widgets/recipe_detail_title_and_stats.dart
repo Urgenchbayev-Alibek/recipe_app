@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/features/recipe_detail/presentation/widgets/recipe_reviews.dart';
-import '../../../../core/utils/app_colors.dart';
-import '../../../common/recipe_rating.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:recipe_app/core/routing/routes.dart';
+import 'package:recipe_app/core/utils/colors.dart';
+import 'package:recipe_app/features/common/widgets/recipe_rating.dart';
+import 'recipe_reviews.dart';
 
 class RecipeDetailTitleAndStats extends StatelessWidget {
   const RecipeDetailTitleAndStats({
@@ -9,20 +12,22 @@ class RecipeDetailTitleAndStats extends StatelessWidget {
     required this.title,
     required this.rating,
     required this.reviews,
+    required this.recipeId,
   });
 
   final String title;
   final int reviews;
   final num rating;
+  final int recipeId;
 
   @override
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
-        width: 357,
-        height: 150,
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 16),
+        width: 357.w,
+        height: 150.h,
+        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 16.h),
         decoration: BoxDecoration(
           color: AppColors.redPinkMain,
           borderRadius: BorderRadius.vertical(bottom: Radius.circular(10)),
@@ -47,7 +52,10 @@ class RecipeDetailTitleAndStats extends StatelessWidget {
                   iconColor: Colors.white,
                   swap: true,
                 ),
-                RecipeReviews(reviews: reviews),
+                GestureDetector(
+                  onTap: () => context.go(Routes.getReviews(recipeId)),
+                  child: RecipeReviews(reviews: reviews),
+                ),
               ],
             ),
           ],

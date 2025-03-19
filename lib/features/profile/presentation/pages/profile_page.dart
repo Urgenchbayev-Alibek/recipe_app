@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/features/profile/presentation/pages/profile_body_recipe.dart';
 import 'package:recipe_app/features/profile/presentation/pages/profile_view_model.dart';
-import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/colors.dart';
 import '../widgets/profile_page_app_bar.dart';
 
 class ProfilePage extends StatelessWidget {

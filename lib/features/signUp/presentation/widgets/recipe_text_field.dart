@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/sizes.dart';
-import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/colors.dart';
 
 class RecipeTextField extends StatelessWidget {
   const RecipeTextField({super.key, required this.text, required this.validator, required this.controller, required this.title});
@@ -30,7 +30,7 @@ class RecipeTextField extends StatelessWidget {
             controller: controller,
             style: TextStyle(
               height: 1,
-              color: AppColors.textColor,
+              color: AppColors.pinkSub,
               fontSize: 16,
               fontWeight: FontWeight.w500,
             ),
@@ -38,7 +38,7 @@ class RecipeTextField extends StatelessWidget {
                 filled: true,
                 fillColor: AppColors.pink,
                 hintText: text,
-                hintStyle: TextStyle(color: AppColors.textColor.withValues(alpha: 0.45), fontWeight: FontWeight.w500, fontSize: 16, height: 1),
+                hintStyle: TextStyle(color: AppColors.pinkSub.withValues(alpha: 0.45), fontWeight: FontWeight.w500, fontSize: 16, height: 1),
                 contentPadding: EdgeInsets.symmetric(horizontal: AppSizes.padding36),
                 border: OutlineInputBorder(
                   borderSide: BorderSide.none,

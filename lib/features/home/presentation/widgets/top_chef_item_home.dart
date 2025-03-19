@@ -1,14 +1,15 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/sizes.dart';
-import '../../../../data/models/top_chef_model_small.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:recipe_app/data/models/top_chef_model_small.dart';
 
 class TopChefItemHome extends StatelessWidget {
   const TopChefItemHome({
     super.key,
-    required this.chef,
+    required this.topChef,
   });
 
-  final TopChefModelSmall chef;
+  final TopChefModelSmall topChef;
 
   @override
   Widget build(BuildContext context) {
@@ -16,20 +17,22 @@ class TopChefItemHome extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(7),
-          child: Image.network(
-            chef.image,
-            width: 83 * AppSizes.wRatio,
-            height: 74 * AppSizes.hRatio,
+          child: CachedNetworkImage(
+            imageUrl: topChef.image,
+            width: 83.w,
+            height: 74.h,
             fit: BoxFit.cover,
           ),
         ),
         SizedBox(
-          width: 83,
+          width: 83.w,
           child: Text(
-            chef.firstName,
-            softWrap: false,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontSize: 12),
+            topChef.firstName,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 12,
+            ),
           ),
         ),
       ],

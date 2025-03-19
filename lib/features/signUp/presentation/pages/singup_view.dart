@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:recipe_app/core/utils/app_colors.dart';
+import 'package:recipe_app/core/utils/colors.dart';
 import '../../../../core/l10n/app_localizations.dart';
 import '../../../../data/models/localization_view_model.dart';
 import '../manager/singUp_view_model.dart';

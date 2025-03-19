@@ -1,9 +1,10 @@
 import '../../core/client.dart';
-import '../models/community_recipe_model.dart';
-import '../models/recipe_detail_model.dart';
-import '../models/recipe_model.dart';
+import '../models/recipe/community_recipe_model.dart';
+import '../models/recipe/recipe_create_review_model.dart';
+import '../models/recipe/recipe_detail_model.dart';
+import '../models/recipe/recipe_model.dart';
+import '../models/recipe/reviews_recipe_model.dart';
 import '../models/review_model/review_comment_model.dart';
-import '../models/review_model/reviews_recipe_model.dart';
 
 class RecipeRepository {
   RecipeRepository({required this.client});
@@ -17,6 +18,7 @@ class RecipeRepository {
   RecipeDetailModel? recipe;
   ReviewsRecipeModel? reviewsRecipe;
   RecipeModel? trendingRecipe;
+
   Future<RecipeModel?> fetchTrendingRecipe() async {
     var rawRecipe = await client.fetchTrendingRecipe();
     trendingRecipe = RecipeModel.fromJson(rawRecipe);
@@ -57,9 +59,9 @@ class RecipeRepository {
     return recentlyAddedRecipes;
   }
 
-  Future<List<CommunityRecipeModel>> fetchCommunityRecipes(int limit, String order, bool descending) async {
-    var rawCommunity = await client.fetchCommunityRecipes(limit, order, descending);
-    communityRecipes = rawCommunity.map((community) => CommunityRecipeModel.fromJson(community)).toList();
+  Future<List<CommunityRecipeModel>> fetchCommunityRecipes({required String orderBy, required bool descending}) async {
+    final rawRecipes = await client.fetchCommunityRecipes(orderBy: orderBy, descending: descending);
+    communityRecipes = rawRecipes.map((recipe) => CommunityRecipeModel.fromJson(recipe)).toList();
     return communityRecipes;
   }
 
@@ -67,6 +69,11 @@ class RecipeRepository {
     var rawRecipe = await client.fetchRecipeForReviews(recipeId);
     reviewsRecipe = ReviewsRecipeModel.fromJson(rawRecipe);
     return reviewsRecipe!;
+  }
+
+  Future<RecipeCreateReviewModel> fetchRecipeForCreateReview(int recipeId) async {
+    var rawRecipe = await client.genericGetRequest<dynamic>('/recipes/create-review/$recipeId');
+    return RecipeCreateReviewModel.fromJson(rawRecipe);
   }
 
   Future<List<ReviewCommentModel>> fetchComments(int recipeId) async {

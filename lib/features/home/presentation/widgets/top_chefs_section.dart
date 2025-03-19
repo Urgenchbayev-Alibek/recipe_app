@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../data/models/top_chef_model_small.dart';
-import 'top_chef_item_home.dart';
+import 'package:recipe_app/data/models/top_chef_model_small.dart';
+import 'package:recipe_app/features/home/presentation/widgets/top_chef_item_home.dart';
 
 class TopChefsSection extends StatelessWidget {
   const TopChefsSection({
@@ -31,7 +31,7 @@ class TopChefsSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: List.generate(
               topChefs.length,
-              (index) => TopChefItemHome(chef: topChefs[index]),
+                  (index) => TopChefItemHome(topChef: topChefs[index]),
             ),
           ),
         ],

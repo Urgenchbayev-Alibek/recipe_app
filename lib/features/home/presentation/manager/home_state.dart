@@ -1,5 +1,4 @@
 part of 'home_view_model.dart';
-
 enum HomeStatus { idle, loading, error }
 
 @immutable
@@ -22,11 +21,11 @@ class HomeState extends Equatable {
 
   @override
   List<Object?> get props => [
-        status,
-        categories,
-        yourRecipes,
-        trendingRecipe,
-        topChefs,
-        recentlyAddedRecipes,
-      ];
+    status,
+    categories,
+    yourRecipes,
+    trendingRecipe,
+    topChefs,
+    recentlyAddedRecipes,
+  ];
 }

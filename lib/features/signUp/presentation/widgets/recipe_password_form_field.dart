@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/l10n/app_localizations.dart';
 import '../../../../core/sizes.dart';
-import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/colors.dart';
 
 class RecipePasswordFormField extends StatelessWidget {
   const RecipePasswordFormField({super.key, required this.controller, required this.validator});
@@ -33,7 +33,7 @@ class RecipePasswordFormField extends StatelessWidget {
               controller: controller,
               style: TextStyle(
                 height: 1,
-                color: AppColors.textColor,
+                color: AppColors.pinkSub,
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),
@@ -42,7 +42,7 @@ class RecipePasswordFormField extends StatelessWidget {
                 fillColor: AppColors.pink,
                 hintText: '●●●●●●●●',
                 hintStyle: TextStyle(
-                  color: AppColors.textColor.withValues(alpha: 0.45),
+                  color: AppColors.pinkSub.withValues(alpha: 0.45),
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
                   letterSpacing: 2,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:recipe_app/core/utils/app_colors.dart';
+import 'package:recipe_app/core/utils/colors.dart';
 import '../../../../core/l10n/app_localizations.dart';
 import '../manager/login_view_model.dart';
 import '../widgets/login_end.dart';

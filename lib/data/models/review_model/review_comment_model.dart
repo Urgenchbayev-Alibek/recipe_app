@@ -1,5 +1,5 @@
-import 'package:recipe_app/data/models/review_model/review_user_commetn_model.dart';
-import 'package:recipe_app/data/models/user_model_small.dart';
+import 'package:recipe_app/data/models/review_model/review_user_comment_model.dart';
+import 'package:recipe_app/data/models/recipe/user_model_in_recipe.dart';
 
 class ReviewCommentModel {
   final int id;

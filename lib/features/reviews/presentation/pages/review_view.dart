@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:recipe_app/features/common/recipe_app_bar.dart';
-import '../../../../core/utils/app_colors.dart';
-import '../../../common/recipe_app_bar_navigation_bar.dart';
+import 'package:recipe_app/features/common/widgets/recipe_app_bar.dart';
+
+import '../../../../core/utils/colors.dart';
+import '../../../common/widgets/recipe_bottom_navigation_bar.dart';
 import '../manager/reviews/reviews_bloc.dart';
 import '../manager/reviews/reviews_state.dart';
 import '../widgets/reviews/reviews_view_comment.dart';

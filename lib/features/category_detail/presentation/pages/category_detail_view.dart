@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../common/recipe_app_bar.dart';
-import '../../../common/recipe_app_bar_bottom.dart';
-import '../../../common/recipe_app_bar_navigation_bar.dart';
-import '../../../common/recipe_icon_button_container.dart';
+import '../../../common/widgets/recipe_app_bar.dart';
+import '../../../common/widgets/recipe_app_bar_bottom.dart';
+import '../../../common/widgets/recipe_bottom_navigation_bar.dart';
+import '../../../common/widgets/recipe_icon_button_container.dart';
 import '../manager/category_detail_view_model.dart';
 import 'category_detail_view_body.dart';
 

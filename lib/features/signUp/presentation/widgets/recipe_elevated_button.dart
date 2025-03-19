@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/colors.dart';
 
 class RecipeElevatedButton extends StatelessWidget {
   const RecipeElevatedButton({

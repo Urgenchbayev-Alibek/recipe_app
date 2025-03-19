@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/sizes.dart';
-import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/colors.dart';
 import '../manager/singUp_view_model.dart';
 
 class RecipeDataOfBirthField extends StatelessWidget {
