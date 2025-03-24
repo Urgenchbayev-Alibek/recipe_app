@@ -5,16 +5,7 @@ import 'package:provider/provider.dart';
 import 'core/dependencies.dart';
 import 'core/routing/router.dart';
 import 'core/utils/themes.dart';
-/*
-state & behavior
-state alohida bo'lib ajraladi
-Cubit, state, emit
-Equatable, immutable
-part of, part
-BlocBuilder, BlocSelector, BlocListener
-BlocProvider
-RepositoryProvider
-*/
+import 'features/top_chef_profile/widgets/top_chef_profiles.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 void main() {
@@ -30,14 +21,18 @@ class RecipeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context, designSize: const Size(430, 932));
-    return MultiProvider(
-      providers: providers,
-      builder: (context, child) => MaterialApp.router(
-        routerConfig: router,
-        debugShowCheckedModeBanner: false,
-        themeMode: ThemeMode.dark,
-        darkTheme: AppThemes.darkTheme,
-      ),
+    // return MultiProvider(
+    //   providers: providers,
+    //   builder: (context, child) => MaterialApp.router(
+    //     routerConfig: router,
+    //     debugShowCheckedModeBanner: false,
+    //     themeMode: ThemeMode.dark,
+    //     darkTheme: AppThemes.darkTheme,
+    //   ),
+    // );
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: TopChefProfile(),
     );
   }
 }
