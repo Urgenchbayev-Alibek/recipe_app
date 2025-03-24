@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'core/dependencies.dart';
 import 'core/routing/router.dart';
 import 'core/utils/themes.dart';
-import 'features/notification/presentation/pages/notification_view.dart';
+import 'features/notification/presentation/pages/notification_vieww.dart';
 /*
 state & behavior
 state alohida bo'lib ajraladi
