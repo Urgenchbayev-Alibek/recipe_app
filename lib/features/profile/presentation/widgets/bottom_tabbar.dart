@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/core/utils/colors.dart';
+
+import '../../../../core/utils/colors.dart';
 
 class BottomTabBar extends StatelessWidget {
   const BottomTabBar({
@@ -15,7 +16,7 @@ class BottomTabBar extends StatelessWidget {
         Text(
           "Recipe",
           style: TextStyle(
-            color: AppColors.pinkSub,
+            color: Colors.white,
             fontSize: 12,
             fontWeight: FontWeight.w400,
           ),
@@ -23,7 +24,7 @@ class BottomTabBar extends StatelessWidget {
         Text(
           "Favorites",
           style: TextStyle(
-            color: AppColors.pinkSub,
+            color: Colors.white,
             fontSize: 12,
             fontWeight: FontWeight.w400,
           ),

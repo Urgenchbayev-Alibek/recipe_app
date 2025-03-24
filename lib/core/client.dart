@@ -1,45 +1,76 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
+import 'package:recipe_app/core/interceptor.dart';
 
 import '../data/models/create_review_model.dart';
 import '../data/models/user_model.dart';
 import 'exceptions/auth_exception.dart';
 
 class ApiClient {
-  final Dio dio = Dio(
-    BaseOptions(
-      baseUrl: 'http://192.168.10.109:8888/api/v1',
-      validateStatus: (status) => true,
-    ),
-  );
+  ApiClient() {
+    dio = Dio(
+      BaseOptions(baseUrl: 'http://192.168.11.22:8888/api/v1', validateStatus: (status) => true),
+    );
+    dio.interceptors.add(AuthInterceptor());
+  }
+
+  late final Dio dio;
 
   Future<String> login(String login, String password) async {
     var response = await dio.post(
       '/auth/login',
       data: {"login": login, "password": password},
     );
+
     if (response.statusCode == 200) {
       Map<String, String> data = Map<String, String>.from(response.data);
       return data['accessToken']!;
     } else {
-      throw AuthException(message: "User not found");
+      throw AuthException(message: "Login qilib bo'madi, xullasi nimadur noto'g'ri ketgan.");
     }
   }
 
-  Future<bool> singUp(UserModel model) async {
+  Future<bool> signUp(UserModel model) async {
     var response = await dio.post(
       '/auth/register',
       data: model.toJson(model),
     );
-    return response.statusCode == 201 ? true : false;
+    // return response.statusCode == 201 ? true : false;
+    if (response.statusCode == 201) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
-  Future<List<dynamic>> fetchOnBoarding() async {
-    var response = await dio.get('/onboarding/list');
+  Future<bool> uploadProfilePhoto(File file) async {
+    FormData formData = FormData.fromMap(
+      {"profilePhoto": await MultipartFile.fromFile(file.path, filename: file.path.split('/').last)},
+    );
+
+    var response = await dio.patch(
+      '/auth/upload',
+      data: formData,
+      options: Options(
+        headers: {"Content-Type": "multipart/form-data"},
+      ),
+    );
+
+    if (response.statusCode == 200) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<List<dynamic>> fetchOnboardingPages() async {
+    var response = await dio.get("/onboarding/list");
     if (response.statusCode == 200) {
       List<dynamic> data = response.data;
       return data;
     } else {
-      throw Exception("xato");
+      throw Exception("Failed to load onboarding pages");
     }
   }
 
@@ -49,7 +80,7 @@ class ApiClient {
       Map<String, dynamic> data = response.data;
       return data;
     } else {
-      throw Exception("Error 404");
+      throw AuthException(message: "Xullas muammo, katta muammo!");
     }
   }
 
@@ -183,7 +214,6 @@ class ApiClient {
   Future<List<dynamic>> fetchRecipeComments(int recipeId) async {
     var response = await dio.get("/reviews/list?recipeId=$recipeId");
     List<dynamic> data = response.data;
-    print(response.data);
     return data;
   }
 }

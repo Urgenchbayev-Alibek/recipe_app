@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import '../../../../data/models/recipe/recipe_model.dart';
 import '../../../../data/repositories/recipe_repository.dart';
 import '../../../../data/models/profile_model.dart';
-import '../../../../data/models/recipe/recipes_model.dart';
 import '../../../../data/repositories/profile_repository.dart';
 
 class ProfileViewModel extends ChangeNotifier {

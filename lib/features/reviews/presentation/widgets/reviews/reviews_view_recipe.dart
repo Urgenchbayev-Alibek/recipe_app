@@ -6,8 +6,9 @@ import 'package:recipe_app/data/models/recipe/reviews_recipe_model.dart';
 import 'package:recipe_app/features/reviews/presentation/widgets/reviews/review_view_image_item.dart';
 import 'package:recipe_app/features/reviews/presentation/widgets/reviews/reviews_recipe_item_user.dart';
 import 'package:recipe_app/features/reviews/presentation/widgets/reviews/reviews_recipe_stars_item.dart';
+import '../../../../../core/presentation/widgets/recipe_elevated_button.dart';
 import '../../../../../core/utils/colors.dart';
-import '../../../../signUp/presentation/widgets/recipe_elevated_button.dart';
+
 
 class ReviewsViewRecipe extends StatelessWidget {
   const ReviewsViewRecipe({

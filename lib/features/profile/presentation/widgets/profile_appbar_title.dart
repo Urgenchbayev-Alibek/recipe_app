@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/core/sizes.dart';
-import 'package:recipe_app/core/utils/colors.dart';
 
+import '../../../../core/utils/colors.dart';
 import '../pages/profile_view_model.dart';
 
 class ProfileAppBarTitle extends StatelessWidget {
@@ -43,7 +43,7 @@ class ProfileAppBarTitle extends StatelessWidget {
             maxLines: 3,
             softWrap: true,
             style: TextStyle(
-              color: AppColors.pinkSub,
+              color:Colors.white,
               fontWeight: FontWeight.w300,
               fontSize: 12,
             ),

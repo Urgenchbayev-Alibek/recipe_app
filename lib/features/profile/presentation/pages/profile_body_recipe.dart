@@ -4,6 +4,7 @@ import 'package:recipe_app/core/sizes.dart';
 
 import '../../../../core/utils/colors.dart';
 
+
 class ProfileBodyRecipe extends StatelessWidget {
   const ProfileBodyRecipe({
     super.key,
@@ -71,7 +72,7 @@ class ProfileBodyRecipe extends StatelessWidget {
               Text(
                 title,
                 style: TextStyle(
-                  color: AppColors.pinkSub,
+                  color: AppColors.pink,
                   fontWeight: FontWeight.w400,
                   fontSize: 12,
                 ),
@@ -80,7 +81,7 @@ class ProfileBodyRecipe extends StatelessWidget {
                 maxLines: 2,
                 description,
                 style: TextStyle(
-                  color: AppColors.pinkSub,
+                  color: AppColors.pink,
                   fontWeight: FontWeight.w300,
                   fontSize: 13,
                 ),

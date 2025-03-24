@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/core/sizes.dart';
-import 'package:recipe_app/core/utils/colors.dart';
 import 'package:recipe_app/features/profile/presentation/widgets/profile_appbar_action_container.dart';
 import 'package:recipe_app/features/profile/presentation/widgets/profile_appbar_bottom.dart';
 import 'package:recipe_app/features/profile/presentation/widgets/profile_appbar_leading.dart';
 import 'package:recipe_app/features/profile/presentation/widgets/profile_appbar_title.dart' show ProfileAppBarTitle;
 
 
+import '../../../../core/utils/colors.dart';
 import '../pages/profile_view_model.dart';
 
 class ProfilePageAppBar extends StatelessWidget implements PreferredSizeWidget {

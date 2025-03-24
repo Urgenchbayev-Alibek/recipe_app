@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-
-
 import 'core/dependencies.dart';
 import 'core/routing/router.dart';
 import 'core/utils/themes.dart';
@@ -17,6 +15,8 @@ BlocBuilder, BlocSelector, BlocListener
 BlocProvider
 RepositoryProvider
 */
+
+final navigatorKey = GlobalKey<NavigatorState>();
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   // App full-screen bo'lib run bo'lishi uchun!

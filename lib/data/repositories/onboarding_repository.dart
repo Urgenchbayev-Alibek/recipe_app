@@ -1,17 +1,29 @@
-import 'package:recipe_app/core/client.dart';
+import '../../core/client.dart';
 import '../models/onboarding_model.dart';
 
-class OnBoardingRepository {
-  OnBoardingRepository({required this.client});
+class OnboardingRepository {
+  OnboardingRepository({required this.client});
 
   final ApiClient client;
 
-  List<OnBoardingModel> pages = [];
+  List<OnboardingPageModel> pages = [];
 
-  Future<List<OnBoardingModel>> fetchOnBoarding() async {
-    if (pages.isNotEmpty) return pages;
-    var rawPages = await client.fetchOnBoarding();
-    pages = rawPages.map((page) => OnBoardingModel.fromJson(page)).toList();
+  Future<List<OnboardingPageModel>> fetchOnboardingPages() async {
+    var rawPages = await client.fetchOnboardingPages();
+    pages = rawPages.map((page) => OnboardingPageModel.fromJson(page)).toList();
+    pages.sort(
+          (a, b) {
+        if (a.order < b.order) {
+          return -1;
+        } else if (a.order > b.order) {
+          return 1;
+        } else {
+          return 0;
+        }
+      },
+    );
     return pages;
   }
+
+
 }

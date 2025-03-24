@@ -36,7 +36,7 @@ class ProfilePage extends StatelessWidget {
                     title: vm.myRecipe![index].title,
                     description: vm.myRecipe![index].description,
                     time: vm.myRecipe![index].timeRequired,
-                    rating: vm.myRecipe![index].rating,
+                    rating: vm.myRecipe![index].rating.toDouble(),
                   );
                 },
               ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:recipe_app/core/utils/colors.dart';
+import '../../../../core/utils/colors.dart';
 
 class AppBarActionContainer extends StatelessWidget {
   const AppBarActionContainer({super.key, required this.svg});

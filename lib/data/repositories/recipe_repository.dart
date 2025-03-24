@@ -1,3 +1,5 @@
+import 'package:recipe_app/data/models/trending_recipe_model.dart';
+
 import '../../core/client.dart';
 import '../models/recipe/community_recipe_model.dart';
 import '../models/recipe/recipe_create_review_model.dart';
@@ -18,6 +20,8 @@ class RecipeRepository {
   RecipeDetailModel? recipe;
   ReviewsRecipeModel? reviewsRecipe;
   RecipeModel? trendingRecipe;
+
+  TrendingRecipeModel? trendingRecipeMain;
 
   Future<RecipeModel?> fetchTrendingRecipe() async {
     var rawRecipe = await client.fetchTrendingRecipe();
@@ -81,4 +85,18 @@ class RecipeRepository {
     comments = rawComments.map((e) => ReviewCommentModel.fromJson(e)).toList();
     return comments;
   }
+  
+  Future<TrendingRecipeModel> fetchTrendingRecipeMain() async{
+    var rawRecipe= await client.genericGetRequest<dynamic>('/recipes/trending-recipe');
+    trendingRecipeMain =rawRecipe.map((e)=>TrendingRecipeModel.fromJson(e));
+    return trendingRecipeMain!;
+  }
+
+  // Future<TrendingRecipeModel> fetchTrendingRecipes() async {
+  //   var rawRecipes = await client.genericGetRequest<List<dynamic>>(
+  //     '/recipes/trending-recipes/list',
+  //   );
+  //   trendingRecipeMain = rawRecipes.map((a)=>TrendingRecipeModel.fromJson(a)).toList();
+  //   return trendingRecipeMain!;
+  // }
 }

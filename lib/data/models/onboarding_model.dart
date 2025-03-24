@@ -1,24 +1,23 @@
-class OnBoardingModel {
+class OnboardingPageModel {
   final int id;
-  final String title;
-  final String subtitle;
-  final String picture;
+  final String title, subtitle;
+  final String image;
   final int order;
 
-  OnBoardingModel({
+  OnboardingPageModel({
     required this.id,
     required this.title,
     required this.subtitle,
-    required this.picture,
+    required this.image,
     required this.order,
   });
 
-  factory OnBoardingModel.fromJson(Map<String, dynamic> json) {
-    return OnBoardingModel(
+  factory OnboardingPageModel.fromJson(Map<String, dynamic> json) {
+    return OnboardingPageModel(
       id: json['id'],
       title: json['title'],
       subtitle: json['subtitle'],
-      picture: json['picture'],
+      image: json['picture'],
       order: json['order'],
     );
   }
