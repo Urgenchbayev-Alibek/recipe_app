@@ -12,7 +12,7 @@ import 'package:recipe_app/features/reviews/presentation/manager/create_review/c
 import 'package:recipe_app/features/reviews/presentation/manager/reviews/reviews_bloc.dart';
 import 'package:recipe_app/features/reviews/presentation/pages/create_review_view.dart';
 import 'package:recipe_app/features/reviews/presentation/pages/review_view.dart';
-import 'package:recipe_app/features/top_chefs/presentation/manager/top_chefs_bloc.dart';
+import 'package:recipe_app/features/top_chefs/presentation/manager/top_chef/top_chefs_bloc.dart';
 import 'package:recipe_app/features/top_chefs/presentation/pages/top_chefs_view.dart';
 import 'package:recipe_app/main.dart';
 
@@ -32,7 +32,7 @@ import '../client.dart';
 
 final router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.community,
+  initialLocation: Routes.topChefs,
   routes: [
     GoRoute(
       path: Routes.home,

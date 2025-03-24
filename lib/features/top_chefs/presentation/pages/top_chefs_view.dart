@@ -5,8 +5,8 @@ import 'package:recipe_app/core/utils/colors.dart';
 import 'package:recipe_app/features/common/widgets/recipe_app_bar.dart';
 import 'package:recipe_app/features/common/widgets/recipe_bottom_navigation_bar.dart';
 import 'package:recipe_app/features/common/widgets/recipe_icon_button_container.dart';
-import 'package:recipe_app/features/top_chefs/presentation/manager/top_chefs_bloc.dart';
-import 'package:recipe_app/features/top_chefs/presentation/manager/top_chefs_state.dart';
+import 'package:recipe_app/features/top_chefs/presentation/manager/top_chef/top_chefs_bloc.dart';
+import 'package:recipe_app/features/top_chefs/presentation/manager/top_chef/top_chefs_state.dart';
 
 class TopChefsView extends StatelessWidget {
   const TopChefsView({super.key});
