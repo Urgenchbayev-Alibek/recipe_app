@@ -12,11 +12,15 @@ import 'package:recipe_app/features/reviews/presentation/manager/create_review/c
 import 'package:recipe_app/features/reviews/presentation/manager/reviews/reviews_bloc.dart';
 import 'package:recipe_app/features/reviews/presentation/pages/create_review_view.dart';
 import 'package:recipe_app/features/reviews/presentation/pages/review_view.dart';
-import 'package:recipe_app/features/top_chefs/presentation/manager/top_chef/top_chefs_bloc.dart';
+import 'package:recipe_app/features/top_chefs/presentation/manager/top_chefs_bloc.dart';
 import 'package:recipe_app/features/top_chefs/presentation/pages/top_chefs_view.dart';
 import 'package:recipe_app/main.dart';
-
+import '../../data/repositories/auth_repository.dart';
 import '../../data/repositories/recipe_repository.dart';
+import '../../features/auth/presentation/manager/login_view_model.dart';
+import '../../features/auth/presentation/pages/complete_profile_view.dart';
+import '../../features/auth/presentation/pages/login_view.dart';
+import '../../features/auth/presentation/pages/singup_view.dart';
 import '../../features/categories/presentation/manager/categories_cubit.dart';
 import '../../features/categories/presentation/pages/categories_view.dart';
 import '../../features/category_detail/presentation/manager/category_detail_view_model.dart';
@@ -28,11 +32,13 @@ import '../../features/onboarding/presentation/pages/onboarding_view.dart';
 import '../../features/onboarding/presentation/pages/welcome_view.dart';
 import '../../features/recipe_detail/presentation/manager/recipe_detail_view_model.dart';
 import '../../features/recipe_detail/presentation/pages/recipe_detail_view.dart';
+import '../../features/trending_recipe/presentation/manager/trending_recipe_bloc.dart';
+import '../../features/trending_recipe/presentation/pages/trending_recipe_view.dart';
 import '../client.dart';
 
 final router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.topChefs,
+  initialLocation: Routes.trendingRecipe,
   routes: [
     GoRoute(
       path: Routes.home,
@@ -57,6 +63,20 @@ final router = GoRouter(
           profileRepo: ProfileRepository(client: ApiClient()),
         ),
       ),
+    ),
+    GoRoute(
+      path: Routes.login,
+      builder: (context, state) => LoginView(
+        vm: LoginViewModel(repo: AuthRepository(client: ApiClient())),
+      ),
+    ),
+    GoRoute(
+      path: Routes.signup,
+      builder: (context, state) => SignUpView(),
+    ),
+    GoRoute(
+      path: Routes.completeProfile,
+      builder: (context, state) => const CompleteProfileView(),
     ),
     GoRoute(
       path: Routes.onboarding,
@@ -129,6 +149,15 @@ final router = GoRouter(
           chefRepo: context.read(),
         ),
         child: TopChefsView(),
+      ),
+    ),
+    GoRoute(
+      path: Routes.trendingRecipe,
+      builder: (context, state) => BlocProvider(
+        create: (context) => TrendingRecipeBloc(
+          trendRepo: context.read(),
+        ),
+        child: TrendingRecipeView(),
       ),
     ),
   ],

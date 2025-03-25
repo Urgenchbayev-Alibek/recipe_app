@@ -23,7 +23,7 @@ class HomeViewAppBar extends StatelessWidget implements PreferredSizeWidget{
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Hi! Dianne",
+              "Hi! Andrew",
               style: TextStyle(
                 color: AppColors.redPinkMain,
                 fontSize: 25,
