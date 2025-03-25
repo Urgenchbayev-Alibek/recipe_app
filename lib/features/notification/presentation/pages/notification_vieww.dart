@@ -4,7 +4,6 @@ import '../../../../core/utils/colors.dart';
 import '../../../common/widgets/recipe_bottom_navigation_bar.dart';
 import '../widgets/notification_appbar.dart';
 import '../widgets/notification_body.dart';
-import '../widgets/notification_app_bar.dart';
 import '../widgets/notification_model.dart';
 
 class NotificationView extends StatelessWidget {

@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:recipe_app/core/utils/colors.dart';
-
-import '../../../../data/models/trending_recipe_model.dart';
 import 'notification_model.dart';
 
 
