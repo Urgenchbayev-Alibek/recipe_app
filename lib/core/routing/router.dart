@@ -6,6 +6,7 @@ import 'package:recipe_app/data/repositories/onboarding_repository.dart';
 import 'package:recipe_app/data/repositories/profile_repository.dart';
 import 'package:recipe_app/features/community/presentation/manager/community_cubit.dart';
 import 'package:recipe_app/features/community/presentation/pages/community_view.dart';
+import 'package:recipe_app/features/notification/presentation/manager/notifications_bloc.dart';
 import 'package:recipe_app/features/profile/presentation/pages/profile_page.dart';
 import 'package:recipe_app/features/profile/presentation/pages/profile_view_model.dart';
 import 'package:recipe_app/features/reviews/presentation/manager/create_review/create_review_bloc.dart';
@@ -15,6 +16,7 @@ import 'package:recipe_app/features/reviews/presentation/pages/review_view.dart'
 import 'package:recipe_app/features/top_chefs/presentation/manager/top_chefs_bloc.dart';
 import 'package:recipe_app/features/top_chefs/presentation/pages/top_chefs_view.dart';
 import 'package:recipe_app/main.dart';
+
 import '../../data/repositories/auth_repository.dart';
 import '../../data/repositories/recipe_repository.dart';
 import '../../features/auth/presentation/manager/login_view_model.dart';
@@ -38,7 +40,7 @@ import '../client.dart';
 
 final router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.trendingRecipe,
+  initialLocation: Routes.notification,
   routes: [
     GoRoute(
       path: Routes.home,
@@ -160,5 +162,11 @@ final router = GoRouter(
         child: TrendingRecipeView(),
       ),
     ),
+    GoRoute(
+      path: Routes.notification,
+      builder: (context, state) => BlocProvider(
+        create: (context) => NotificationsBloc(repo: context.read()),
+      ),
+    )
   ],
 );
