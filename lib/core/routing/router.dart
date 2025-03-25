@@ -32,11 +32,13 @@ import '../../features/onboarding/presentation/pages/onboarding_view.dart';
 import '../../features/onboarding/presentation/pages/welcome_view.dart';
 import '../../features/recipe_detail/presentation/manager/recipe_detail_view_model.dart';
 import '../../features/recipe_detail/presentation/pages/recipe_detail_view.dart';
+import '../../features/trending_recipe/presentation/manager/trending_recipe_bloc.dart';
+import '../../features/trending_recipe/presentation/pages/trending_recipe_view.dart';
 import '../client.dart';
 
 final router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.signup,
+  initialLocation: Routes.trendingRecipe,
   routes: [
     GoRoute(
       path: Routes.home,
@@ -147,6 +149,15 @@ final router = GoRouter(
           chefRepo: context.read(),
         ),
         child: TopChefsView(),
+      ),
+    ),
+    GoRoute(
+      path: Routes.trendingRecipe,
+      builder: (context, state) => BlocProvider(
+        create: (context) => TrendingRecipeBloc(
+          trendRepo: context.read(),
+        ),
+        child: TrendingRecipeView(),
       ),
     ),
   ],
