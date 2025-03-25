@@ -1,41 +1,31 @@
 import 'package:equatable/equatable.dart';
-
 import '../../../../data/models/notifications_model.dart';
 
-
-enum NotificationsStatus { idle, loading, success, error }
+enum NotificationsStatus { idle, success, loading, error }
 
 class NotificationsState extends Equatable {
-  final List<NotificationModel> todayNotifications;
-  final List<NotificationModel> pastNotifications;
-  final NotificationsStatus status;
+  final List<NotificationModel>? notification;
+  final NotificationsStatus notificationStatus;
 
   const NotificationsState({
-    required this.todayNotifications,
-    required this.pastNotifications,
-    required this.status,
+    required this.notification,
+    required this.notificationStatus,
   });
 
   factory NotificationsState.initial() {
     return NotificationsState(
-      todayNotifications: [],
-      pastNotifications: [],
-      status: NotificationsStatus.idle,
+      notification: [],
+      notificationStatus: NotificationsStatus.idle,
     );
   }
 
-  NotificationsState copyWith({
-    List<NotificationModel>? todayNotifications,
-    List<NotificationModel>? pastNotifications,
-    NotificationsStatus? status,
-  }) {
+  NotificationsState copyWith({List<NotificationModel>? notifications, NotificationsStatus? status}) {
     return NotificationsState(
-      todayNotifications: todayNotifications ?? this.todayNotifications,
-      pastNotifications: pastNotifications ?? this.pastNotifications,
-      status: status ?? this.status,
+      notification: notifications ?? notification,
+      notificationStatus: status ?? notificationStatus,
     );
   }
 
   @override
-  List<Object?> get props => [todayNotifications, pastNotifications, status];
+  List<Object?> get props => [notification,notificationStatus];
 }
