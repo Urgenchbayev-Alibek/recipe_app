@@ -1,30 +1,29 @@
 import 'package:equatable/equatable.dart';
+import 'package:recipe_app/data/models/top_chef_profile_model.dart';
 
-class TopChefProfileState extends Equatable {
+abstract class TopChefState extends Equatable {
   @override
-  List<Object?> get props => [];
+  List<Object> get props => [];
 }
 
-class TopChefProfileLoading extends TopChefProfileState {}
+class TopChefInitial extends TopChefState {}
 
-class TopChefProfileLoaded extends TopChefProfileState {
-  final String firstName;
-  final String photo;
+class TopChefLoading extends TopChefState {}
 
-  TopChefProfileLoaded({
-    required this.firstName,
-    required this.photo,
-  });
+class TopChefLoaded extends TopChefState {
+  final List<TopChefProfileModel> chefs;
+
+  TopChefLoaded(this.chefs);
 
   @override
-  List<Object?> get props => [firstName, photo];
+  List<Object> get props => [chefs];
 }
 
-class TopChefProfileError extends TopChefProfileState {
+class TopChefError extends TopChefState {
   final String message;
 
-  TopChefProfileError(this.message);
+  TopChefError(this.message);
 
   @override
-  List<Object?> get props => [message];
+  List<Object> get props => [message];
 }

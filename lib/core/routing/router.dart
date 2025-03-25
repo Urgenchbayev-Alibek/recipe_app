@@ -12,7 +12,6 @@ import 'package:recipe_app/features/reviews/presentation/manager/create_review/c
 import 'package:recipe_app/features/reviews/presentation/manager/reviews/reviews_bloc.dart';
 import 'package:recipe_app/features/reviews/presentation/pages/create_review_view.dart';
 import 'package:recipe_app/features/reviews/presentation/pages/review_view.dart';
-import 'package:recipe_app/features/top_chefs/presentation/manager/top_chefs_bloc.dart';
 import 'package:recipe_app/features/top_chefs/presentation/pages/top_chefs_view.dart';
 import 'package:recipe_app/main.dart';
 import '../../data/repositories/auth_repository.dart';
@@ -32,6 +31,7 @@ import '../../features/onboarding/presentation/pages/onboarding_view.dart';
 import '../../features/onboarding/presentation/pages/welcome_view.dart';
 import '../../features/recipe_detail/presentation/manager/recipe_detail_view_model.dart';
 import '../../features/recipe_detail/presentation/pages/recipe_detail_view.dart';
+import '../../features/top_chefs/presentation/manager/top_chef/top_chefs_bloc.dart';
 import '../../features/trending_recipe/presentation/manager/trending_recipe_bloc.dart';
 import '../../features/trending_recipe/presentation/pages/trending_recipe_view.dart';
 import '../client.dart';
@@ -160,5 +160,6 @@ final router = GoRouter(
         child: TrendingRecipeView(),
       ),
     ),
+    GoRoute(path: R)
   ],
 );
