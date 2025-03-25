@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:recipe_app/features/top_chef_profile/widgets/top_chef_profile_item.dart';
-import '../../../core/utils/colors.dart';
-import '../../common/widgets/recipe_bottom_navigation_bar.dart';
+import '../../../../Core/utils/colors.dart';
+import '../../../common/widgets/recipe_bottom_navigation_bar.dart';
+import '../widgets/top_chef_profile_item.dart';
 
-class TopChefProfile extends StatelessWidget {
+class TopChefProfileView extends StatelessWidget {
+  const TopChefProfileView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
