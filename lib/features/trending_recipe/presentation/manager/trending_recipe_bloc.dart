@@ -9,10 +9,11 @@ class TrendingRecipeBloc extends Bloc<TrendingRecipeEvent, TrendingRecipesState>
 
   TrendingRecipeBloc({
     required TrendingRecipesRepository trendRepo,
-  })  : _trendRepo = trendRepo,
+  })
+      : _trendRepo = trendRepo,
         super(
-          TrendingRecipesState.initial(),
-        ) {
+        TrendingRecipesState.initial(),
+      ) {
     on<TrendingLoad>(_load);
     add(TrendingLoad());
   }
@@ -26,8 +27,8 @@ class TrendingRecipeBloc extends Bloc<TrendingRecipeEvent, TrendingRecipesState>
       ),
     );
     final main = await _trendRepo.fetchTrendingMain();
-    emit(state.copyWith(main: main,mainStatus: TrendingStatus.success));
+    emit(state.copyWith(main: main, mainStatus: TrendingStatus.success));
     final recipes = await _trendRepo.fetchTrendingRecipes();
-    emit(state.copyWith(recipes: recipes,recipeStatus: TrendingStatus.success));
+    emit(state.copyWith(recipes: recipes, recipeStatus: TrendingStatus.success));
   }
 }
