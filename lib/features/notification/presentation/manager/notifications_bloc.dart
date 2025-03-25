@@ -4,30 +4,18 @@ import 'notifications_state.dart';
 part 'notifications_event.dart';
 
 class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
-  final NotificationRepository _notificationRepo;
+  final NotificationRepository _repo;
 
-  NotificationsBloc({required NotificationRepository notificationRepo})
-      : _notificationRepo = notificationRepo,
+  NotificationsBloc({required NotificationRepository repo})
+      : _repo = repo,
         super(NotificationsState.initial()) {
-    on<LoadNotifications>(_onLoad);
-    add(LoadNotifications());
+    on<NotificationsLoad>(_onLoad);
+    add(NotificationsLoad());
   }
 
-  Future<void> _onLoad(
-      LoadNotifications event, Emitter<NotificationsState> emit) async {
-    emit(state.copyWith(status: NotificationsStatus.loading));
-
-    try {
-      final todayNotifications = await _notificationRepo.fetchTodayNotifications();
-      final pastNotifications = await _notificationRepo.fetchPastNotifications();
-
-      emit(state.copyWith(
-        todayNotifications: todayNotifications,
-        pastNotifications: pastNotifications,
-        status: NotificationsStatus.success,
-      ));
-    } catch (error) {
-      emit(state.copyWith(status: NotificationsStatus.error));
-    }
+  Future<void> _onLoad(NotificationsLoad event, Emitter<NotificationsState> emit) async {
+    emit( state.copyWith(status: NotificationsStatus.loading));
+    final notification = await _repo.fetchNotifications();
+    emit(state.copyWith(notifications: notification, status: NotificationsStatus.success));
   }
 }

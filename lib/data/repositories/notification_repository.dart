@@ -1,36 +1,16 @@
-import 'package:recipe_app/core/client.dart';
+import '../../core/client.dart';
 import '../models/notifications_model.dart';
 
-class NotificationRepository {
+class NotificationRepository{
   final ApiClient client;
+  NotificationRepository({required this.client});
 
-  NotificationRepository(this.client);
+  List<NotificationModel>? notification=[];
 
-  Future<List<NotificationModel>> fetchTodayNotifications() async {
-    try {
-      final data = await client.genericGetRequest<List<dynamic>>("/notifications/today");
-      return data.map((json) => NotificationModel(
-        title: json['title'],
-        message: json['message'],
-        time: json['time'],
-        date: json['date'] ?? '',
-      )).toList();
-    } catch (e) {
-      throw Exception("Failed to fetch today's notifications");
-    }
+  Future<List<NotificationModel>>fetchNotifications()async{
+    var rawNotification=await client.genericGetRequest<List<dynamic>>('/notifications/list');
+    notification=rawNotification.map((e)=>NotificationModel.fromJson(e)).toList();
+    return notification!;
   }
 
-  Future<List<NotificationModel>> fetchPastNotifications() async {
-    try {
-      final data = await client.genericGetRequest<List<dynamic>>("/notifications/past");
-      return data.map((json) => NotificationModel(
-        title: json['title'],
-        message: json['message'],
-        time: json['time'],
-        date: json['date'] ?? '',
-      )).toList();
-    } catch (e) {
-      throw Exception("Failed to fetch past notifications");
-    }
-  }
 }
