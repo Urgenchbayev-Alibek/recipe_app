@@ -9,6 +9,7 @@ import '../data/repositories/chef_repository.dart';
 import '../data/repositories/profile_repository.dart';
 import '../data/repositories/recipe_repository.dart';
 import '../data/repositories/review_repository.dart';
+import '../data/repositories/trending-recipes_repository.dart';
 import '../features/auth/presentation/manager/singUp_view_model.dart';
 import 'client.dart';
 
@@ -37,4 +38,9 @@ final List<SingleChildWidget> providers = [
   Provider(create: (context) => ProfileRepository(client: context.read())),
   ChangeNotifierProvider(create: (_) => LocalizationViewModel()),
   ChangeNotifierProvider(create: (_) => SingUpViewModel(authRepo: AuthRepository(client: ApiClient()))),
+  Provider(
+    create: (context) => TrendingRecipesRepository(
+      client: context.read(),
+    ),
+  ),
 ];
