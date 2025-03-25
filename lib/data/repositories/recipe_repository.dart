@@ -1,4 +1,4 @@
-import 'package:recipe_app/data/models/trending_recipe_model.dart';
+import 'package:recipe_app/data/models/trending_recipe/trending_recipe_model.dart';
 
 import '../../core/client.dart';
 import '../models/recipe/community_recipe_model.dart';
