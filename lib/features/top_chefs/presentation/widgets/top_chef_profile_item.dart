@@ -56,3 +56,4 @@ class TopChefProfileItem extends StatelessWidget {
     );
   }
 }
+

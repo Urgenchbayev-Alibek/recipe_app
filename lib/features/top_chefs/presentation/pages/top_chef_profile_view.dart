@@ -13,9 +13,9 @@ class TopChefProfileView extends StatelessWidget {
       length: 1,
       child: Scaffold(
         extendBody: true,
-        backgroundColor: AppColors.backgroundColor,
+        backgroundColor: AppColors.beigeColor,
         appBar: AppBar(
-          backgroundColor: AppColors.backgroundColor,
+          backgroundColor: AppColors.beigeColor,
           leading: Padding(
             padding: EdgeInsets.all(15.0),
             child: SvgPicture.asset(
@@ -112,7 +112,7 @@ class TopChefProfileView extends StatelessWidget {
               height: 50,
               decoration: BoxDecoration(
                 border: Border.all(color: AppColors.redPinkMain),
-                color: AppColors.backgroundColor,
+                color: AppColors.beigeColor,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Row(
@@ -135,7 +135,9 @@ class TopChefProfileView extends StatelessWidget {
                     Tab(
                       child: Text(
                         "Recipes",
-                        style: TextStyle(color: AppColors.whiteColor),
+
+                        style: TextStyle(color:Colors.white),
+
                       ),
                     ),
                   ],

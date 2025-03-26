@@ -1,8 +1,10 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:recipe_app/data/repositories/auth_repository.dart';
 import 'package:recipe_app/data/repositories/notification_repository.dart';
 import 'package:recipe_app/data/repositories/onboarding_repository.dart';
+import 'package:recipe_app/features/notification/presentation/manager/notifications_bloc.dart';
 
 import '../data/models/localization_view_model.dart';
 import '../data/repositories/category_repository.dart';
@@ -44,9 +46,9 @@ final List<SingleChildWidget> providers = [
       client: context.read(),
     ),
   ),
-  Provider(
-    create: (context) => NotificationRepository(
-      client: context.read(),
+  BlocProvider(
+    create: (context) => NotificationsBloc(
+      repo: NotificationsRepository(client: context.read()),
     ),
   )
 ];

@@ -4,7 +4,7 @@ import '../../../../data/models/notifications_model.dart';
 enum NotificationsStatus { idle, success, loading, error }
 
 class NotificationsState extends Equatable {
-  final List<NotificationModel>? notification;
+  final List<NotificationsModel>? notification;
   final NotificationsStatus notificationStatus;
 
   const NotificationsState({
@@ -19,7 +19,7 @@ class NotificationsState extends Equatable {
     );
   }
 
-  NotificationsState copyWith({List<NotificationModel>? notifications, NotificationsStatus? status}) {
+  NotificationsState copyWith({List<NotificationsModel>? notifications, NotificationsStatus? status}) {
     return NotificationsState(
       notification: notifications ?? notification,
       notificationStatus: status ?? notificationStatus,

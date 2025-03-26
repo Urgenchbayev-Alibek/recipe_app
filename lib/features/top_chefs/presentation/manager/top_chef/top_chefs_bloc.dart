@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_app/data/repositories/chef_repository.dart';
-import 'package:recipe_app/features/top_chefs/presentation/manager/top_chefs_state.dart';
+import 'package:recipe_app/features/top_chefs/presentation/manager/top_chef/top_chefs_state.dart';
 
 
 part 'top_chefs_events.dart';
