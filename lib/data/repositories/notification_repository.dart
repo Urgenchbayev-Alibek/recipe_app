@@ -1,16 +1,18 @@
-import '../../core/client.dart';
+import 'package:recipe_app/core/client.dart';
+
 import '../models/notifications_model.dart';
 
-class NotificationRepository{
+class NotificationsRepository {
   final ApiClient client;
-  NotificationRepository({required this.client});
+  List<NotificationsModel> model = [];
 
-  List<NotificationModel>? notification=[];
+  NotificationsRepository({
+    required this.client,
+  });
 
-  Future<List<NotificationModel>>fetchNotifications()async{
-    var rawNotification=await client.genericGetRequest<List<dynamic>>('/notifications/list');
-    notification=rawNotification.map((e)=>NotificationModel.fromJson(e)).toList();
-    return notification!;
+  Future<List<NotificationsModel>> fetchNotifications()async{
+    var rawNotifications = await client.genericGetRequest<List<dynamic>>('/notifications/list');
+    model = rawNotifications.map((e) => NotificationsModel.fromJson(e)).toList();
+    return model;
   }
-
 }

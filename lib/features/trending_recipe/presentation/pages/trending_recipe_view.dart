@@ -72,6 +72,7 @@ class TrendingRecipeView extends StatelessWidget {
                                 ),
                               ),
                               GestureDetector(
+
                                 onTap: () =>
                                     context.push(
                                       Routes.getRecipeDetail(recipe.id),
