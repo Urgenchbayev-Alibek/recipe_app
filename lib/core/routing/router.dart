@@ -18,6 +18,7 @@ import 'package:recipe_app/features/top_chefs/presentation/pages/top_chefs_view.
 import 'package:recipe_app/main.dart';
 
 import '../../data/repositories/auth_repository.dart';
+import '../../data/repositories/notification_repository.dart';
 import '../../data/repositories/recipe_repository.dart';
 import '../../features/auth/presentation/manager/login_view_model.dart';
 import '../../features/auth/presentation/pages/complete_profile_view.dart';
@@ -29,6 +30,7 @@ import '../../features/category_detail/presentation/manager/category_detail_view
 import '../../features/category_detail/presentation/pages/category_detail_view.dart';
 import '../../features/home/presentation/manager/home_view_model.dart';
 import '../../features/home/presentation/pages/home_view.dart';
+import '../../features/notification/presentation/pages/notification_view.dart';
 import '../../features/onboarding/presentation/managers/onboarding_view_model.dart';
 import '../../features/onboarding/presentation/pages/onboarding_view.dart';
 import '../../features/onboarding/presentation/pages/welcome_view.dart';
@@ -165,8 +167,13 @@ final router = GoRouter(
     GoRoute(
       path: Routes.notification,
       builder: (context, state) => BlocProvider(
-        create: (context) => NotificationsBloc(repo: context.read()),
+        create: (context) => NotificationsBloc(
+          repo: NotificationsRepository(
+            client: ApiClient(),
+          ),
+        ),
+        child: NotificationsView(),
       ),
-    )
+    ),
   ],
 );

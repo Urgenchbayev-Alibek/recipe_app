@@ -1,20 +1,20 @@
-class NotificationModel {
+class NotificationsModel {
   final int id;
   final String title, subtitle;
   final DateTime date;
 
-  NotificationModel({
+  NotificationsModel({
+    required this.id,
     required this.title,
     required this.subtitle,
-    required this.id,
     required this.date,
   });
 
-  factory NotificationModel.fromJson(Map<String, dynamic> json) {
-    return NotificationModel(
+  factory NotificationsModel.fromJson(Map<String, dynamic> json) {
+    return NotificationsModel(
+      id: json['id'],
       title: json['title'],
       subtitle: json['subtitle'],
-      id: json['id'],
       date: DateTime.parse(json['date']),
     );
   }
