@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:recipe_app/core/routing/routes.dart';
 import 'package:recipe_app/core/utils/colors.dart';
 import 'package:recipe_app/features/common/widgets/recipe_app_bar.dart';
 import 'package:recipe_app/features/common/widgets/recipe_bottom_navigation_bar.dart';
@@ -22,7 +24,7 @@ class TopChefsView extends StatelessWidget {
             image: "assets/icons/notification.svg",
             iconWidth: 14,
             iconHeight: 19,
-            callback: () {},
+            callback: () {context.push(Routes.notification);},
           ),
           SizedBox(width: 5),
           RecipeIconButtonContainer(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:recipe_app/core/routing/routes.dart';
 import 'package:recipe_app/core/utils/colors.dart';
 import 'package:recipe_app/data/models/category_model.dart';
 import 'package:recipe_app/features/common/widgets/recipe_icon_button_container.dart';
@@ -41,7 +43,7 @@ class HomeViewAppBar extends StatelessWidget implements PreferredSizeWidget{
         actions: [
           RecipeIconButtonContainer(
             image: 'assets/icons/notification.svg',
-            callback: () {},
+            callback: () {context.push(Routes.notification);},
             iconWidth: 14,
             iconHeight: 19,
           ),

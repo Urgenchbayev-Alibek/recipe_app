@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:recipe_app/core/routing/routes.dart';
 import 'package:recipe_app/features/community/presentation/widgets/community_app_bar_bottom.dart';
 import 'package:recipe_app/features/community/presentation/widgets/community_view_body.dart';
 
@@ -18,7 +20,7 @@ class CommunityView extends StatelessWidget {
         actions: [
           RecipeIconButtonContainer(
             image: 'assets/icons/notification.svg',
-            callback: () {},
+            callback: () {context.push(Routes.notification);},
             iconWidth: 14,
             iconHeight: 19,
           ),
