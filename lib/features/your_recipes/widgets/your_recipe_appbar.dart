@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/utils/colors.dart';
 
-class NotificationAppBar extends StatelessWidget implements PreferredSizeWidget {
+class YourRecipeAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(

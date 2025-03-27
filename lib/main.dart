@@ -9,7 +9,7 @@ import 'core/routing/router.dart';
 import 'core/sizes.dart';
 import 'core/utils/themes.dart';
 import 'data/models/localization_view_model.dart';
-import 'features/your_recipes/pages/notification_vieww.dart';
+import 'features/your_recipes/pages/your_recipe_view.dart';
 /*
 state & behavior
 state alohida bo'lib ajraladi
