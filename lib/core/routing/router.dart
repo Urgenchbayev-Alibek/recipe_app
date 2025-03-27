@@ -17,6 +17,7 @@ import 'package:recipe_app/features/top_chefs/presentation/pages/top_chefs_view.
 import 'package:recipe_app/main.dart';
 
 import '../../data/repositories/auth_repository.dart';
+import '../../data/repositories/following_repository.dart';
 import '../../data/repositories/notification_repository.dart';
 import '../../data/repositories/recipe_repository.dart';
 import '../../features/auth/presentation/manager/login_view_model.dart';
@@ -27,6 +28,8 @@ import '../../features/categories/presentation/manager/categories_cubit.dart';
 import '../../features/categories/presentation/pages/categories_view.dart';
 import '../../features/category_detail/presentation/manager/category_detail_view_model.dart';
 import '../../features/category_detail/presentation/pages/category_detail_view.dart';
+import '../../features/following/manager/following_bloc.dart';
+import '../../features/following/pages/following_view.dart';
 import '../../features/home/presentation/manager/home_view_model.dart';
 import '../../features/home/presentation/pages/home_view.dart';
 import '../../features/notification/presentation/pages/notification_view.dart';
@@ -175,5 +178,17 @@ final router = GoRouter(
         child: NotificationsView(),
       ),
     ),
+
+    // GoRoute(
+    //   path: Routes.following,
+    //   builder: (context, state) => BlocProvider(
+    //     create: (context) => FollowingBloc(
+    //       repository: FollowingRepository(
+    //         client: ApiClient(),
+    //       ),
+    //     ),
+    //     child: FollowingView(),
+    //   ),
+    // ),
   ],
 );
