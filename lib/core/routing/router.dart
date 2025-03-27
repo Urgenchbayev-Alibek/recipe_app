@@ -175,5 +175,8 @@ final router = GoRouter(
         child: NotificationsView(),
       ),
     ),
+
+
+
   ],
 );
