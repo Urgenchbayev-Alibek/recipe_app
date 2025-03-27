@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../data/models/recipe/recipe_model.dart';
@@ -20,8 +21,8 @@ class RecipeItem extends StatelessWidget {
       onTap: ()=>context.push(Routes.getRecipeDetail(recipe.id)),
       child: Center(
         child: SizedBox(
-          width: 169,
-          height: 226,
+          width: 169.w,
+          height: 226.h,
           child: Stack(
             alignment: Alignment.bottomCenter,
             children: [

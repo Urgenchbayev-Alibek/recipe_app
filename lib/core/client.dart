@@ -16,7 +16,7 @@ class ApiClient {
 
   late final Dio dio;
 
-  Future<String> login(String login, String password) async {
+  Future<String> login({required String login, required String password}) async {
     var response = await dio.post(
       '/auth/login',
       data: {"login": login, "password": password},
@@ -24,22 +24,28 @@ class ApiClient {
 
     if (response.statusCode == 200) {
       Map<String, String> data = Map<String, String>.from(response.data);
-      return data['accessToken']!;
+      return data['accessToken']!.toString();
     } else {
       throw AuthException(message: "Login qilib bo'madi, xullasi nimadur noto'g'ri ketgan.");
     }
   }
 
-  Future<bool> signUp(UserModel model) async {
+  Future<Map<String, dynamic>> signUp({required UserModel model}) async {
     var response = await dio.post(
       '/auth/register',
-      data: model.toJson(model),
+      data: model.toJson(),
     );
-    // return response.statusCode == 201 ? true : false;
     if (response.statusCode == 201) {
-      return true;
+      String token = response.data["accessToken"];
+      return {
+        "result": true,
+        "token": token,
+      };
     } else {
-      return false;
+      return {
+        "result": true,
+        "token": null,
+      };
     }
   }
 
@@ -111,6 +117,13 @@ class ApiClient {
     }
   }
 
+  Future<Map<String, dynamic>> fetchChefProfileById(int userId) async {
+    var response = await dio.get("/auth/details/$userId");
+    Map<String, dynamic> data = response.data;
+    return data;
+  }
+
+
   Future<List<Map<String, dynamic>>> fetchRecipes() async {
     var responseRecipe = await dio.get('/recipes/list');
     if (responseRecipe.statusCode == 200) {
@@ -119,6 +132,12 @@ class ApiClient {
     } else {
       throw Exception("error 404");
     }
+  }
+
+  Future<List<dynamic>> fetchMyRecipes([int? limit]) async {
+    var response = await dio.get("/recipes/my-recipes?Limit=${limit ?? ""}");
+    List<dynamic> data = response.data;
+    return data;
   }
 
   Future<List<dynamic>> fetchCategories() async {

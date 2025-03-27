@@ -13,11 +13,11 @@ class AuthRepository {
   String? jwt;
 
   Future<void> login(String login, String password) async {
-    final String token = await client.login(login, password);
+    final String token = await client.login(login: login, password: password);
     await SecureStorage.deleteToken();
     await SecureStorage.deleteCredentials();
     await SecureStorage.saveCredentials(login: login, password: password);
-    await SecureStorage.saveToken(token);
+    await SecureStorage.saveToken(token: token);
     jwt = token;
   }
 
@@ -31,7 +31,7 @@ class AuthRepository {
     required String password,
   }) async {
     final result = await client.signUp(
-      UserModel(
+      model: UserModel(
         firstName: firstName,
         lastName: lastName,
         userName: username,
@@ -41,11 +41,19 @@ class AuthRepository {
         dateOfBirth: dateOfBirth,
       ),
     );
-
-    return result;
+    if (result["result"]) {
+      SecureStorage.deleteToken();
+      SecureStorage.saveToken(token: result["token"]);
+      SecureStorage.deleteCredentials();
+      SecureStorage.saveCredentials(login: phoneNumber, password: password);
+      return true;
+    } else {
+      return false;
+    }
   }
 
-  Future<bool> uploadProfilePhoto(File file) async{
+
+  Future<bool> uploadProfilePhoto(File file) async {
     final result = await client.uploadProfilePhoto(file);
     return result;
   }
@@ -59,10 +67,11 @@ class AuthRepository {
     var credentials = await SecureStorage.getCredentials();
     if (credentials?['login'] == null || credentials?['password'] == null) {
       return false;
+    } else {
+      var jwt = await client.login(login: credentials!['login']!, password: credentials['password']!);
+      await SecureStorage.deleteToken();
+      await SecureStorage.saveToken(token: jwt);
+      return true;
     }
-    jwt = await client.login(credentials!['login']!, credentials['password']!);
-    await SecureStorage.deleteToken();
-    await SecureStorage.saveToken(jwt!);
-    return true;
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 import '../../../../Core/utils/colors.dart';
-import '../../../common/widgets/recipe_bottom_navigation_bar.dart';
 import '../widgets/top_chef_profile_item.dart';
 
 class TopChefProfileView extends StatelessWidget {
@@ -16,9 +16,6 @@ class TopChefProfileView extends StatelessWidget {
         backgroundColor: AppColors.beigeColor,
         appBar: AppBar(
           backgroundColor: AppColors.beigeColor,
-        backgroundColor: AppColors.backgroundColor,
-        appBar: AppBar(
-          backgroundColor: AppColors.backgroundColor,
           leading: Padding(
             padding: EdgeInsets.all(15.0),
             child: SvgPicture.asset(
@@ -29,10 +26,7 @@ class TopChefProfileView extends StatelessWidget {
           ),
           title: Text(
             '@Neil_tran',
-            style: TextStyle(
-                color: AppColors.redPinkMain,
-                fontSize: 20,
-                fontWeight: FontWeight.w500),
+            style: TextStyle(color: AppColors.redPinkMain, fontSize: 20, fontWeight: FontWeight.w500),
           ),
           actions: [
             CircleAvatar(
@@ -40,8 +34,7 @@ class TopChefProfileView extends StatelessWidget {
               radius: 14,
               child: SvgPicture.asset(
                 'assets/icons/share.svg',
-                colorFilter:
-                ColorFilter.mode(AppColors.redPinkMain, BlendMode.srcIn),
+                colorFilter: ColorFilter.mode(AppColors.redPinkMain, BlendMode.srcIn),
               ),
             ),
             SizedBox(width: 10),
@@ -50,8 +43,7 @@ class TopChefProfileView extends StatelessWidget {
               radius: 14,
               child: SvgPicture.asset(
                 'assets/icons/three_dots.svg',
-                colorFilter:
-                ColorFilter.mode(AppColors.redPinkMain, BlendMode.srcIn),
+                colorFilter: ColorFilter.mode(AppColors.redPinkMain, BlendMode.srcIn),
               ),
             ),
             SizedBox(width: 10),
@@ -76,10 +68,7 @@ class TopChefProfileView extends StatelessWidget {
                   children: [
                     Text(
                       'Neil Tran-Chef',
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white),
+                      style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.white),
                     ),
                     Text(
                       'Passionate chef in creative and \ncontemporary cuisine.',
@@ -100,8 +89,7 @@ class TopChefProfileView extends StatelessWidget {
                       child: Center(
                         child: Text(
                           'Following',
-                          style: TextStyle(
-                              color: AppColors.redPinkMain, fontSize: 12),
+                          style: TextStyle(color: AppColors.redPinkMain, fontSize: 12),
                         ),
                       ),
                     ),
@@ -116,9 +104,6 @@ class TopChefProfileView extends StatelessWidget {
               decoration: BoxDecoration(
                 border: Border.all(color: AppColors.redPinkMain),
                 color: AppColors.beigeColor,
-
-                color: AppColors.backgroundColor,
-
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Row(
@@ -126,8 +111,7 @@ class TopChefProfileView extends StatelessWidget {
                 children: [
                   Text('15\nRecipes', style: TextStyle(color: Colors.white)),
                   Text('10\nFollowing', style: TextStyle(color: Colors.white)),
-                  Text('255.770\nFollowers',
-                      style: TextStyle(color: Colors.white)),
+                  Text('255.770\nFollowers', style: TextStyle(color: Colors.white)),
                 ],
               ),
             ),
@@ -141,11 +125,7 @@ class TopChefProfileView extends StatelessWidget {
                     Tab(
                       child: Text(
                         "Recipes",
-
-                        style: TextStyle(color:Colors.white),
-
-                        style: TextStyle(color: AppColors.whiteColor),
-
+                        style: TextStyle(color: Colors.white),
                       ),
                     ),
                   ],
@@ -161,16 +141,12 @@ class TopChefProfileView extends StatelessWidget {
                   image: 'assets/images/asian.png',
                 ),
                 SizedBox(height: 30),
-                TopChefProfileItem(
-                    title: 'Guilty Pleasures',
-                    image: 'assets/images/guilty.png')
+                TopChefProfileItem(title: 'Guilty Pleasures', image: 'assets/images/guilty.png')
               ],
             ),
           ],
         ),
-        bottomNavigationBar: RecipeBottomNavigationBar(),
       ),
     );
   }
 }
-
