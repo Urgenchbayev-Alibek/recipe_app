@@ -15,7 +15,7 @@ class AuthInterceptor extends Interceptor{
     if(jwt!=null){
       options.headers['Authorization'] = "Bearer $jwt";
     }
-    handler.next(options);
+    super.onRequest(options, handler);
   }
 
   @override

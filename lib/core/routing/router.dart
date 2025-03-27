@@ -7,8 +7,8 @@ import 'package:recipe_app/data/repositories/profile_repository.dart';
 import 'package:recipe_app/features/community/presentation/manager/community_cubit.dart';
 import 'package:recipe_app/features/community/presentation/pages/community_view.dart';
 import 'package:recipe_app/features/notification/presentation/manager/notifications_bloc.dart';
-import 'package:recipe_app/features/profile/presentation/pages/profile_page.dart';
-import 'package:recipe_app/features/profile/presentation/pages/profile_view_model.dart';
+// import 'package:recipe_app/features/profile/presentation/pages/profile_page.dart';
+// import 'package:recipe_app/features/profile/presentation/pages/profile_view_model.dart';
 import 'package:recipe_app/features/reviews/presentation/manager/create_review/create_review_bloc.dart';
 import 'package:recipe_app/features/reviews/presentation/manager/reviews/reviews_bloc.dart';
 import 'package:recipe_app/features/reviews/presentation/pages/create_review_view.dart';
@@ -45,7 +45,7 @@ import '../client.dart';
 
 final router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.notification,
+  initialLocation: Routes.login,
   routes: [
     GoRoute(
       path: Routes.home,
@@ -61,15 +61,6 @@ final router = GoRouter(
     GoRoute(
       path: Routes.welcome,
       builder: (context, state) => WelcomeView(),
-    ),
-    GoRoute(
-      path: Routes.profile,
-      builder: (context, state) => ProfilePage(
-        vm: ProfileViewModel(
-          recipeRepo: RecipeRepository(client: ApiClient()),
-          profileRepo: ProfileRepository(client: ApiClient()),
-        ),
-      ),
     ),
     GoRoute(
       path: Routes.login,

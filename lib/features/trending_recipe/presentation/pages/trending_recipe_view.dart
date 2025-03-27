@@ -25,8 +25,7 @@ class TrendingRecipeView extends StatelessWidget {
       extendBody: true,
       appBar: RecipeAppBar(
         title: "Trending Recipes",
-        actions: [
-        ],
+        actions: [],
       ),
       body: Column(
         children: [
@@ -72,11 +71,9 @@ class TrendingRecipeView extends StatelessWidget {
                                 ),
                               ),
                               GestureDetector(
-
-                                onTap: () =>
-                                    context.push(
-                                      Routes.getRecipeDetail(recipe.id),
-                                    ),
+                                onTap: () => context.push(
+                                  Routes.getRecipeDetail(recipe.id),
+                                ),
                                 child: Container(
                                   width: 207.w,
                                   height: 122.h,

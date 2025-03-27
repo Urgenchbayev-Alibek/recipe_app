@@ -1,6 +1,6 @@
 class ProfileModel {
   final int id;
-  final String firstName, lastName, username, bio;
+  final String firstName, lastName, username, presentation;
   final String image;
   final int recipes, following, followers;
 
@@ -9,7 +9,7 @@ class ProfileModel {
     required this.firstName,
     required this.lastName,
     required this.username,
-    required this.bio,
+    required this.presentation,
     required this.image,
     required this.recipes,
     required this.following,
@@ -22,7 +22,7 @@ class ProfileModel {
       firstName: json['firstName'],
       lastName: json['lastName'],
       username: json['username'],
-      bio: json['presentation'],
+      presentation: json['presentation'],
       image: json['profilePhoto'],
       recipes: json['recipesCount'],
       following: json['followingCount'],

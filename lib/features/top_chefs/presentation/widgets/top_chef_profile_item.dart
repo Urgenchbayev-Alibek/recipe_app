@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TopChefProfileItem extends StatelessWidget {
@@ -56,5 +55,4 @@ class TopChefProfileItem extends StatelessWidget {
     );
   }
 }
-
 

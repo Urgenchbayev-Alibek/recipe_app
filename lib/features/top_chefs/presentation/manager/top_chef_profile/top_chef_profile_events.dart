@@ -1,8 +1,6 @@
-import 'package:equatable/equatable.dart';
+sealed class TopChefProfileEvent{}
 
-abstract class TopChefEvent extends Equatable {
-  @override
-  List<Object> get props => [];
+class TopChefsProfileLoading extends TopChefProfileEvent{
+  final int profileId;
+  TopChefsProfileLoading({required this.profileId});
 }
-
-class LoadTopChefs extends TopChefEvent {}

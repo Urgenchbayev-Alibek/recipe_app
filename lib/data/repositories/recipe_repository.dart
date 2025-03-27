@@ -80,6 +80,12 @@ class RecipeRepository {
     return RecipeCreateReviewModel.fromJson(rawRecipe);
   }
 
+  Future<List<RecipeModel>> fetchMyRecipes([int? limit]) async {
+    var recipeData = await client.fetchMyRecipes(limit);
+    recipes = recipeData.map((e) => RecipeModel.fromJson(e)).toList();
+    return recipes;
+  }
+
   Future<List<ReviewCommentModel>> fetchComments(int recipeId) async {
     var rawComments = await client.fetchRecipeComments(recipeId);
     comments = rawComments.map((e) => ReviewCommentModel.fromJson(e)).toList();
