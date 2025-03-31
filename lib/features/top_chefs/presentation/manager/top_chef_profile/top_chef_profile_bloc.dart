@@ -1,21 +1,20 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:recipe_app/features/top_chefs/presentation/manager/top_chef_profile/top_chef_profile_state.dart';
-import '../../../../../data/repositories/top_chef_profile_repository.dart';
-import 'top_chef_profile_events.dart';
-import 'top_chef_profile_events.dart';
+import 'package:recipe_app/data/models/top_chef_profile_model.dart';
+import 'package:recipe_app/data/repositories/top_chef_profile_repository.dart';
+import 'top_chef_profile_state.dart';
 
-class TopChefBloc extends Bloc<TopChefEvent, TopChefState> {
-  final TopChefRepository repository;
+class TopChefProfileBloc extends Cubit<TopChefProfileState> {
+  final TopChefProfileRepository repository;
 
-  TopChefBloc(this.repository) : super(TopChefInitial()) {
-    on<LoadTopChefs>((event, emit) async {
-      emit(TopChefLoading());
-      try {
-        final chefs = await repository.fetchTopChefs();
-        emit(TopChefLoaded(chefs));
-      } catch (e) {
-        emit(TopChefError(e.toString()));
-      }
-    });
+  TopChefProfileBloc(this.repository) : super(TopChefProfileInitial());
+
+  Future<void> loadProfile(int chefId) async {
+    try {
+      emit(TopChefProfileLoading());
+      final chef = await repository.getTopChefProfile(chefId);
+      emit(TopChefProfileLoaded(chef));
+    } catch (e) {
+      emit(TopChefProfileError(e.toString()));
+    }
   }
 }

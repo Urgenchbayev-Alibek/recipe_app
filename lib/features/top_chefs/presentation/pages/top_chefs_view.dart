@@ -59,9 +59,20 @@ class TopChefsView extends StatelessWidget {
                   Row(
                     children: [
                       for (var chef in state.mostViewedChefs)
-                        Image.network(chef.image, width: 100, height: 100, fit: BoxFit.cover),
+                        GestureDetector(
+                          onTap: () {
+                            context.push(Routes.topChefsProfile, extra: chef.id);
+                          },
+                          child: Image.network(
+                            chef.image,
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                     ],
                   ),
+
                 ],
               ),
             ),

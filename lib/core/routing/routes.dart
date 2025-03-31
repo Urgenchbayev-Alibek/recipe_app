@@ -1,4 +1,5 @@
 class Routes {
+
   static const String home = '/';
   static const login = '/login';
   static const signup = '/signup';
@@ -14,8 +15,10 @@ class Routes {
   static const String reviews = '/reviews/:recipeId';
   static const String createReview = '/create-review/:recipeId';
   static const String topChefs = '/top-chefs';
+  static const String yourRecipe ='/your-recipe';
 
-  static const String topChefsProfile = 'auth/details/:topChefId';
+  static const String topChefsProfile = '/auth/details/:topChefId';
+
   static const String trendingRecipe='/trending-recipe';
   static const String notification = '/notifications/list';
 
@@ -28,4 +31,7 @@ class Routes {
   static String getCreateReview(int recipeId) => '/create-review/$recipeId';
 
   static String getChefProfile(int id) => '/user/$id';
+  static String getTopChefProfile(int id) => '/auth/details/$id';
+
+
 }

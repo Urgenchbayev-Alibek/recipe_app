@@ -1,39 +1,37 @@
-class TopChefProfileModel {
+class TopChefProfile {
   final int id;
-  final String name;
-  final String imageUrl;
-  final String bio;
-  final double rating;
-  final int totalRecipes;
+  final String profilePhoto;
+  final String username;
+  final String firstName;
+  final String lastName;
+  final String presentation;
+  final int recipesCount;
+  final int followingCount;
+  final int followerCount;
 
-  TopChefProfileModel({
+  TopChefProfile({
     required this.id,
-    required this.name,
-    required this.imageUrl,
-    required this.bio,
-    required this.rating,
-    required this.totalRecipes,
+    required this.profilePhoto,
+    required this.username,
+    required this.firstName,
+    required this.lastName,
+    required this.presentation,
+    required this.recipesCount,
+    required this.followingCount,
+    required this.followerCount,
   });
 
-  factory TopChefProfileModel.fromJson(Map<String, dynamic> json) {
-    return TopChefProfileModel(
-      id: json['id'],
-      name: json['name'],
-      imageUrl: json['imageUrl'],
-      bio: json['bio'],
-      rating: (json['rating'] as num).toDouble(),
-      totalRecipes: json['totalRecipes'],
+  factory TopChefProfile.fromJson(Map<String, dynamic> json) {
+    return TopChefProfile(
+      id: json["id"],
+      profilePhoto: json["profilePhoto"],
+      username: json["username"],
+      firstName: json["firstName"],
+      lastName: json["lastName"],
+      presentation: json["presentation"],
+      recipesCount: json["recipesCount"],
+      followingCount: json["followingCount"],
+      followerCount: json["followerCount"],
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'imageUrl': imageUrl,
-      'bio': bio,
-      'rating': rating,
-      'totalRecipes': totalRecipes,
-    };
   }
 }

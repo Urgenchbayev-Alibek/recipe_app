@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -14,11 +15,13 @@ import 'package:recipe_app/features/reviews/presentation/manager/reviews/reviews
 import 'package:recipe_app/features/reviews/presentation/pages/create_review_view.dart';
 import 'package:recipe_app/features/reviews/presentation/pages/review_view.dart';
 import 'package:recipe_app/features/top_chefs/presentation/pages/top_chefs_view.dart';
+import 'package:recipe_app/features/your_recipe/presentation/pages/your_recipe_view.dart';
 import 'package:recipe_app/main.dart';
 
 import '../../data/repositories/auth_repository.dart';
 import '../../data/repositories/notification_repository.dart';
 import '../../data/repositories/recipe_repository.dart';
+import '../../data/repositories/top_chef_profile_repository.dart';
 import '../../features/auth/presentation/manager/login_view_model.dart';
 import '../../features/auth/presentation/pages/complete_profile_view.dart';
 import '../../features/auth/presentation/pages/login_view.dart';
@@ -36,13 +39,15 @@ import '../../features/onboarding/presentation/pages/welcome_view.dart';
 import '../../features/recipe_detail/presentation/manager/recipe_detail_view_model.dart';
 import '../../features/recipe_detail/presentation/pages/recipe_detail_view.dart';
 import '../../features/top_chefs/presentation/manager/top_chef/top_chefs_bloc.dart';
+import '../../features/top_chefs/presentation/manager/top_chef_profile/top_chef_profile_bloc.dart';
+import '../../features/top_chefs/presentation/pages/top_chef_profile_view.dart';
 import '../../features/trending_recipe/presentation/manager/trending_recipe_bloc.dart';
 import '../../features/trending_recipe/presentation/pages/trending_recipe_view.dart';
 import '../client.dart';
 
 final router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.notification,
+  initialLocation: Routes.topChefsProfile,
   routes: [
     GoRoute(
       path: Routes.home,
@@ -106,13 +111,18 @@ final router = GoRouter(
     ),
     GoRoute(
       path: Routes.categoryDetail,
-      builder: (context, state) => BlocProvider(
-        create: (context) => CategoryDetailBloc(
-          catRepo: context.read(),
-          recipeRepo: context.read(),
-          selectedId: int.parse(state.pathParameters['categoryId']!),
+      pageBuilder: (context, state) => CustomTransitionPage(
+        child: BlocProvider(
+          create: (context) => CategoryDetailBloc(
+            catRepo: context.read(),
+            recipeRepo: context.read(),
+            selectedId: int.parse(state.pathParameters['categoryId']!),
+          ),
+          child: CategoryDetailView(),
         ),
-        child: CategoryDetailView(),
+        transitionsBuilder: (context, animation, secondaryAnimation,child) => ScaleTransition(
+          scale: Tween<double>(begin: 0, end: 1).animate(animation),
+        ),
       ),
     ),
     GoRoute(
@@ -164,7 +174,6 @@ final router = GoRouter(
         child: TrendingRecipeView(),
       ),
     ),
-    GoRoute(path: R)
     GoRoute(
       path: Routes.notification,
       builder: (context, state) => BlocProvider(
@@ -175,6 +184,20 @@ final router = GoRouter(
         ),
         child: NotificationsView(),
       ),
+    ),
+    GoRoute(
+      path: Routes.yourRecipe,
+      builder: (context, state) => YourRecipeView(),
+    ),
+    GoRoute(
+      path: Routes.topChefsProfile,
+      builder: (context, state) {
+        final chefId = int.tryParse(state.pathParameters['topChefId'] ?? '0') ?? 0;
+        return BlocProvider(
+          create: (context) => TopChefProfileBloc(TopChefProfileRepository())..loadProfile(chefId),
+          child: const TopChefProfileView(),
+        );
+      },
     ),
   ],
 );
