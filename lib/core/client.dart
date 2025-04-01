@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:recipe_app/core/interceptor.dart';
 
 import '../data/models/create_review_model.dart';
+import '../data/models/recipe_create_model.dart';
 import '../data/models/user_model.dart';
 import 'exceptions/auth_exception.dart';
 
@@ -96,6 +97,26 @@ class ApiClient {
       return response.data as T;
     } else {
       throw DioException(requestOptions: response.requestOptions, response: response);
+    }
+  }
+
+  Future<bool> recipeCreate(RecipeCreateModel model) async {
+    try {
+      final formData = FormData.fromMap(await model.toJson());
+      final response = await dio.post(
+        '/recipes/create',
+        options: Options(
+          headers: {
+            "Authorization":
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtaWx5QGdtYWlsLmNvbSIsImp0aSI6Ijg3MTUxYTRlLTViMmYtNGViYy1hYmU4LTQzZmExYzM2YzZlNSIsInVzZXJpZCI6IjUiLCJleHAiOjE4MzY5MTc5MjcsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6ImF1ZGllbmNlIn0.UY2a5qRKT2dUfNq6BsBT6rvxQg-medYeEoAb24fPSG0",
+          },
+        ),
+        data: formData,
+      );
+      return response.statusCode == 201;
+    } catch (e) {
+      print("Error creating recipe: $e");
+      return false;
     }
   }
 
