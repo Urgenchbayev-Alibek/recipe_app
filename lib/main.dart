@@ -3,13 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:recipe_app/features/recipe_create_alibek/presentations/pages/recipe_create_view.dart';
 import 'core/dependencies.dart';
 import 'core/l10n/app_localizations.dart';
 import 'core/routing/router.dart';
 import 'core/sizes.dart';
 import 'core/utils/themes.dart';
 import 'data/models/localization_view_model.dart';
-import 'features/your_recipes/pages/your_recipe_view.dart';
+import 'features/your_recipes/presentation/pages/your_recipe_view.dart';
 /*
 state & behavior
 state alohida bo'lib ajraladi
@@ -57,7 +58,7 @@ class RecipeApp extends StatelessWidget {
     //   ),
     // );
     return MaterialApp(
-      home: NotificationView()
+      home: RecipeCreateView()
     );
   }
 }

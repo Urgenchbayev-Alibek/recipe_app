@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/utils/colors.dart';
-import '../../common/widgets/recipe_bottom_navigation_bar.dart';
-import '../widgets/your_recipe_appbar.dart';
-import '../widgets/your_recipe_body.dart';
-import '../widgets/your_recipe_bottom_model.dart';
+import '../../../../../core/utils/colors.dart';
+import '../../../common/widgets/recipe_bottom_navigation_bar.dart';
+import '../../widgets/your_recipe_appbar.dart';
+import '../../widgets/your_recipe_body.dart';
 
-class NotificationView extends StatelessWidget {
-  const NotificationView({super.key});
+class YourRecipeView extends StatelessWidget {
+  const YourRecipeView({super.key});
 
   @override
   Widget build(BuildContext context) {
