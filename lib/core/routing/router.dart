@@ -1,3 +1,6 @@
+import 'dart:ui';
+import 'package:flutter/animation.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -14,7 +17,6 @@ import 'package:recipe_app/features/reviews/presentation/pages/create_review_vie
 import 'package:recipe_app/features/reviews/presentation/pages/review_view.dart';
 import 'package:recipe_app/features/top_chefs/presentation/pages/top_chefs_view.dart';
 import 'package:recipe_app/features/your_recipes/presentation/manager/your_recipes_bloc.dart';
-// import 'package:recipe_app/features/your_recipes/presentation/pages/your_recipes_view.dart';
 import 'package:recipe_app/main.dart';
 
 import '../../data/repositories/auth_repository.dart';
@@ -34,6 +36,8 @@ import '../../features/onboarding/presentation/managers/onboarding_view_model.da
 import '../../features/onboarding/presentation/pages/onboarding_view.dart';
 import '../../features/onboarding/presentation/pages/welcome_view.dart';
 import '../../features/recipe_create_alibek/presentations/manager/recipe_create_bloc.dart';
+import '../../features/recipe_create_gulnoza/manager/recipe_create_bloc.dart';
+import '../../features/recipe_create_gulnoza/pages/recipe_create_view.dart';
 import '../../features/recipe_detail/presentation/manager/recipe_detail_view_model.dart';
 import '../../features/recipe_detail/presentation/pages/recipe_detail_view.dart';
 import '../../features/top_chefs/presentation/manager/top_chef/top_chefs_bloc.dart';
@@ -59,6 +63,33 @@ final router = GoRouter(
         },
       ),
     ),
+    // GoRoute(
+    //   path: Routes.home,
+    //   pageBuilder: (context, state) => CustomTransitionPage(
+    //     transitionDuration: Duration(seconds: 5),
+    //     child: BlocProvider(
+    //       create: (context) => HomeBloc(
+    //         catRepo: context.read(),
+    //         recipeRepo: context.read(),
+    //         chefRepo: context.read(),
+    //       ),
+    //       child: HomeView(),
+    //     ),
+    //     transitionsBuilder: (context, animation, secondaryAnimation, child) => SlideTransition(
+    //       position: Tween<Offset>(begin: Offset(1, 0), end: Offset(0, 0))
+    //           .animate(animation),
+    //       child: child,
+    //     ),
+    //   ),
+    // ),
+    GoRoute(
+      path: Routes.recipeCreate,
+      builder: (context, state) => BlocProvider(
+        create: (context) => RecipeCreateBloc(),
+        child: RecipeCreateView(),
+      ),
+    ),
+
     GoRoute(
       path: Routes.welcome,
       pageBuilder: (context, state) => CustomTransitionPage(

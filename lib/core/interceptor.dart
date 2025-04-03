@@ -36,7 +36,8 @@ class AuthInterceptor extends Interceptor {
             queryParameters: err.requestOptions.queryParameters,
           ),
         );
-      } else {
+      }
+      else {
         await navigatorKey.currentContext!.read<AuthRepository>().logout();
         navigatorKey.currentContext!.go(Routes.login);
         return handler.reject(err);
