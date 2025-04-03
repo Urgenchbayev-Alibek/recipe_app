@@ -1,3 +1,7 @@
+import 'dart:ui';
+
+import 'package:flutter/animation.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -36,6 +40,8 @@ import '../../features/notification/presentation/pages/notification_view.dart';
 import '../../features/onboarding/presentation/managers/onboarding_view_model.dart';
 import '../../features/onboarding/presentation/pages/onboarding_view.dart';
 import '../../features/onboarding/presentation/pages/welcome_view.dart';
+import '../../features/recipe_create_gulnoza/manager/recipe_create_bloc.dart';
+import '../../features/recipe_create_gulnoza/pages/recipe_create_view.dart';
 import '../../features/recipe_detail/presentation/manager/recipe_detail_view_model.dart';
 import '../../features/recipe_detail/presentation/pages/recipe_detail_view.dart';
 import '../../features/top_chefs/presentation/manager/top_chef/top_chefs_bloc.dart';
@@ -45,7 +51,7 @@ import '../client.dart';
 
 final router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.notification,
+  initialLocation: Routes.recipeCreate,
   routes: [
     GoRoute(
       path: Routes.home,
@@ -56,6 +62,33 @@ final router = GoRouter(
           chefRepo: context.read(),
         ),
         child: HomeView(),
+      ),
+    ),
+
+    // GoRoute(
+    //   path: Routes.home,
+    //   pageBuilder: (context, state) => CustomTransitionPage(
+    //     transitionDuration: Duration(seconds: 5),
+    //     child: BlocProvider(
+    //       create: (context) => HomeBloc(
+    //         catRepo: context.read(),
+    //         recipeRepo: context.read(),
+    //         chefRepo: context.read(),
+    //       ),
+    //       child: HomeView(),
+    //     ),
+    //     transitionsBuilder: (context, animation, secondaryAnimation, child) => SlideTransition(
+    //       position: Tween<Offset>(begin: Offset(1, 0), end: Offset(0, 0))
+    //           .animate(animation),
+    //       child: child,
+    //     ),
+    //   ),
+    // ),
+    GoRoute(
+      path: Routes.recipeCreate,
+      builder: (context, state) => BlocProvider(
+        create: (context) => RecipeCreateBloc(),
+        child: RecipeCreateView(),
       ),
     ),
     GoRoute(

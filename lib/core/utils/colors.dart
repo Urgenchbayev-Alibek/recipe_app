@@ -9,6 +9,7 @@ class AppColors {
   static const Color textColor = Color(0xFF3E2823);
 
   static const Color milkWhite = Color(0xFFFFFDF9);
+  static const  brownish = Color(0xFF8d6a6b);
 
 
 
@@ -26,6 +27,7 @@ class AppColors {
     onError: Colors.white,
     surface: AppColors.beigeColor,
     onSurface: Colors.white,
+
   );
 
 

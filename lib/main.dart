@@ -36,28 +36,29 @@ class RecipeApp extends StatelessWidget {
   Widget build(BuildContext context) {
     AppSizes.init(context);
     ScreenUtil.init(context, designSize: const Size(430, 932));
-    // return MultiProvider(
-    //   providers: providers,
-    //   builder: (context, child) => MaterialApp.router(
-    //     routerConfig: router,
-    //     debugShowCheckedModeBanner: false,
-    //     themeMode: ThemeMode.dark,
-    //     darkTheme: AppThemes.darkTheme,
-    //     localizationsDelegates: const [
-    //       AppLocalizations.delegate,
-    //       GlobalMaterialLocalizations.delegate,
-    //       GlobalWidgetsLocalizations.delegate,
-    //       GlobalCupertinoLocalizations.delegate,
-    //     ],
-    //     supportedLocales: const [
-    //       Locale('en'),
-    //       Locale('uz'),
-    //     ],
-    //     locale: context.watch<LocalizationViewModel>().currentLocale,
-    //   ),
-    // );
-    return MaterialApp(
-      home: NotificationView()
+    return MultiProvider(
+      providers: providers,
+      builder: (context, child) => MaterialApp.router(
+        routerConfig: router,
+        debugShowCheckedModeBanner: false,
+        themeMode: ThemeMode.dark,
+        darkTheme: AppThemes.darkTheme,
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('en'),
+          Locale('uz'),
+        ],
+        locale: context.watch<LocalizationViewModel>().currentLocale,
+      ),
     );
+    // return MaterialApp(
+    //   home: NotificationView()
+    // );
   }
 }
+
