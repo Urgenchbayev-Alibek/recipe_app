@@ -6,7 +6,6 @@ import 'package:recipe_app/core/utils/colors.dart';
 import 'package:recipe_app/features/reviews/presentation/manager/create_review/create_review_bloc.dart';
 import 'package:recipe_app/features/reviews/presentation/manager/create_review/create_review_state.dart';
 
-
 class CreateReviewRecipeSection extends StatelessWidget {
   const CreateReviewRecipeSection({
     super.key,
@@ -38,8 +37,7 @@ class CreateReviewRecipeSection extends StatelessWidget {
                       alignment: Alignment.bottomCenter,
                       decoration: BoxDecoration(
                         color: AppColors.redPinkMain,
-                        borderRadius:
-                            BorderRadius.vertical(bottom: Radius.circular(10)),
+                        borderRadius: BorderRadius.vertical(bottom: Radius.circular(10)),
                       ),
                       child: Text(
                         state.recipeModel!.title,

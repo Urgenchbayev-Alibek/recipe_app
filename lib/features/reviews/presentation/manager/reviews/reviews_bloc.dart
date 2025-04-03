@@ -19,7 +19,7 @@ class ReviewsBloc extends Bloc<ReviewsEvent, ReviewsState> {
     emit(state.copyWith(status: ReviewsStatus.loading));
     final recipe = await _recipeRepo.fetchRecipeForReviews(event.recipeId);
     final comments = await _recipeRepo.fetchComments(event.recipeId);
-    emit(ReviewsState(recipeModel: recipe, status: ReviewsStatus.idle, comments: comments, reviews: [] ));
+    emit(ReviewsState(recipeModel: recipe, status: ReviewsStatus.idle, comments: comments, reviews: []));
   }
 
   static String sinceCreated({required String createdText}) {
@@ -34,7 +34,7 @@ class ReviewsBloc extends Bloc<ReviewsEvent, ReviewsState> {
     return "${diff.inSeconds} second${diff.inSeconds == 1 ? '' : 's'} ago";
   }
 
-  // Future showComment(ReviewsShowAllComment event, Emitter emit) async {
-  //   emit(state.copyWith());
-  // }
+// Future showComment(ReviewsShowAllComment event, Emitter emit) async {
+//   emit(state.copyWith());
+// }
 }

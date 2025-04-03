@@ -20,7 +20,9 @@ class CommunityView extends StatelessWidget {
         actions: [
           RecipeIconButtonContainer(
             image: 'assets/icons/notification.svg',
-            callback: () {context.push(Routes.notification);},
+            callback: () {
+              context.push(Routes.notification);
+            },
             iconWidth: 14,
             iconHeight: 19,
           ),

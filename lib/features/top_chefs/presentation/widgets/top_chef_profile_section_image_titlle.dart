@@ -3,8 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TopChefProfileSectionImageTitle extends StatelessWidget {
   const TopChefProfileSectionImageTitle({
-    super.key, required this.image, required this.title,
+    super.key,
+    required this.image,
+    required this.title,
   });
+
   final String image, title;
 
   @override
@@ -20,19 +23,11 @@ class TopChefProfileSectionImageTitle extends StatelessWidget {
             child: Container(
               width: 336.w,
               height: 44.h,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(20),
-                      bottomLeft: Radius.circular(20))),
+              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.only(bottomRight: Radius.circular(20), bottomLeft: Radius.circular(20))),
               child: Center(
                 child: Text(
                   title,
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      fontFamily: 'Poppins'),
+                  style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w400, fontFamily: 'Poppins'),
                 ),
               ),
             ),

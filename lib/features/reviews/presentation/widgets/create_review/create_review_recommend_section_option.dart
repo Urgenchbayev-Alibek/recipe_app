@@ -4,7 +4,6 @@ import 'package:recipe_app/core/utils/colors.dart';
 import 'package:recipe_app/features/reviews/presentation/manager/create_review/create_review_bloc.dart';
 import 'package:recipe_app/features/reviews/presentation/manager/create_review/create_review_state.dart';
 
-
 class CreateReviewRecommendSectionOption extends StatelessWidget {
   const CreateReviewRecommendSectionOption({
     super.key,

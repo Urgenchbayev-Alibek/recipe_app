@@ -15,7 +15,7 @@ class Routes {
   static const String createReview = '/create-review/:recipeId';
   static const String topChefs = '/top-chefs';
   static const String topChefsProfile = 'auth/details/:topChefId';
-  static const String trendingRecipe='/trending-recipe';
+  static const String trendingRecipe = '/trending-recipe';
   static const String notification = '/notifications/list';
   static const String following = '/notifications/list';
   static const String yourRecipes = '/recipes/my-recipes';

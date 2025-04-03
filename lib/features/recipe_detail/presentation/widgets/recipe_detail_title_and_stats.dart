@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:recipe_app/core/routing/routes.dart';
 import 'package:recipe_app/core/utils/colors.dart';
 import 'package:recipe_app/features/common/widgets/recipe_rating.dart';
+
 import 'recipe_reviews.dart';
 
 class RecipeDetailTitleAndStats extends StatelessWidget {

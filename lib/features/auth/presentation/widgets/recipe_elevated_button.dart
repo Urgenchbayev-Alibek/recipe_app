@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../../core/utils/colors.dart';
 
 class RecipeElevatedButton extends StatelessWidget {
@@ -20,7 +21,6 @@ class RecipeElevatedButton extends StatelessWidget {
   final double fontSize;
   final double elevation;
 
-
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -32,9 +32,12 @@ class RecipeElevatedButton extends StatelessWidget {
             foregroundColor: foregroundColor,
             backgroundColor: backGroundColor,
             fixedSize: size,
-            elevation:  elevation,
+            elevation: elevation,
           ),
-          child: Text(text, style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.w600),),
+          child: Text(
+            text,
+            style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.w600),
+          ),
         ),
       ),
     );

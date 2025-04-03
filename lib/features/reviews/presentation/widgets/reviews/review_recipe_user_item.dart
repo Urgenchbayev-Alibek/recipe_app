@@ -37,8 +37,7 @@ class ReviewsRecipeUser extends StatelessWidget {
                   ),
                 );
               },
-              errorWidget: (context, url, error) =>
-                  Icon(Icons.person, size: 32, color: Colors.grey),
+              errorWidget: (context, url, error) => Icon(Icons.person, size: 32, color: Colors.grey),
             ),
           ),
           SizedBox(

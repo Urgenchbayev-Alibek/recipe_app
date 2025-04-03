@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recipe_app/core/sizes.dart';
 import 'package:recipe_app/features/category_detail/presentation/widgets/recipe_item_description.dart';
 import 'package:recipe_app/features/category_detail/presentation/widgets/recipe_item_title.dart';
+
 import '../../../../core/utils/colors.dart';
 import '../../../../data/models/recipe/recipe_model.dart';
 import '../../../common/widgets/recipe_rating.dart';
@@ -18,8 +19,8 @@ class RecipeItemInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 158.5*AppSizes.wRatio,
-      height: 76*AppSizes.hRatio,
+      width: 158.5 * AppSizes.wRatio,
+      height: 76 * AppSizes.hRatio,
       padding: EdgeInsets.symmetric(horizontal: 15, vertical: 4),
       decoration: BoxDecoration(
         color: Colors.white,

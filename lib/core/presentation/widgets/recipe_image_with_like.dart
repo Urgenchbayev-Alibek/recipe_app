@@ -2,8 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/core/presentation/widgets/recipe_app_button_container.dart';
-
-
 import '../../../../Core/utils/colors.dart';
 
 class RecipeImageWithLike<T> extends StatefulWidget {

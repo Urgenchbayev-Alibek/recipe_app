@@ -52,7 +52,6 @@ class AuthRepository {
     }
   }
 
-
   Future<bool> uploadProfilePhoto(File file) async {
     final result = await client.uploadProfilePhoto(file);
     return result;

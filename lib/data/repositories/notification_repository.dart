@@ -10,7 +10,7 @@ class NotificationsRepository {
     required this.client,
   });
 
-  Future<List<NotificationsModel>> fetchNotifications()async{
+  Future<List<NotificationsModel>> fetchNotifications() async {
     var rawNotifications = await client.genericGetRequest<List<dynamic>>('/notifications/list');
     model = rawNotifications.map((e) => NotificationsModel.fromJson(e)).toList();
     return model;

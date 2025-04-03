@@ -31,7 +31,7 @@ class TopChefsSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: List.generate(
               topChefs.length,
-                  (index) => TopChefItemHome(topChef: topChefs[index]),
+              (index) => TopChefItemHome(topChef: topChefs[index]),
             ),
           ),
         ],

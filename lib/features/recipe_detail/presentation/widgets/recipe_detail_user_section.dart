@@ -59,7 +59,7 @@ class RecipeDetailUserSection extends StatelessWidget {
           containerColor: AppColors.pink,
           textColor: AppColors.pinkSub,
           containerHeight: 22,
-          callback: (){},
+          callback: () {},
         ),
         SizedBox(width: 10),
         SvgPicture.asset(

@@ -13,6 +13,7 @@ import '../manager/notifications_state.dart';
 
 class NotificationsView extends StatelessWidget {
   const NotificationsView({super.key});
+
   String formatDateLabel(String inputDate) {
     DateTime date = DateTime.parse(inputDate);
     DateTime now = DateTime.now();

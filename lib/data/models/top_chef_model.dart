@@ -16,7 +16,7 @@ class TopChefModel {
     return TopChefModel(
       id: json['id'],
       username: json['username'],
-      firstName:json ['firstName'],
+      firstName: json['firstName'],
       lastName: json['lastName'],
       image: json['profilePhoto'],
     );

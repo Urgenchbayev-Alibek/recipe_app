@@ -12,7 +12,7 @@ class OnboardingRepository {
     var rawPages = await client.fetchOnboardingPages();
     pages = rawPages.map((page) => OnboardingPageModel.fromJson(page)).toList();
     pages.sort(
-          (a, b) {
+      (a, b) {
         if (a.order < b.order) {
           return -1;
         } else if (a.order > b.order) {
@@ -24,6 +24,4 @@ class OnboardingRepository {
     );
     return pages;
   }
-
-
 }

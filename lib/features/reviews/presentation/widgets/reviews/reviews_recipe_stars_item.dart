@@ -16,7 +16,7 @@ class ReviewsRecipeStars extends StatelessWidget {
       spacing: 4.w,
       children: List.generate(
         5,
-            (index) {
+        (index) {
           if (rating > index) {
             return SvgPicture.asset(
               width: 11.w,
@@ -28,8 +28,7 @@ class ReviewsRecipeStars extends StatelessWidget {
                 BlendMode.srcIn,
               ),
             );
-          }
-          else {
+          } else {
             return SvgPicture.asset(
               width: 11.w,
               height: 11.h,
@@ -41,8 +40,7 @@ class ReviewsRecipeStars extends StatelessWidget {
               ),
             );
           }
-        }
-        ,
+        },
       ),
     );
   }

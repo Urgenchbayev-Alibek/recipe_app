@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/core/presentation/widgets/recipe_image_with_like.dart';
 import 'package:recipe_app/core/presentation/widgets/recipe_svg_button.dart';
+
 import '../../../Core/utils/colors.dart';
 
 class RecipeAppButtonContainer extends StatelessWidget {
@@ -25,7 +26,7 @@ class RecipeAppButtonContainer extends StatelessWidget {
         ),
         child: Center(
           child: RecipeSvgButton(
-            callback: (){},
+            callback: () {},
             svg: 'assets/icons/heart.svg',
             width: 16.w,
             height: 15.h,

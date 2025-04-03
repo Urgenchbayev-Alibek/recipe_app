@@ -4,10 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ReviewsViewImageItem extends StatelessWidget {
   const ReviewsViewImageItem({
-    super.key, required this.image,
+    super.key,
+    required this.image,
   });
 
   final String image;
+
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -25,8 +27,7 @@ class ReviewsViewImageItem extends StatelessWidget {
             ),
           );
         },
-        errorWidget: (context, url, error) =>
-            Icon(Icons.error, color: Colors.red),
+        errorWidget: (context, url, error) => Icon(Icons.error, color: Colors.red),
       ),
     );
   }

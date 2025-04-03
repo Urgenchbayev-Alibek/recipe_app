@@ -20,15 +20,15 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         _recipeRepo = recipeRepo,
         _chefRepo = chefRepo,
         super(
-        HomeState(
-          status: HomeStatus.loading,
-          categories: [],
-          yourRecipes: [],
-          trendingRecipe: null,
-          topChefs: [],
-          recentlyAddedRecipes: [],
-        ),
-      ) {
+          HomeState(
+            status: HomeStatus.loading,
+            categories: [],
+            yourRecipes: [],
+            trendingRecipe: null,
+            topChefs: [],
+            recentlyAddedRecipes: [],
+          ),
+        ) {
     on<HomeLoad>(_onLoad);
     add(HomeLoad());
   }

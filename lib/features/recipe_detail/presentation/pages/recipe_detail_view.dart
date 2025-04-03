@@ -8,9 +8,9 @@ import 'package:recipe_app/features/common/widgets/recipe_icon_button_container.
 import 'package:recipe_app/features/common/widgets/recipe_time.dart';
 import 'package:recipe_app/features/recipe_detail/presentation/widgets/instruction_item.dart';
 import 'package:recipe_app/features/recipe_detail/presentation/widgets/recipe_detail_user_section.dart';
+
 import '../manager/recipe_detail_view_model.dart';
 import '../widgets/recipe_detail_image_and_video.dart';
-
 
 class RecipeDetailView extends StatelessWidget {
   const RecipeDetailView({super.key});
@@ -101,13 +101,11 @@ class RecipeDetailView extends StatelessWidget {
                           Row(
                             spacing: 3,
                             children: [
-                              Icon(Icons.circle,
-                                  size: 6, color: AppColors.redPinkMain),
+                              Icon(Icons.circle, size: 6, color: AppColors.redPinkMain),
                               if (ingredient.amount != null)
                                 Text(
                                   ingredient.amount!,
-                                  style:
-                                  TextStyle(color: AppColors.redPinkMain),
+                                  style: TextStyle(color: AppColors.redPinkMain),
                                 ),
                               Text(ingredient.name),
                             ],
@@ -120,7 +118,7 @@ class RecipeDetailView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: List.generate(
                         vm.recipe.instructions.length,
-                            (index) => InstructionItem(instruction: vm.recipe.instructions[index], index: index),
+                        (index) => InstructionItem(instruction: vm.recipe.instructions[index], index: index),
                       ),
                     ),
                     SizedBox(height: 100),

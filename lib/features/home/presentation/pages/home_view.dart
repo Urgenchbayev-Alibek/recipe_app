@@ -6,6 +6,7 @@ import 'package:recipe_app/features/home/presentation/widgets/recently_added_sec
 import 'package:recipe_app/features/home/presentation/widgets/top_chefs_section.dart';
 import 'package:recipe_app/features/home/presentation/widgets/trending_recipe_section.dart';
 import 'package:recipe_app/features/home/presentation/widgets/your_recipes_section.dart';
+
 import '../manager/home_view_model.dart';
 import '../widgets/app_bar/home_view_app_bar.dart';
 

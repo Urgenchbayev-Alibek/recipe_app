@@ -1,20 +1,22 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../data/models/recipe/community_recipe_model.dart';
 import '../../../../data/repositories/recipe_repository.dart';
+
 part 'community_state.dart';
 
 class CommunityCubit extends Cubit<CommunityState> {
   CommunityCubit({required RecipeRepository recipeRepo})
       : _recipeRepo = recipeRepo,
         super(
-        CommunityState(
-          selectedIndex: 0,
-          communityRecipes: [],
-          status: CommunityStatus.loading,
-        ),
-      ) {
+          CommunityState(
+            selectedIndex: 0,
+            communityRecipes: [],
+            status: CommunityStatus.loading,
+          ),
+        ) {
     load();
   }
 

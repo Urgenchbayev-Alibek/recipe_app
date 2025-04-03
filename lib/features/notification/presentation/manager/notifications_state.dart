@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import '../../../../data/models/notifications_model.dart';
 
 enum NotificationsStatus { idle, success, loading, error }
@@ -27,5 +28,5 @@ class NotificationsState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [notification,notificationStatus];
+  List<Object?> get props => [notification, notificationStatus];
 }

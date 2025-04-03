@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../../core/presentation/widgets/recipe_elevated_button.dart';
 import '../../../../core/utils/colors.dart';
 import '../managers/onboarding_view_model.dart';

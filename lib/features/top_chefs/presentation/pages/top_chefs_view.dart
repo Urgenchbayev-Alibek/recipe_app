@@ -24,7 +24,9 @@ class TopChefsView extends StatelessWidget {
             image: "assets/icons/notification.svg",
             iconWidth: 14,
             iconHeight: 19,
-            callback: () {context.push(Routes.notification);},
+            callback: () {
+              context.push(Routes.notification);
+            },
           ),
           SizedBox(width: 5),
           RecipeIconButtonContainer(
@@ -36,7 +38,7 @@ class TopChefsView extends StatelessWidget {
         ],
       ),
       body: BlocBuilder<TopChefsBloc, TopChefsState>(
-        builder:(context, state) =>   ListView(
+        builder: (context, state) => ListView(
           children: [
             Container(
               height: 285.h,
@@ -58,8 +60,7 @@ class TopChefsView extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      for (var chef in state.mostViewedChefs)
-                        Image.network(chef.image, width: 100, height: 100, fit: BoxFit.cover),
+                      for (var chef in state.mostViewedChefs) Image.network(chef.image, width: 100, height: 100, fit: BoxFit.cover),
                     ],
                   ),
                 ],
@@ -85,8 +86,7 @@ class TopChefsView extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      for (var chef in state.mostLikedChefs)
-                        Image.network(chef.image, width: 100, height: 100, fit: BoxFit.cover),
+                      for (var chef in state.mostLikedChefs) Image.network(chef.image, width: 100, height: 100, fit: BoxFit.cover),
                     ],
                   ),
                 ],
@@ -112,8 +112,7 @@ class TopChefsView extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      for (var chef in state.newChefs)
-                        Image.network(chef.image, width: 100, height: 100, fit: BoxFit.cover),
+                      for (var chef in state.newChefs) Image.network(chef.image, width: 100, height: 100, fit: BoxFit.cover),
                     ],
                   ),
                 ],
@@ -126,5 +125,3 @@ class TopChefsView extends StatelessWidget {
     );
   }
 }
-
-

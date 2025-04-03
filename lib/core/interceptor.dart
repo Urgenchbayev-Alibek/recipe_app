@@ -6,13 +6,13 @@ import 'package:recipe_app/core/secure_storage.dart';
 import 'package:recipe_app/data/repositories/auth_repository.dart';
 import 'package:recipe_app/main.dart';
 
-class AuthInterceptor extends Interceptor{
-  final Dio _dio= Dio();
+class AuthInterceptor extends Interceptor {
+  final Dio _dio = Dio();
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
     final jwt = await SecureStorage.getToken();
-    if(jwt!=null){
+    if (jwt != null) {
       options.headers['Authorization'] = "Bearer $jwt";
     }
     super.onRequest(options, handler);

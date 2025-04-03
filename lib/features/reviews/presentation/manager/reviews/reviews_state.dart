@@ -4,7 +4,6 @@ import 'package:recipe_app/data/models/recipe/review_model.dart';
 import 'package:recipe_app/data/models/recipe/reviews_recipe_model.dart';
 import 'package:recipe_app/data/models/review_model/review_comment_model.dart';
 
-
 enum ReviewsStatus { idle, loading, error }
 
 @immutable
@@ -14,12 +13,7 @@ class ReviewsState extends Equatable {
   final List<ReviewModel> reviews;
   final List<ReviewCommentModel> comments;
 
-  const ReviewsState({
-    required this.recipeModel,
-    required this.status,
-    required this.reviews,
-    required this.comments
-  });
+  const ReviewsState({required this.recipeModel, required this.status, required this.reviews, required this.comments});
 
   ReviewsState copyWith({
     ReviewsRecipeModel? recipeModel,
@@ -35,7 +29,7 @@ class ReviewsState extends Equatable {
   }
 
   factory ReviewsState.initialize() {
-    return ReviewsState(recipeModel: null, status: ReviewsStatus.loading,comments: [], reviews: []);
+    return ReviewsState(recipeModel: null, status: ReviewsStatus.loading, comments: [], reviews: []);
   }
 
   @override

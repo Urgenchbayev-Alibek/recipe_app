@@ -1,6 +1,6 @@
-class ReviewCommentUserModel{
+class ReviewCommentUserModel {
   final int id;
-  final String profilePhoto,username;
+  final String profilePhoto, username;
 
   ReviewCommentUserModel({
     required this.id,

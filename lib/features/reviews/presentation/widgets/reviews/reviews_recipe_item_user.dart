@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:recipe_app/data/models/user_in_review_model.dart';
+
 import '../../../../../data/models/recipe/user_model_in_recipe.dart';
 
 class ReviewsRecipeItemUser extends StatelessWidget {

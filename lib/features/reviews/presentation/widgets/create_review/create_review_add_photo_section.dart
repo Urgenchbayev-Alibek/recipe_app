@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/core/utils/colors.dart';
 import 'package:recipe_app/features/reviews/presentation/manager/create_review/create_review_bloc.dart';
 import 'package:recipe_app/features/reviews/presentation/manager/create_review/create_review_state.dart';
+
 class CreateReviewAddPhotoSection extends StatelessWidget {
   const CreateReviewAddPhotoSection({
     super.key,
@@ -24,9 +25,7 @@ class CreateReviewAddPhotoSection extends StatelessWidget {
                   padding: EdgeInsets.zero,
                 ),
                 color: AppColors.redPinkMain,
-                onPressed: () async => context
-                    .read<CreateReviewBloc>()
-                    .add(CreateReviewPickImage()),
+                onPressed: () async => context.read<CreateReviewBloc>().add(CreateReviewPickImage()),
                 iconSize: 18,
                 icon: Icon(Icons.add),
               ),

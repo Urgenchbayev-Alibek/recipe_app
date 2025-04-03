@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
+
 import '../../../../core/utils/colors.dart';
 import '../../../common/widgets/recipe_icon_button_container.dart';
 
@@ -30,81 +31,81 @@ class _RecipeDetailVideoState extends State<RecipeDetailVideo> {
     controller = VideoPlayerController.networkUrl(Uri.parse(widget.videoUrl));
     controller.initialize().then(
           (value) => setState(() {
-        controller.play();
-      }),
-    );
+            controller.play();
+          }),
+        );
   }
 
-  void dispose()
-  {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp
-    ]);
+  void dispose() {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     controller.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: AspectRatio(
           aspectRatio: controller.value.aspectRatio,
-          child: Stack(children: [
-            GestureDetector(
-                onTap: () {
-                  if(controller.value.isPlaying) {
-                    controller.pause();
-                  }else{
-                    controller.play();
-                  }
-                  setState(() {});
-                },
-                child: VideoPlayer(controller)),
-            Positioned(
-                bottom: 40,
-                left: 0,
-                right: 0,
-                child: SizedBox(
-                  height: 15,
-                  child: VideoProgressIndicator(controller, allowScrubbing: true),
-                )
-            ),
-            if(!controller.value.isPlaying)
-              Center(
-                child: RecipeIconButtonContainer(
-                  image: 'assets/svg/play.svg',
-                  callback: (){
-                    controller.play();
+          child: Stack(
+            children: [
+              GestureDetector(
+                  onTap: () {
+                    if (controller.value.isPlaying) {
+                      controller.pause();
+                    } else {
+                      controller.play();
+                    }
                     setState(() {});
                   },
-                  iconWidth: 30,
-                  iconHeight: 40,
-                  containerWidth: 74,
-                  containerHeight: 74,
-                  containerColor: AppColors.redPinkMain,
-                  iconColor: Colors.white,
+                  child: VideoPlayer(controller)),
+              Positioned(
+                  bottom: 40,
+                  left: 0,
+                  right: 0,
+                  child: SizedBox(
+                    height: 15,
+                    child: VideoProgressIndicator(controller, allowScrubbing: true),
+                  )),
+              if (!controller.value.isPlaying)
+                Center(
+                  child: RecipeIconButtonContainer(
+                    image: 'assets/svg/play.svg',
+                    callback: () {
+                      controller.play();
+                      setState(() {});
+                    },
+                    iconWidth: 30,
+                    iconHeight: 40,
+                    containerWidth: 74,
+                    containerHeight: 74,
+                    containerColor: AppColors.redPinkMain,
+                    iconColor: Colors.white,
+                  ),
                 ),
-              ),
-            Positioned(
-              bottom: 60,
-              left: 0,
-              right: 0,
-              child: Row(children: [
-                IconButton(
-                  onPressed: (){
-                    controller.seekTo(controller.value.position - Duration(seconds: 5));
-                  },
-                  icon: Icon(Icons.arrow_back),
+              Positioned(
+                bottom: 60,
+                left: 0,
+                right: 0,
+                child: Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        controller.seekTo(controller.value.position - Duration(seconds: 5));
+                      },
+                      icon: Icon(Icons.arrow_back),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        controller.seekTo(controller.value.position + Duration(seconds: 5));
+                      },
+                      icon: Icon(Icons.arrow_forward),
+                    ),
+                    Text(controller.value.duration.inMinutes.toString())
+                  ],
                 ),
-                IconButton(onPressed: (){
-                  controller.seekTo(controller.value.position + Duration(seconds: 5));
-                },
-                  icon: Icon(Icons.arrow_forward),
-                ),
-                Text(controller.value.duration.inMinutes.toString())
-              ],
-              ),
-            )
-          ],
+              )
+            ],
           ),
         ),
       ),

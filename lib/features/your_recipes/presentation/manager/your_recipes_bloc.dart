@@ -5,15 +5,17 @@ import '../../../../data/repositories/recipe_repository.dart';
 
 part 'your_recipes_events.dart';
 
-class YourRecipeBloc extends Bloc< YourRecipesEvent, YourRecipeState>{
-
-  YourRecipeBloc({required RecipeRepository repo}): _repo =repo, super(YourRecipeState.initial()){
+class YourRecipeBloc extends Bloc<YourRecipesEvent, YourRecipeState> {
+  YourRecipeBloc({required RecipeRepository repo})
+      : _repo = repo,
+        super(YourRecipeState.initial()) {
     on<YourRecipesLoading>(_onLoad);
     add(YourRecipesLoading());
   }
+
   final RecipeRepository _repo;
 
-  Future<void> _onLoad(YourRecipesLoading event, Emitter<YourRecipeState>emit)async{
+  Future<void> _onLoad(YourRecipesLoading event, Emitter<YourRecipeState> emit) async {
     emit(state.copyWith(
       mostViewRecipeStatus: YourRecipesStatus.loading,
       recipeStatus: YourRecipesStatus.loading,

@@ -83,15 +83,19 @@ class YourRecipesBody extends StatelessWidget {
                       width: 16,
                       height: 16,
                     ),
-                    Text(yourRecipesBodyModelModel.rating,style: TextStyle(fontSize:12,color: AppColors.redPinkMain ),),
-
+                    Text(
+                      yourRecipesBodyModelModel.rating,
+                      style: TextStyle(fontSize: 12, color: AppColors.redPinkMain),
+                    ),
                     SvgPicture.asset(
                       yourRecipesBodyModelModel.timerIcon,
                       width: 16,
                       height: 16,
                     ),
-                    Text(yourRecipesBodyModelModel.time,style: TextStyle(fontSize:12,color: AppColors.redPinkMain ),),
-
+                    Text(
+                      yourRecipesBodyModelModel.time,
+                      style: TextStyle(fontSize: 12, color: AppColors.redPinkMain),
+                    ),
                   ],
                 ),
               ],
@@ -102,6 +106,7 @@ class YourRecipesBody extends StatelessWidget {
     );
   }
 }
+
 class YourRecipesBodyModel {
   final String imagePath;
   final String title;

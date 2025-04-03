@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/data/repositories/auth_repository.dart' show AuthRepository;
 
-
 class SingUpViewModel extends ChangeNotifier {
   SingUpViewModel({required AuthRepository authRepo}) : _authRepo = authRepo;
 
@@ -25,12 +24,12 @@ class SingUpViewModel extends ChangeNotifier {
   }
 
   Future<bool> singUp() async => await _authRepo.signUp(
-      firstName: firstNameController.text,
-      lastName: lastNameController.text,
-      username: userNameController.text,
-      email: emailController.text,
-      phoneNumber: phoneNumberController.text,
-      dateOfBirth: selectedDate!,
-      password: passwordController.text,
-    );
+        firstName: firstNameController.text,
+        lastName: lastNameController.text,
+        username: userNameController.text,
+        email: emailController.text,
+        phoneNumber: phoneNumberController.text,
+        dateOfBirth: selectedDate!,
+        password: passwordController.text,
+      );
 }

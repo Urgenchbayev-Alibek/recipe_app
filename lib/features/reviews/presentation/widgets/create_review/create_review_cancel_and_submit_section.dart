@@ -6,7 +6,6 @@ import 'package:recipe_app/core/utils/colors.dart';
 import 'package:recipe_app/features/common/widgets/recipe_text_button_container.dart';
 import 'package:recipe_app/features/reviews/presentation/manager/create_review/create_review_bloc.dart';
 
-
 class CreateReviewCancelAndSubmitSection extends StatelessWidget {
   const CreateReviewCancelAndSubmitSection({
     super.key,

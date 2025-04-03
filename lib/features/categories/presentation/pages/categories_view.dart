@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:recipe_app/core/routing/routes.dart';
+
 import '../../../common/widgets/recipe_app_bar.dart';
 import '../../../common/widgets/recipe_bottom_navigation_bar.dart';
 import '../../../common/widgets/recipe_icon_button_container.dart';
@@ -25,7 +26,9 @@ class CategoriesView extends StatelessWidget {
                 image: "assets/icons/notification.svg",
                 iconWidth: 14,
                 iconHeight: 19,
-                callback: () {context.push(Routes.notification);},
+                callback: () {
+                  context.push(Routes.notification);
+                },
               ),
               SizedBox(width: 5),
               RecipeIconButtonContainer(
@@ -50,7 +53,7 @@ class CategoriesView extends StatelessWidget {
                 sliver: SliverGrid(
                   delegate: SliverChildBuilderDelegate(
                     childCount: state.categories.length,
-                        (context, index) => CategoryItem(category: state.categories[index]),
+                    (context, index) => CategoryItem(category: state.categories[index]),
                   ),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,

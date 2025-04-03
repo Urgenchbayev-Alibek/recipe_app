@@ -3,8 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/data/models/recipe/recipe_model.dart';
 import 'package:recipe_app/features/category_detail/presentation/widgets/recipe_item.dart';
 
-import '../manager/home_view_model.dart';
-
 class RecentlyAddedSection extends StatelessWidget {
   const RecentlyAddedSection({
     super.key,
@@ -32,8 +30,7 @@ class RecentlyAddedSection extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              for (var recentRecipe in recipes)
-                RecipeItem(recipe: recentRecipe),
+              for (var recentRecipe in recipes) RecipeItem(recipe: recentRecipe),
             ],
           ),
         ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 @immutable
 class RecipeAppText extends StatelessWidget {
   const RecipeAppText({
@@ -7,7 +8,7 @@ class RecipeAppText extends StatelessWidget {
     required this.color,
     required this.size,
     this.weight = FontWeight.w400,
-     this.line=1 ,
+    this.line = 1,
     this.height,
     this.font = true, // Default qiymat true
   });

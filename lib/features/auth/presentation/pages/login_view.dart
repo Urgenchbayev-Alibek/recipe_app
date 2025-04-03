@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:recipe_app/core/routing/routes.dart';
+
 import '../../../../core/l10n/app_localizations.dart';
 import '../../../../core/utils/colors.dart';
 import '../manager/login_view_model.dart';
@@ -46,7 +47,10 @@ class LoginView extends StatelessWidget {
                     controller: vm.loginController,
                   ),
                   SizedBox(height: 9),
-                  RecipePasswordFormField(controller: vm.passwordController, validator: (value) => null,),
+                  RecipePasswordFormField(
+                    controller: vm.passwordController,
+                    validator: (value) => null,
+                  ),
                 ],
               ),
             ),
