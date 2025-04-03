@@ -21,8 +21,8 @@ class RecipeTrendMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 430 * AppSizes.wRatio,
-      height: 241 * AppSizes.hRatio,
+      width: 430.w,
+      height: 241.h,
       padding: EdgeInsets.fromLTRB(36.w, 9.h, 36.w, 16.h),
       decoration: BoxDecoration(
         color: AppColors.redPinkMain,
@@ -54,9 +54,9 @@ class RecipeTrendMain extends StatelessWidget {
                         ),
                         child: Container(
                           width: 348.w,
-                          height: 49.h,
+                          height: 53.h,
                           clipBehavior: Clip.hardEdge,
-                          padding: EdgeInsets.fromLTRB(15.w, 12.h, 15.w, 2.h),
+                          padding: EdgeInsets.fromLTRB(15.w, 13.h, 15.w, 1.h),
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.vertical(

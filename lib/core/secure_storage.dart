@@ -15,7 +15,7 @@ class SecureStorage{
     if(login == null || password == null){
       return null;
     }
-    return{"login": login, "password": password};
+    return{_loginKey: login, _passwordKey: password};
   }
 
   static Future<void>deleteCredentials() async{
@@ -23,7 +23,7 @@ class SecureStorage{
     await _storage.delete(key: _passwordKey);
   }
 
-  static Future<void>saveToken(String token) async{
+  static Future<void>saveToken({required String token}) async{
     await _storage.write(key: _tokenKey, value: token);
   }
 

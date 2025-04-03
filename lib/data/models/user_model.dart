@@ -13,7 +13,7 @@ class UserModel {
   }
   );
 
-  Map<String, dynamic> toJson(UserModel model){
+  Map<String, dynamic> toJson(){
     return{
       "userName": userName,
       "fullName": "$firstName, $lastName",

@@ -13,4 +13,11 @@ class InstructionModel {
       order: json['order'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'text': text,
+      'order': order,
+    };
+  }
 }

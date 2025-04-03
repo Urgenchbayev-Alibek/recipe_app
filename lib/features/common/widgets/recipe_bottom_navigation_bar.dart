@@ -43,7 +43,7 @@ class RecipeBottomNavigationBar extends StatelessWidget {
                   ),
                   RecipeIconButton(
                     image: "assets/icons/community.svg",
-                    callback: () => context.go(Routes.community),
+                    callback: () => context.push(Routes.community),
                   ),
                   RecipeIconButton(
                     image: "assets/icons/categories.svg",
