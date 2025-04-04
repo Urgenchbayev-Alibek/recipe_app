@@ -9,11 +9,10 @@ class TrendingRecipeBloc extends Bloc<TrendingRecipeEvent, TrendingRecipesState>
 
   TrendingRecipeBloc({
     required TrendingRecipesRepository trendRepo,
-  })
-      : _trendRepo = trendRepo,
+  })  : _trendRepo = trendRepo,
         super(
-        TrendingRecipesState.initial(),
-      ) {
+          TrendingRecipesState.initial(),
+        ) {
     on<TrendingLoad>(_load);
     add(TrendingLoad());
   }

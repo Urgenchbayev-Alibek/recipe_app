@@ -1,8 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_app/data/repositories/chef_repository.dart';
 import 'package:recipe_app/features/top_chefs/presentation/manager/top_chef/top_chefs_state.dart';
-
-
 part 'top_chefs_events.dart';
 
 class TopChefsBloc extends Bloc<TopChefsEvent, TopChefsState> {
@@ -25,20 +23,20 @@ class TopChefsBloc extends Bloc<TopChefsEvent, TopChefsState> {
     );
 
     var req1 = _chefRepo.fetchMostViewedChefs().then(
-          (value) {
+      (value) {
         emit(state.copyWith(mostViewedChefs: value, mostViewedChefsStatus: TopChefsStatus.success));
       },
     );
     var req2 = _chefRepo.fetchMostLikedChefs().then(
           (value) => emit(
-        state.copyWith(mostLikedChefs: value, mostLikedChefsStatus: TopChefsStatus.success),
-      ),
-    );
+            state.copyWith(mostLikedChefs: value, mostLikedChefsStatus: TopChefsStatus.success),
+          ),
+        );
     var req3 = _chefRepo.fetchNewChefs().then(
           (value) => emit(
-        state.copyWith(newChefs: value, newChefsStatus: TopChefsStatus.success),
-      ),
-    );
+            state.copyWith(newChefs: value, newChefsStatus: TopChefsStatus.success),
+          ),
+        );
 
     await Future.wait([req1, req2, req3]);
   }

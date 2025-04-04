@@ -2,16 +2,17 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/data/models/review_model/review_user_comment_model.dart';
-import 'package:recipe_app/data/models/recipe/user_model_in_recipe.dart';
+
 import '../../../../../core/utils/colors.dart';
 
 class ReviewsCommentUserItem extends StatelessWidget {
   const ReviewsCommentUserItem({
     super.key,
-    required this.created, required this.user,
+    required this.created,
+    required this.user,
   });
 
-  final String  created;
+  final String created;
 
   final ReviewCommentUserModel user;
 
@@ -34,8 +35,7 @@ class ReviewsCommentUserItem extends StatelessWidget {
                 ),
               );
             },
-            errorWidget: (context, url, error) =>
-                Icon(Icons.person, size: 46, color: Colors.grey),
+            errorWidget: (context, url, error) => Icon(Icons.person, size: 46, color: Colors.grey),
           ),
         ),
         SizedBox(

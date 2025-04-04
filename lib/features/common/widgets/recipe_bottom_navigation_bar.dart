@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
 import '../../../core/routing/routes.dart';
 import '../../../core/utils/colors.dart';
 import 'recipe_icon_button.dart';
@@ -39,7 +40,7 @@ class RecipeBottomNavigationBar extends StatelessWidget {
                 children: [
                   RecipeIconButton(
                     image: "assets/icons/home.svg",
-                    callback: ()=> context.go(Routes.home),
+                    callback: () => context.go(Routes.home),
                   ),
                   RecipeIconButton(
                     image: "assets/icons/community.svg",

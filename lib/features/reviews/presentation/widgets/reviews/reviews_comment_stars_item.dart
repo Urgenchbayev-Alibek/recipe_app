@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../../core/utils/colors.dart';
 
-
 class ReviewsCommentStarsItem extends StatelessWidget {
   const ReviewsCommentStarsItem({
     super.key,

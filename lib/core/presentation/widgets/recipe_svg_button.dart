@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class RecipeSvgButton extends StatelessWidget {
@@ -12,16 +11,16 @@ class RecipeSvgButton extends StatelessWidget {
     required this.height,
     this.color = Colors.white,
     required this.callback,
-    this.blend=true,
-    this.sizeHeight=27,
-    this.sizeWidth=30,
+    this.blend = true,
+    this.sizeHeight = 27,
+    this.sizeWidth = 30,
   });
 
   final double width, height;
   final Color color;
   final VoidCallback callback;
   final bool blend;
-  final double sizeHeight,sizeWidth;
+  final double sizeHeight, sizeWidth;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +38,7 @@ class RecipeSvgButton extends StatelessWidget {
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
               color,
-              blend ? BlendMode.srcIn :BlendMode.srcOut,
+              blend ? BlendMode.srcIn : BlendMode.srcOut,
             ),
           ),
         ),

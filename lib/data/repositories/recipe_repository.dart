@@ -91,18 +91,18 @@ class RecipeRepository {
     comments = rawComments.map((e) => ReviewCommentModel.fromJson(e)).toList();
     return comments;
   }
-  
-  Future<TrendingRecipeModel> fetchTrendingRecipeMain() async{
-    var rawRecipe= await client.genericGetRequest<dynamic>('/recipes/trending-recipe');
-    trendingRecipeMain =rawRecipe.map((e)=>TrendingRecipeModel.fromJson(e));
+
+  Future<TrendingRecipeModel> fetchTrendingRecipeMain() async {
+    var rawRecipe = await client.genericGetRequest<dynamic>('/recipes/trending-recipe');
+    trendingRecipeMain = rawRecipe.map((e) => TrendingRecipeModel.fromJson(e));
     return trendingRecipeMain!;
   }
 
-  // Future<TrendingRecipeModel> fetchTrendingRecipes() async {
-  //   var rawRecipes = await client.genericGetRequest<List<dynamic>>(
-  //     '/recipes/trending-recipes/list',
-  //   );
-  //   trendingRecipeMain = rawRecipes.map((a)=>TrendingRecipeModel.fromJson(a)).toList();
-  //   return trendingRecipeMain!;
-  // }
+// Future<TrendingRecipeModel> fetchTrendingRecipes() async {
+//   var rawRecipes = await client.genericGetRequest<List<dynamic>>(
+//     '/recipes/trending-recipes/list',
+//   );
+//   trendingRecipeMain = rawRecipes.map((a)=>TrendingRecipeModel.fromJson(a)).toList();
+//   return trendingRecipeMain!;
+// }
 }

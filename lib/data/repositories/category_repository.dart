@@ -1,7 +1,7 @@
-
 import 'package:recipe_app/core/client.dart';
 
 import '../models/category_model.dart';
+
 class CategoryRepository {
   CategoryRepository({required this.client});
 

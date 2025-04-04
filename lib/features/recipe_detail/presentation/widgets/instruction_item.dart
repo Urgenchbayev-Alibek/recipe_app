@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/core/utils/colors.dart';
 import 'package:recipe_app/data/models/recipe/instructions_model.dart';
 
-
 class InstructionItem extends StatefulWidget {
   const InstructionItem({
     super.key,

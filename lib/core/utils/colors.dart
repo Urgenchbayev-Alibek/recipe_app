@@ -5,13 +5,12 @@ class AppColors {
   static const beigeColor = Color(0xFF1C0F0D);
   static const pinkSub = Color(0xFFEC888D);
   static const pink = Color(0xFFFFC6C9);
+  static const brownish = Color(0xFF8D6A6B);
 
   static const Color textColor = Color(0xFF3E2823);
 
   static const Color milkWhite = Color(0xFFFFFDF9);
   static const  brownish = Color(0xFF8d6a6b);
-
-
 
   static const whiteColor = Color(0xffFFFFFF);
   static const backgroundColor = Color(0xff1C0F0D);
@@ -29,6 +28,4 @@ class AppColors {
     onSurface: Colors.white,
 
   );
-
-
 }

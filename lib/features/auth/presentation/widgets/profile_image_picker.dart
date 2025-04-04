@@ -1,7 +1,9 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
+
 import '../../../../core/utils/colors.dart';
 
 class ProfileImagePicker extends StatelessWidget {
@@ -28,12 +30,10 @@ class ProfileImagePicker extends StatelessWidget {
                 child: Center(
                   child: SvgPicture.asset(
                     'assets/svg/human.svg',
-
                     width: 37,
                     height: 55,
                     fit: BoxFit.cover,
-                    colorFilter: ColorFilter.mode(
-                        AppColors.redPinkMain, BlendMode.srcIn),
+                    colorFilter: ColorFilter.mode(AppColors.redPinkMain, BlendMode.srcIn),
                   ),
                 ),
               ),
@@ -44,8 +44,7 @@ class ProfileImagePicker extends StatelessWidget {
                 onTap: () async {
                   File? pickedImage;
                   final imagePicker = ImagePicker();
-                  final image =
-                  await imagePicker.pickImage(source: ImageSource.gallery);
+                  final image = await imagePicker.pickImage(source: ImageSource.gallery);
                   if (image != null) {
                     pickedImage = File(image.path);
                   }

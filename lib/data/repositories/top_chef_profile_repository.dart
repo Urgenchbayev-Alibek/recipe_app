@@ -1,7 +1,7 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'package:recipe_app/data/models/top_chef_profile_model.dart';
-import '../models/top_chef_model.dart';
 
 class TopChefRepository {
   final String baseUrl = "http://localhost:8888/api/chefs";

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -20,13 +19,9 @@ class YourRecipeAppbar extends StatelessWidget implements PreferredSizeWidget {
       title: Center(
         child: Text(
           'Your Recipes',
-          style: TextStyle(
-              color: AppColors.redPinkMain,
-              fontSize:18,
-              fontWeight: FontWeight.w500),
+          style: TextStyle(color: AppColors.redPinkMain, fontSize: 18, fontWeight: FontWeight.w500),
         ),
       ),
-
     );
   }
 

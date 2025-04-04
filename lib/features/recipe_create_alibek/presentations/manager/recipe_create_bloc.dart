@@ -1,8 +1,17 @@
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:recipe_app/features/recipe_create_alibek/presentations/manager/recipe_create_state.dart';
-//
-// class RecipeCreateBloc extends Bloc<RecipeCreateEvents, RecipeCreateState>{
-//   RecipeCreateBloc(): super(RecipeCreateState.initial()){
-//     on<RecipeCreateSubmit>(_onSubmit)
-//   }
-// }
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recipe_app/features/recipe_create_alibek/presentations/manager/recipe_create_state.dart';
+
+part 'recipe_create_event.dart';
+
+class RecipeCreateBloc extends Bloc<RecipeCreateEvent, RecipeCreateState> {
+  RecipeCreateBloc() : super(RecipeCreateState.initial()) {
+    on<RecipeCreateSubmit>(_onSubmit);
+    on<RecipeCreateAddIngredient>(_onAddIngredient);
+  }
+
+  Future<void> _onSubmit(RecipeCreateSubmit event, Emitter<RecipeCreateState> emit) async {}
+
+  Future<void> _onAddIngredient(RecipeCreateAddIngredient event, Emitter<RecipeCreateState> emit) async {
+    emit(state.copyWith(ingredientsCount: state.ingredientsCount + 1));
+  }
+}

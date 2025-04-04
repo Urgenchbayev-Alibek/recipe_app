@@ -75,13 +75,19 @@ class YourRecipesBottom extends StatelessWidget {
                       width: 16,
                       height: 16,
                     ),
-                    Text(foodCardModel.rating,style: TextStyle(fontSize:12,color: AppColors.redPinkMain ),),
+                    Text(
+                      foodCardModel.rating,
+                      style: TextStyle(fontSize: 12, color: AppColors.redPinkMain),
+                    ),
                     SvgPicture.asset(
                       foodCardModel.timerIcon,
                       width: 16,
                       height: 16,
                     ),
-                    Text(foodCardModel.time,style: TextStyle(fontSize:12,color: AppColors.redPinkMain ),),
+                    Text(
+                      foodCardModel.time,
+                      style: TextStyle(fontSize: 12, color: AppColors.redPinkMain),
+                    ),
                   ],
                 ),
               ],
@@ -92,6 +98,7 @@ class YourRecipesBottom extends StatelessWidget {
     );
   }
 }
+
 class YourRecipesBottomModel {
   final String imagePath;
   final String title;

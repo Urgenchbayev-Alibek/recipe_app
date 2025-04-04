@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 import '../../../core/utils/colors.dart';
 
 class RecipeRating extends StatelessWidget {
@@ -13,8 +14,6 @@ class RecipeRating extends StatelessWidget {
 
   final Color textColor, iconColor;
   final bool swap;
-
-
 
   final num rating;
 

@@ -1,11 +1,11 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../data/models/category_model.dart';
 import '../../../../data/models/recipe/recipe_model.dart';
 import '../../../../data/repositories/category_repository.dart';
 import '../../../../data/repositories/recipe_repository.dart';
-
 
 class CategoryDetailEvent {}
 
@@ -35,23 +35,23 @@ class CategoryDetailState extends Equatable {
   @override
   List<Object?> get props => [categories, recipes, right, status, selected];
 
-  // set selected(CategoryModel model) {
-  //   if (categories.indexOf(_selected) < categories.indexOf(model)) {
-  //     right = true;
-  //   } else {
-  //     right = false;
-  //   }
-  //   notifyListeners();
-  //
-  //   _selected = model;
-  //   notifyListeners();
-  //   fetchRecipesByCategory(_selected.id);
-  // }
-  //
-  // Future<void> fetchRecipesByCategory(int categoryId) async {
-  //   recipes = await _recipeRepo.fetchRecipesByCategory(categoryId);
-  //   notifyListeners();
-  // }
+// set selected(CategoryModel model) {
+//   if (categories.indexOf(_selected) < categories.indexOf(model)) {
+//     right = true;
+//   } else {
+//     right = false;
+//   }
+//   notifyListeners();
+//
+//   _selected = model;
+//   notifyListeners();
+//   fetchRecipesByCategory(_selected.id);
+// }
+//
+// Future<void> fetchRecipesByCategory(int categoryId) async {
+//   recipes = await _recipeRepo.fetchRecipesByCategory(categoryId);
+//   notifyListeners();
+// }
 }
 
 class CategoryDetailBloc extends Bloc<CategoryDetailEvent, CategoryDetailState> {
@@ -89,7 +89,7 @@ class CategoryDetailBloc extends Bloc<CategoryDetailEvent, CategoryDetailState> 
             recipes: await _recipeRepo.fetchRecipesByCategory(selectedId),
             right: true,
             status: CategoryDetailStatus.idle,
-            selected: categories.singleWhere((category)=>category.id == selectedId),
+            selected: categories.singleWhere((category) => category.id == selectedId),
           ),
         );
       },
@@ -101,5 +101,3 @@ class CategoryDetailBloc extends Bloc<CategoryDetailEvent, CategoryDetailState> 
   final CategoryRepository _catRepo;
   final RecipeRepository _recipeRepo;
 }
-
-

@@ -2,7 +2,7 @@ class UserModel {
   final String firstName, lastName, userName, email, password, phoneNumber;
   final DateTime dateOfBirth;
 
-  UserModel( {
+  UserModel({
     required this.firstName,
     required this.lastName,
     required this.userName,
@@ -10,11 +10,10 @@ class UserModel {
     required this.password,
     required this.dateOfBirth,
     required this.phoneNumber,
-  }
-  );
+  });
 
-  Map<String, dynamic> toJson(){
-    return{
+  Map<String, dynamic> toJson() {
+    return {
       "userName": userName,
       "fullName": "$firstName, $lastName",
       "email": email,

@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app/core/routing/routes.dart';
 import 'package:recipe_app/data/repositories/onboarding_repository.dart';
+import 'package:recipe_app/data/repositories/recipe_create_repository.dart';
 import 'package:recipe_app/features/community/presentation/manager/community_cubit.dart';
 import 'package:recipe_app/features/community/presentation/pages/community_view.dart';
 import 'package:recipe_app/features/notification/presentation/manager/notifications_bloc.dart';
@@ -16,7 +17,6 @@ import 'package:recipe_app/features/reviews/presentation/pages/create_review_vie
 import 'package:recipe_app/features/reviews/presentation/pages/review_view.dart';
 import 'package:recipe_app/features/top_chefs/presentation/pages/top_chefs_view.dart';
 import 'package:recipe_app/features/your_recipes/presentation/manager/your_recipes_bloc.dart';
-// import 'package:recipe_app/features/your_recipes/presentation/pages/your_recipes_view.dart';
 import 'package:recipe_app/main.dart';
 
 import '../../data/repositories/auth_repository.dart';
@@ -35,6 +35,7 @@ import '../../features/notification/presentation/pages/notification_view.dart';
 import '../../features/onboarding/presentation/managers/onboarding_view_model.dart';
 import '../../features/onboarding/presentation/pages/onboarding_view.dart';
 import '../../features/onboarding/presentation/pages/welcome_view.dart';
+import '../../features/recipe_create_alibek/presentations/manager/recipe_create_bloc.dart';
 import '../../features/recipe_create_gulnoza/manager/recipe_create_bloc.dart';
 import '../../features/recipe_create_gulnoza/pages/recipe_create_view.dart';
 import '../../features/recipe_detail/presentation/manager/recipe_detail_view_model.dart';
@@ -47,18 +48,21 @@ import '../client.dart';
 
 final router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.recipeCreate,
+  initialLocation: Routes.topChefsProfile,
   routes: [
     GoRoute(
       path: Routes.home,
       pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
         child: BlocProvider(create: (context) => HomeBloc(catRepo: context.read(), recipeRepo: context.read(), chefRepo: context.read()), child: HomeView()),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          return SlideTransition(position: Tween<Offset>(begin: const Offset(1.0, 0.0), end: Offset.zero).animate(animation), child: child);
+          return SlideTransition(
+            position: Tween<Offset>(begin: const Offset(1.0, 0.0), end: Offset.zero).animate(animation),
+            child: child,
+          );
         },
       ),
     ),
-
     // GoRoute(
     //   path: Routes.home,
     //   pageBuilder: (context, state) => CustomTransitionPage(
@@ -85,42 +89,53 @@ final router = GoRouter(
         child: RecipeCreateView(),
       ),
     ),
+
     GoRoute(
       path: Routes.welcome,
       pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
         child: WelcomeView(),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           return SlideTransition(
             position: Tween<Offset>(begin: const Offset(1.0, 0.0), end: Offset.zero).animate(animation),
-            child: ScaleTransition(scale: Tween<double>(begin: 0.8, end: 1.0).animate(animation), child: child),
+            child: ScaleTransition(
+              scale: Tween<double>(begin: 0.8, end: 1.0).animate(animation),
+              child: child,
+            ),
           );
         },
       ),
     ),
-
     GoRoute(
       path: Routes.login,
       pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
         child: LoginView(vm: LoginViewModel(repo: AuthRepository(client: ApiClient()))),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          return FadeTransition(opacity: animation, child: child);
+          return FadeTransition(
+            opacity: animation,
+            child: child,
+          );
         },
       ),
     ),
-
     GoRoute(
       path: Routes.signup,
       pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
         child: SignUpView(),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          return RotationTransition(turns: Tween<double>(begin: 0.8, end: 1.0).animate(animation), child: child);
+          return RotationTransition(
+            turns: Tween<double>(begin: 0.8, end: 1.0).animate(animation),
+            child: child,
+          );
         },
       ),
     ),
-
     GoRoute(
       path: Routes.completeProfile,
       pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
         child: const CompleteProfileView(),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           return RotationTransition(
@@ -130,10 +145,10 @@ final router = GoRouter(
         },
       ),
     ),
-
     GoRoute(
       path: Routes.onboarding,
       pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
         child: OnboardingView(
           vm: OnboardingViewModel(
             repo: OnboardingRepository(
@@ -161,6 +176,7 @@ final router = GoRouter(
     GoRoute(
       path: Routes.community,
       pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
         child: BlocProvider(
           create: (context) => CommunityCubit(recipeRepo: context.read()),
           child: CommunityView(),
@@ -179,6 +195,7 @@ final router = GoRouter(
     GoRoute(
       path: Routes.categories,
       pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
         child: BlocProvider(
           create: (context) => CategoriesBloc(catRepo: context.read()),
           child: CategoriesView(),
@@ -191,10 +208,10 @@ final router = GoRouter(
         },
       ),
     ),
-
     GoRoute(
       path: Routes.categoryDetail,
       pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
         child: BlocProvider(
           create: (context) => CategoryDetailBloc(
             catRepo: context.read(),
@@ -211,10 +228,10 @@ final router = GoRouter(
         },
       ),
     ),
-
     GoRoute(
       path: Routes.recipeDetail,
       pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
         child: ChangeNotifierProvider(
           create: (context) => RecipeDetailViewModel(
             recipeRepo: context.read(),
@@ -233,10 +250,10 @@ final router = GoRouter(
         },
       ),
     ),
-
     GoRoute(
       path: Routes.reviews,
       pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
         child: BlocProvider(
           create: (context) => ReviewsBloc(
             recipeRepo: context.read(),
@@ -255,10 +272,10 @@ final router = GoRouter(
         },
       ),
     ),
-
     GoRoute(
       path: Routes.createReview,
       pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
         child: BlocProvider(
           create: (context) => CreateReviewBloc(
             recipeRepo: context.read(),
@@ -279,10 +296,10 @@ final router = GoRouter(
         },
       ),
     ),
-
     GoRoute(
       path: Routes.topChefs,
       pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
         child: BlocProvider(
           create: (context) => TopChefsBloc(chefRepo: context.read()),
           child: TopChefsView(),
@@ -298,10 +315,10 @@ final router = GoRouter(
         },
       ),
     ),
-
     GoRoute(
       path: Routes.trendingRecipe,
       pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
         child: BlocProvider(
           create: (context) => TrendingRecipeBloc(trendRepo: context.read()),
           child: TrendingRecipeView(),
@@ -317,10 +334,10 @@ final router = GoRouter(
         },
       ),
     ),
-
     GoRoute(
       path: Routes.notification,
       pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
         child: BlocProvider(
           create: (context) => NotificationsBloc(
             repo: NotificationsRepository(client: ApiClient()),
@@ -338,10 +355,10 @@ final router = GoRouter(
         },
       ),
     ),
-
     GoRoute(
       path: Routes.yourRecipes,
       pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
         child: BlocProvider(
           create: (context) => YourRecipeBloc(repo: context.read()),
           child: YourRecipeView(),
@@ -357,8 +374,16 @@ final router = GoRouter(
         },
       ),
     ),
-
-    // GoRoute(path: Routes.recipeCreate, builder: (context, state) => RecipeCreateView())
+    // GoRoute(
+    //   path: Routes.recipeCreate,
+    //   builder: (context, state) => BlocProvider(
+    //     create: (context) => RecipeCreateBloc(
+    //       recipeCreateRepo: RecipeCreateRepository(
+    //         client: context.read(),
+    //       ),
+    //     ),
+    //   ),
+    // ),
     // GoRoute(
     //   path: Routes.following,
     //   builder: (context, state) => BlocProvider(

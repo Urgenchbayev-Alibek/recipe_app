@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import '../../../../data/models/recipe/recipe_model.dart';
 
 enum TrendingStatus { idle, load, error, success }

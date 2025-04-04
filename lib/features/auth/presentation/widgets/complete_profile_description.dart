@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class CompleteProfileDescription extends StatelessWidget {
   const CompleteProfileDescription({
     super.key,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+
 import '../../../../core/routing/routes.dart';
 import '../../../../data/models/recipe/recipe_model.dart';
 import '../../../common/widgets/recipe_icon_button_container.dart';
@@ -18,7 +19,7 @@ class RecipeItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ()=>context.push(Routes.getRecipeDetail(recipe.id)),
+      onTap: () => context.push(Routes.getRecipeDetail(recipe.id)),
       child: Center(
         child: SizedBox(
           width: 169.w,

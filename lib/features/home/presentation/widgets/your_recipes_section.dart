@@ -37,8 +37,7 @@ class YourRecipesSection extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              for (var recipe in recipes)
-                YourRecipeItem(recipe: recipe),
+              for (var recipe in recipes) YourRecipeItem(recipe: recipe),
             ],
           ),
         ],

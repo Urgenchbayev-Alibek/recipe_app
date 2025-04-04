@@ -27,5 +27,4 @@ class TrendingRecipeModel {
       rating: json['rating'],
     );
   }
-
 }

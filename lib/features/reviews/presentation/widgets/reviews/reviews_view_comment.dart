@@ -44,12 +44,8 @@ class ReviewsViewComment extends StatelessWidget {
               onPressed: () {},
               child: Text(
                 "See All",
-                style: TextStyle(
-                    decoration: TextDecoration.underline,
-                    decorationColor: AppColors.redPinkMain,
-                    decorationThickness: 1.5,
-                    decorationStyle: TextDecorationStyle.solid
-                ),
+                style:
+                    TextStyle(decoration: TextDecoration.underline, decorationColor: AppColors.redPinkMain, decorationThickness: 1.5, decorationStyle: TextDecorationStyle.solid),
               ),
             )
           ],

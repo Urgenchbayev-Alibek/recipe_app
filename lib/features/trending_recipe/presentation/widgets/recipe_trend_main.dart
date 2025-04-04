@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+
 import '../../../../core/presentation/widgets/recipe_app_text.dart';
 import '../../../../core/presentation/widgets/recipe_image_with_like.dart';
 import '../../../../core/routing/routes.dart';
-import '../../../../core/sizes.dart';
 import '../../../../core/utils/colors.dart';
 import '../../../../data/models/recipe/recipe_model.dart';
 import '../../../common/widgets/recipe_rating.dart';

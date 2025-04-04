@@ -11,7 +11,7 @@ import 'exceptions/auth_exception.dart';
 class ApiClient {
   ApiClient() {
     dio = Dio(
-      BaseOptions(baseUrl: 'http://0.0.0.0:8888/api/v1', validateStatus: (status) => true),
+      BaseOptions(baseUrl: 'http://172.15.232.3:8888/api/v1', validateStatus: (status) => true),
     );
     dio.interceptors.add(AuthInterceptor());
   }
@@ -144,7 +144,6 @@ class ApiClient {
     Map<String, dynamic> data = response.data;
     return data;
   }
-
 
   Future<List<Map<String, dynamic>>> fetchRecipes() async {
     var responseRecipe = await dio.get('/recipes/list');
