@@ -54,7 +54,9 @@ class RecipeBottomNavigationBar extends StatelessWidget {
                   ),
                   RecipeIconButton(
                     image: "assets/icons/profile.svg",
-                    callback: () {},
+                    callback: () {
+                      context.push(Routes.getChefsProfile(4));
+                    },
                   ),
                 ],
               ),

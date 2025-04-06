@@ -2,7 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_app/features/recipe_create_gulnoza/manager/recipe_create_state.dart';
 
 part 'recipe_create_events.dart';
-
 class RecipeCreateBloc extends Bloc<RecipeCreateEvent, RecipeCreateState> {
   RecipeCreateBloc() : super(RecipeCreateState.initial()) {
     on<RecipeCreateSubmit>(_onSubmit);

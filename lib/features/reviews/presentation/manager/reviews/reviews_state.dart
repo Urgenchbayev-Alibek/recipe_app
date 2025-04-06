@@ -11,7 +11,7 @@ class ReviewsState extends Equatable {
   final ReviewsStatus status;
   final ReviewsRecipeModel? recipeModel;
   final List<ReviewModel> reviews;
-  final List<ReviewCommentModel> comments;
+  final List<ReviewCommentModel>? comments;
 
   const ReviewsState({required this.recipeModel, required this.status, required this.reviews, required this.comments});
 

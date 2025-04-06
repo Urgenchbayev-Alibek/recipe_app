@@ -55,10 +55,10 @@ class ReviewsView extends StatelessWidget {
                   Expanded(
                     child: ListView.separated(
                       padding: EdgeInsets.symmetric(horizontal: 37.w),
-                      itemCount: state.comments.length,
+                      itemCount: state.comments!.length,
                       separatorBuilder: (context, index) => SizedBox(height: 11),
                       itemBuilder: (context, index) => ReviewsViewComment(
-                        comment: state.comments[index],
+                        comment: state.comments![index],
                       ),
                     ),
                   )

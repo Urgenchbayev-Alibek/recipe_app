@@ -1,5 +1,3 @@
-import 'dart:ui';
-import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app/core/routing/routes.dart';
 import 'package:recipe_app/data/repositories/onboarding_repository.dart';
-import 'package:recipe_app/data/repositories/recipe_create_repository.dart';
 import 'package:recipe_app/features/community/presentation/manager/community_cubit.dart';
 import 'package:recipe_app/features/community/presentation/pages/community_view.dart';
 import 'package:recipe_app/features/notification/presentation/manager/notifications_bloc.dart';
@@ -18,9 +15,10 @@ import 'package:recipe_app/features/reviews/presentation/pages/review_view.dart'
 import 'package:recipe_app/features/top_chefs/presentation/pages/top_chefs_view.dart';
 import 'package:recipe_app/features/your_recipes/presentation/manager/your_recipes_bloc.dart';
 import 'package:recipe_app/main.dart';
-
 import '../../data/repositories/auth_repository.dart';
 import '../../data/repositories/notification_repository.dart';
+import '../../features/Profile/presentation/manager/profile_bloc.dart';
+import '../../features/Profile/presentation/pages/Profile_view.dart';
 import '../../features/auth/presentation/manager/login_view_model.dart';
 import '../../features/auth/presentation/pages/complete_profile_view.dart';
 import '../../features/auth/presentation/pages/login_view.dart';
@@ -29,18 +27,20 @@ import '../../features/categories/presentation/manager/categories_cubit.dart';
 import '../../features/categories/presentation/pages/categories_view.dart';
 import '../../features/category_detail/presentation/manager/category_detail_view_model.dart';
 import '../../features/category_detail/presentation/pages/category_detail_view.dart';
+import '../../features/following/manager/following_event.dart';
+import '../../features/following/pages/following_view.dart';
 import '../../features/home/presentation/manager/home_view_model.dart';
 import '../../features/home/presentation/pages/home_view.dart';
 import '../../features/notification/presentation/pages/notification_view.dart';
 import '../../features/onboarding/presentation/managers/onboarding_view_model.dart';
 import '../../features/onboarding/presentation/pages/onboarding_view.dart';
 import '../../features/onboarding/presentation/pages/welcome_view.dart';
-import '../../features/recipe_create_alibek/presentations/manager/recipe_create_bloc.dart';
 import '../../features/recipe_create_gulnoza/manager/recipe_create_bloc.dart';
-import '../../features/recipe_create_gulnoza/pages/recipe_create_view.dart';
 import '../../features/recipe_detail/presentation/manager/recipe_detail_view_model.dart';
 import '../../features/recipe_detail/presentation/pages/recipe_detail_view.dart';
 import '../../features/top_chefs/presentation/manager/top_chef/top_chefs_bloc.dart';
+import '../../features/top_chefs/presentation/manager/top_chef_profile/top_chefs_profile_bloc.dart';
+import '../../features/top_chefs/presentation/pages/top_chef_profile_view.dart';
 import '../../features/trending_recipe/presentation/manager/trending_recipe_bloc.dart';
 import '../../features/trending_recipe/presentation/pages/trending_recipe_view.dart';
 import '../../features/your_recipes/presentation/pages/your_recipe_view.dart';
@@ -48,7 +48,7 @@ import '../client.dart';
 
 final router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.topChefsProfile,
+  initialLocation: Routes.getFollow(1),
   routes: [
     GoRoute(
       path: Routes.home,
@@ -63,33 +63,6 @@ final router = GoRouter(
         },
       ),
     ),
-    // GoRoute(
-    //   path: Routes.home,
-    //   pageBuilder: (context, state) => CustomTransitionPage(
-    //     transitionDuration: Duration(seconds: 5),
-    //     child: BlocProvider(
-    //       create: (context) => HomeBloc(
-    //         catRepo: context.read(),
-    //         recipeRepo: context.read(),
-    //         chefRepo: context.read(),
-    //       ),
-    //       child: HomeView(),
-    //     ),
-    //     transitionsBuilder: (context, animation, secondaryAnimation, child) => SlideTransition(
-    //       position: Tween<Offset>(begin: Offset(1, 0), end: Offset(0, 0))
-    //           .animate(animation),
-    //       child: child,
-    //     ),
-    //   ),
-    // ),
-    GoRoute(
-      path: Routes.recipeCreate,
-      builder: (context, state) => BlocProvider(
-        create: (context) => RecipeCreateBloc(),
-        child: RecipeCreateView(),
-      ),
-    ),
-
     GoRoute(
       path: Routes.welcome,
       pageBuilder: (context, state) => CustomTransitionPage(
@@ -176,7 +149,7 @@ final router = GoRouter(
     GoRoute(
       path: Routes.community,
       pageBuilder: (context, state) => CustomTransitionPage(
-        transitionDuration: Duration(seconds: 2),
+        transitionDuration: Duration(milliseconds: 200),
         child: BlocProvider(
           create: (context) => CommunityCubit(recipeRepo: context.read()),
           child: CommunityView(),
@@ -195,7 +168,7 @@ final router = GoRouter(
     GoRoute(
       path: Routes.categories,
       pageBuilder: (context, state) => CustomTransitionPage(
-        transitionDuration: Duration(seconds: 2),
+        transitionDuration: Duration(milliseconds: 200),
         child: BlocProvider(
           create: (context) => CategoriesBloc(catRepo: context.read()),
           child: CategoriesView(),
@@ -211,7 +184,7 @@ final router = GoRouter(
     GoRoute(
       path: Routes.categoryDetail,
       pageBuilder: (context, state) => CustomTransitionPage(
-        transitionDuration: Duration(seconds: 2),
+        transitionDuration: Duration(milliseconds: 200),
         child: BlocProvider(
           create: (context) => CategoryDetailBloc(
             catRepo: context.read(),
@@ -231,7 +204,7 @@ final router = GoRouter(
     GoRoute(
       path: Routes.recipeDetail,
       pageBuilder: (context, state) => CustomTransitionPage(
-        transitionDuration: Duration(seconds: 2),
+        transitionDuration: Duration(milliseconds: 200),
         child: ChangeNotifierProvider(
           create: (context) => RecipeDetailViewModel(
             recipeRepo: context.read(),
@@ -299,7 +272,7 @@ final router = GoRouter(
     GoRoute(
       path: Routes.topChefs,
       pageBuilder: (context, state) => CustomTransitionPage(
-        transitionDuration: Duration(seconds: 2),
+        transitionDuration: Duration(milliseconds: 200),
         child: BlocProvider(
           create: (context) => TopChefsBloc(chefRepo: context.read()),
           child: TopChefsView(),
@@ -318,7 +291,7 @@ final router = GoRouter(
     GoRoute(
       path: Routes.trendingRecipe,
       pageBuilder: (context, state) => CustomTransitionPage(
-        transitionDuration: Duration(seconds: 2),
+        transitionDuration: Duration(microseconds: 300),
         child: BlocProvider(
           create: (context) => TrendingRecipeBloc(trendRepo: context.read()),
           child: TrendingRecipeView(),
@@ -332,6 +305,28 @@ final router = GoRouter(
             child: child,
           );
         },
+      ),
+    ),
+    GoRoute(
+      path: Routes.profile,
+      builder: (context, state) => BlocProvider(
+        create: (context) => ProfileBloc(
+          userId: int.parse(state.pathParameters['userId']!),
+          repo: context.read(),
+        ),
+        child: ProfileView(),
+      ),
+    ),
+    GoRoute(
+      path: Routes.chefsProfile,
+      builder: (context, state) => BlocProvider(
+        create: (context) {
+          return TopChefsProfileBloc(
+            userRepo: context.read(),
+            userId: int.parse(state.pathParameters['UserId']!),
+          );
+        },
+        child: TopChefsProfileView(),
       ),
     ),
     GoRoute(
@@ -374,26 +369,24 @@ final router = GoRouter(
         },
       ),
     ),
-    // GoRoute(
-    //   path: Routes.recipeCreate,
-    //   builder: (context, state) => BlocProvider(
-    //     create: (context) => RecipeCreateBloc(
-    //       recipeCreateRepo: RecipeCreateRepository(
-    //         client: context.read(),
-    //       ),
-    //     ),
-    //   ),
-    // ),
-    // GoRoute(
-    //   path: Routes.following,
-    //   builder: (context, state) => BlocProvider(
-    //     create: (context) => FollowingBloc(
-    //       repository: FollowingRepository(
-    //         client: ApiClient(),
-    //       ),
-    //     ),
-    //     child: FollowingView(),
-    //   ),
-    // ),
+    GoRoute(
+      path: Routes.recipeCreate,
+      builder: (context, state) => BlocProvider(
+        create: (context) => RecipeCreateBloc(),
+      ),
+    ),
+    GoRoute(
+      path: Routes.follow,
+      builder: (context, state) => BlocProvider(
+        create: (context) => FollowingBloc(
+          repo: context.read(),
+        )..add(
+          FollowLoad(
+            id: int.parse(state.pathParameters['id']!),
+          ),
+        ),
+        child: FollowingView(),
+      ),
+    ),
   ],
 );
