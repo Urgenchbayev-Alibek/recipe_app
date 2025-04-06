@@ -17,8 +17,8 @@ class Routes {
   static const String chefsProfile='/chefs_profile/:UserId';
   static const String trendingRecipe = '/trending-recipe';
   static const String notification = '/notifications/list';
-  static const String following = '/notifications/list';
   static const String yourRecipes = '/recipes/my-recipes';
+  static const String follow='/follow/:id';
 
   static const String recipeCreate = 'recipe-create';
 

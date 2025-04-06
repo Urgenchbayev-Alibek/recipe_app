@@ -12,11 +12,11 @@ class RecipeImageWithLike<T> extends StatefulWidget {
     this.width,
     this.height,
     this.onPress = false,
-    this.shadow = true, // Default qiymat shadow=true bo‘ldi
+    this.shadow = true,
   });
 
   final double? width, height;
-  final bool shadow; // Nullable emas, default qiymatga ega
+  final bool shadow;
   final T recipe;
   bool onPress;
   final String Function(T) getPhotoUrl;

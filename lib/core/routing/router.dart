@@ -27,6 +27,8 @@ import '../../features/categories/presentation/manager/categories_cubit.dart';
 import '../../features/categories/presentation/pages/categories_view.dart';
 import '../../features/category_detail/presentation/manager/category_detail_view_model.dart';
 import '../../features/category_detail/presentation/pages/category_detail_view.dart';
+import '../../features/following/manager/following_event.dart';
+import '../../features/following/pages/following_view.dart';
 import '../../features/home/presentation/manager/home_view_model.dart';
 import '../../features/home/presentation/pages/home_view.dart';
 import '../../features/notification/presentation/pages/notification_view.dart';
@@ -46,297 +48,275 @@ import '../client.dart';
 
 final router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.getChefsProfile(4),
+  initialLocation: Routes.getFollow(1),
   routes: [
     GoRoute(
       path: Routes.home,
-      pageBuilder: (context, state) =>
-          CustomTransitionPage(
-            transitionDuration: Duration(seconds: 2),
-            child: BlocProvider(create: (context) => HomeBloc(catRepo: context.read(), recipeRepo: context.read(), chefRepo: context.read()), child: HomeView()),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              return SlideTransition(
-                position: Tween<Offset>(begin: const Offset(1.0, 0.0), end: Offset.zero).animate(animation),
-                child: child,
-              );
-            },
-          ),
+      pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
+        child: BlocProvider(create: (context) => HomeBloc(catRepo: context.read(), recipeRepo: context.read(), chefRepo: context.read()), child: HomeView()),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return SlideTransition(
+            position: Tween<Offset>(begin: const Offset(1.0, 0.0), end: Offset.zero).animate(animation),
+            child: child,
+          );
+        },
+      ),
     ),
     GoRoute(
       path: Routes.welcome,
-      pageBuilder: (context, state) =>
-          CustomTransitionPage(
-            transitionDuration: Duration(seconds: 2),
-            child: WelcomeView(),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              return SlideTransition(
-                position: Tween<Offset>(begin: const Offset(1.0, 0.0), end: Offset.zero).animate(animation),
-                child: ScaleTransition(
-                  scale: Tween<double>(begin: 0.8, end: 1.0).animate(animation),
-                  child: child,
-                ),
-              );
-            },
-          ),
+      pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
+        child: WelcomeView(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return SlideTransition(
+            position: Tween<Offset>(begin: const Offset(1.0, 0.0), end: Offset.zero).animate(animation),
+            child: ScaleTransition(
+              scale: Tween<double>(begin: 0.8, end: 1.0).animate(animation),
+              child: child,
+            ),
+          );
+        },
+      ),
     ),
     GoRoute(
       path: Routes.login,
-      pageBuilder: (context, state) =>
-          CustomTransitionPage(
-            transitionDuration: Duration(seconds: 2),
-            child: LoginView(vm: LoginViewModel(repo: AuthRepository(client: ApiClient()))),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              return FadeTransition(
-                opacity: animation,
-                child: child,
-              );
-            },
-          ),
+      pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
+        child: LoginView(vm: LoginViewModel(repo: AuthRepository(client: ApiClient()))),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return FadeTransition(
+            opacity: animation,
+            child: child,
+          );
+        },
+      ),
     ),
     GoRoute(
       path: Routes.signup,
-      pageBuilder: (context, state) =>
-          CustomTransitionPage(
-            transitionDuration: Duration(seconds: 2),
-            child: SignUpView(),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              return RotationTransition(
-                turns: Tween<double>(begin: 0.8, end: 1.0).animate(animation),
-                child: child,
-              );
-            },
-          ),
+      pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
+        child: SignUpView(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return RotationTransition(
+            turns: Tween<double>(begin: 0.8, end: 1.0).animate(animation),
+            child: child,
+          );
+        },
+      ),
     ),
     GoRoute(
       path: Routes.completeProfile,
-      pageBuilder: (context, state) =>
-          CustomTransitionPage(
-            transitionDuration: Duration(seconds: 2),
-            child: const CompleteProfileView(),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              return RotationTransition(
-                turns: Tween<double>(begin: 0.8, end: 1.0).animate(animation),
-                child: child,
-              );
-            },
-          ),
+      pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
+        child: const CompleteProfileView(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return RotationTransition(
+            turns: Tween<double>(begin: 0.8, end: 1.0).animate(animation),
+            child: child,
+          );
+        },
+      ),
     ),
     GoRoute(
       path: Routes.onboarding,
-      pageBuilder: (context, state) =>
-          CustomTransitionPage(
-            transitionDuration: Duration(seconds: 2),
-            child: OnboardingView(
-              vm: OnboardingViewModel(
-                repo: OnboardingRepository(
-                  client: context.read(),
-                ),
-              ),
+      pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
+        child: OnboardingView(
+          vm: OnboardingViewModel(
+            repo: OnboardingRepository(
+              client: context.read(),
             ),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              return SlideTransition(
-                position: Tween<Offset>(
-                  begin: const Offset(1.0, 0.0),
-                  end: Offset.zero,
-                ).animate(animation),
-                child: ScaleTransition(
-                  scale: Tween<double>(
-                    begin: 0.8,
-                    end: 1.0,
-                  ).animate(animation),
-                  child: child,
-                ),
-              );
-            },
           ),
+        ),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return SlideTransition(
+            position: Tween<Offset>(
+              begin: const Offset(1.0, 0.0),
+              end: Offset.zero,
+            ).animate(animation),
+            child: ScaleTransition(
+              scale: Tween<double>(
+                begin: 0.8,
+                end: 1.0,
+              ).animate(animation),
+              child: child,
+            ),
+          );
+        },
+      ),
     ),
     GoRoute(
       path: Routes.community,
-      pageBuilder: (context, state) =>
-          CustomTransitionPage(
-            transitionDuration: Duration(milliseconds: 200),
-            child: BlocProvider(
-              create: (context) => CommunityCubit(recipeRepo: context.read()),
-              child: CommunityView(),
-            ),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              return SlideTransition(
-                position: Tween<Offset>(
-                  begin: const Offset(1.0, 0.0),
-                  end: Offset.zero,
-                ).animate(animation),
-                child: child,
-              );
-            },
-          ),
+      pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(milliseconds: 200),
+        child: BlocProvider(
+          create: (context) => CommunityCubit(recipeRepo: context.read()),
+          child: CommunityView(),
+        ),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return SlideTransition(
+            position: Tween<Offset>(
+              begin: const Offset(1.0, 0.0),
+              end: Offset.zero,
+            ).animate(animation),
+            child: child,
+          );
+        },
+      ),
     ),
     GoRoute(
       path: Routes.categories,
-      pageBuilder: (context, state) =>
-          CustomTransitionPage(
-            transitionDuration: Duration(milliseconds: 200),
-            child: BlocProvider(
-              create: (context) => CategoriesBloc(catRepo: context.read()),
-              child: CategoriesView(),
-            ),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              return FadeTransition(
-                opacity: animation,
-                child: child,
-              );
-            },
-          ),
+      pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(milliseconds: 200),
+        child: BlocProvider(
+          create: (context) => CategoriesBloc(catRepo: context.read()),
+          child: CategoriesView(),
+        ),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return FadeTransition(
+            opacity: animation,
+            child: child,
+          );
+        },
+      ),
     ),
     GoRoute(
       path: Routes.categoryDetail,
-      pageBuilder: (context, state) =>
-          CustomTransitionPage(
-            transitionDuration: Duration(milliseconds: 200),
-            child: BlocProvider(
-              create: (context) =>
-                  CategoryDetailBloc(
-                    catRepo: context.read(),
-                    recipeRepo: context.read(),
-                    selectedId: int.parse(state.pathParameters['categoryId']!),
-                  ),
-              child: CategoryDetailView(),
-            ),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              return FadeTransition(
-                opacity: animation,
-                child: child,
-              );
-            },
+      pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(milliseconds: 200),
+        child: BlocProvider(
+          create: (context) => CategoryDetailBloc(
+            catRepo: context.read(),
+            recipeRepo: context.read(),
+            selectedId: int.parse(state.pathParameters['categoryId']!),
           ),
+          child: CategoryDetailView(),
+        ),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return FadeTransition(
+            opacity: animation,
+            child: child,
+          );
+        },
+      ),
     ),
     GoRoute(
       path: Routes.recipeDetail,
-      pageBuilder: (context, state) =>
-          CustomTransitionPage(
-            transitionDuration: Duration(milliseconds: 200),
-            child: ChangeNotifierProvider(
-              create: (context) =>
-                  RecipeDetailViewModel(
-                    recipeRepo: context.read(),
-                    recipeId: int.parse(state.pathParameters['recipeId']!),
-                  ),
-              child: RecipeDetailView(),
-            ),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              return SlideTransition(
-                position: Tween<Offset>(
-                  begin: const Offset(0.0, 1.0),
-                  end: Offset.zero,
-                ).animate(animation),
-                child: child,
-              );
-            },
+      pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(milliseconds: 200),
+        child: ChangeNotifierProvider(
+          create: (context) => RecipeDetailViewModel(
+            recipeRepo: context.read(),
+            recipeId: int.parse(state.pathParameters['recipeId']!),
           ),
+          child: RecipeDetailView(),
+        ),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return SlideTransition(
+            position: Tween<Offset>(
+              begin: const Offset(0.0, 1.0),
+              end: Offset.zero,
+            ).animate(animation),
+            child: child,
+          );
+        },
+      ),
     ),
     GoRoute(
       path: Routes.reviews,
-      pageBuilder: (context, state) =>
-          CustomTransitionPage(
-            transitionDuration: Duration(seconds: 2),
-            child: BlocProvider(
-              create: (context) =>
-                  ReviewsBloc(
-                    recipeRepo: context.read(),
-                    recipeId: int.parse(state.pathParameters['recipeId']!),
-                  ),
-              child: ReviewsView(),
-            ),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              return SlideTransition(
-                position: Tween<Offset>(
-                  begin: const Offset(0.0, 1.0),
-                  end: Offset.zero,
-                ).animate(animation),
-                child: child,
-              );
-            },
+      pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
+        child: BlocProvider(
+          create: (context) => ReviewsBloc(
+            recipeRepo: context.read(),
+            recipeId: int.parse(state.pathParameters['recipeId']!),
           ),
+          child: ReviewsView(),
+        ),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return SlideTransition(
+            position: Tween<Offset>(
+              begin: const Offset(0.0, 1.0),
+              end: Offset.zero,
+            ).animate(animation),
+            child: child,
+          );
+        },
+      ),
     ),
     GoRoute(
       path: Routes.createReview,
-      pageBuilder: (context, state) =>
-          CustomTransitionPage(
-            transitionDuration: Duration(seconds: 2),
-            child: BlocProvider(
-              create: (context) =>
-              CreateReviewBloc(
-                recipeRepo: context.read(),
-                reviewRepo: context.read(),
-              )
-                ..add(CreateReviewLoading(
-                  recipeId: int.parse(state.pathParameters['recipeId']!),
-                )),
-              child: CreateReviewView(),
-            ),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              return SlideTransition(
-                position: Tween<Offset>(
-                  begin: const Offset(0.0, 1.0),
-                  end: Offset.zero,
-                ).animate(animation),
-                child: child,
-              );
-            },
-          ),
+      pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
+        child: BlocProvider(
+          create: (context) => CreateReviewBloc(
+            recipeRepo: context.read(),
+            reviewRepo: context.read(),
+          )..add(CreateReviewLoading(
+              recipeId: int.parse(state.pathParameters['recipeId']!),
+            )),
+          child: CreateReviewView(),
+        ),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return SlideTransition(
+            position: Tween<Offset>(
+              begin: const Offset(0.0, 1.0),
+              end: Offset.zero,
+            ).animate(animation),
+            child: child,
+          );
+        },
+      ),
     ),
     GoRoute(
       path: Routes.topChefs,
-      pageBuilder: (context, state) =>
-          CustomTransitionPage(
-            transitionDuration: Duration(milliseconds: 200),
-            child: BlocProvider(
-              create: (context) => TopChefsBloc(chefRepo: context.read()),
-              child: TopChefsView(),
-            ),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              return SlideTransition(
-                position: Tween<Offset>(
-                  begin: const Offset(0.0, 1.0),
-                  end: Offset.zero,
-                ).animate(animation),
-                child: child,
-              );
-            },
-          ),
+      pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(milliseconds: 200),
+        child: BlocProvider(
+          create: (context) => TopChefsBloc(chefRepo: context.read()),
+          child: TopChefsView(),
+        ),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return SlideTransition(
+            position: Tween<Offset>(
+              begin: const Offset(0.0, 1.0),
+              end: Offset.zero,
+            ).animate(animation),
+            child: child,
+          );
+        },
+      ),
     ),
     GoRoute(
       path: Routes.trendingRecipe,
-      pageBuilder: (context, state) =>
-          CustomTransitionPage(
-            transitionDuration: Duration(microseconds: 300),
-            child: BlocProvider(
-              create: (context) => TrendingRecipeBloc(trendRepo: context.read()),
-              child: TrendingRecipeView(),
-            ),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              return SlideTransition(
-                position: Tween<Offset>(
-                  begin: const Offset(0.0, 1.0),
-                  end: Offset.zero,
-                ).animate(animation),
-                child: child,
-              );
-            },
-          ),
+      pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(microseconds: 300),
+        child: BlocProvider(
+          create: (context) => TrendingRecipeBloc(trendRepo: context.read()),
+          child: TrendingRecipeView(),
+        ),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return SlideTransition(
+            position: Tween<Offset>(
+              begin: const Offset(0.0, 1.0),
+              end: Offset.zero,
+            ).animate(animation),
+            child: child,
+          );
+        },
+      ),
     ),
     GoRoute(
       path: Routes.profile,
-      builder: (context, state) =>
-          BlocProvider(
-            create: (context) =>
-                ProfileBloc(
-                  userId: int.parse(state.pathParameters['userId']!),
-                  repo: context.read(),
-                ),
-            child: ProfileView(),
-          ),
+      builder: (context, state) => BlocProvider(
+        create: (context) => ProfileBloc(
+          userId: int.parse(state.pathParameters['userId']!),
+          repo: context.read(),
+        ),
+        child: ProfileView(),
+      ),
     ),
-
     GoRoute(
       path: Routes.chefsProfile,
       builder: (context, state) => BlocProvider(
@@ -351,64 +331,62 @@ final router = GoRouter(
     ),
     GoRoute(
       path: Routes.notification,
-      pageBuilder: (context, state) =>
-          CustomTransitionPage(
-            transitionDuration: Duration(seconds: 2),
-            child: BlocProvider(
-              create: (context) =>
-                  NotificationsBloc(
-                    repo: NotificationsRepository(client: ApiClient()),
-                  ),
-              child: NotificationsView(),
-            ),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              return SlideTransition(
-                position: Tween<Offset>(
-                  begin: const Offset(0.0, 1.0),
-                  end: Offset.zero,
-                ).animate(animation),
-                child: child,
-              );
-            },
+      pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
+        child: BlocProvider(
+          create: (context) => NotificationsBloc(
+            repo: NotificationsRepository(client: ApiClient()),
           ),
+          child: NotificationsView(),
+        ),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return SlideTransition(
+            position: Tween<Offset>(
+              begin: const Offset(0.0, 1.0),
+              end: Offset.zero,
+            ).animate(animation),
+            child: child,
+          );
+        },
+      ),
     ),
     GoRoute(
       path: Routes.yourRecipes,
-      pageBuilder: (context, state) =>
-          CustomTransitionPage(
-            transitionDuration: Duration(seconds: 2),
-            child: BlocProvider(
-              create: (context) => YourRecipeBloc(repo: context.read()),
-              child: YourRecipeView(),
-            ),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              return SlideTransition(
-                position: Tween<Offset>(
-                  begin: const Offset(0.0, 1.0),
-                  end: Offset.zero,
-                ).animate(animation),
-                child: child,
-              );
-            },
-          ),
+      pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
+        child: BlocProvider(
+          create: (context) => YourRecipeBloc(repo: context.read()),
+          child: YourRecipeView(),
+        ),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return SlideTransition(
+            position: Tween<Offset>(
+              begin: const Offset(0.0, 1.0),
+              end: Offset.zero,
+            ).animate(animation),
+            child: child,
+          );
+        },
+      ),
     ),
     GoRoute(
       path: Routes.recipeCreate,
-      builder: (context, state) =>
-          BlocProvider(
-            create: (context) => RecipeCreateBloc(),
-          ),
+      builder: (context, state) => BlocProvider(
+        create: (context) => RecipeCreateBloc(),
+      ),
     ),
-    // GoRoute(
-    //   path: Routes.following,
-    //   builder: (context, state) => BlocProvider(
-    //     create: (context) => FollowingBloc(
-    //       repository: FollowingRepository(
-    //         client: ApiClient(),
-    //       ),
-    //     ),
-    //     child: FollowingView(),
-    //   ),
-    // ),
+    GoRoute(
+      path: Routes.follow,
+      builder: (context, state) => BlocProvider(
+        create: (context) => FollowingBloc(
+          repo: context.read(),
+        )..add(
+          FollowLoad(
+            id: int.parse(state.pathParameters['id']!),
+          ),
+        ),
+        child: FollowingView(),
+      ),
+    ),
   ],
 );

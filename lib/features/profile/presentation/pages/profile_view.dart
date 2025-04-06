@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/features/Profile/presentation/manager/profile_state.dart';
 import 'package:recipe_app/features/common/common.dart';
-import 'package:recipe_app/features/top_chefs/presentation/widgets/profile_app_bar.dart';
 
 import '../../../category_detail/presentation/widgets/category_detail_info.dart';
 import '../manager/profile_bloc.dart';

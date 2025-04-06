@@ -3,13 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:recipe_app/features/top_chefs/presentation/widgets/recipe_reverse_rating.dart';
 import 'package:recipe_app/features/top_chefs/presentation/widgets/share_buttuon.dart';
+
 import '../../../../Core/utils/colors.dart';
 import '../../../../core/presentation/widgets/recipe_app_text.dart';
 import '../../../../core/presentation/widgets/recipe_image_with_like.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../data/models/top_chef_model.dart';
 import '../manager/top_chef/top_chefs_state.dart';
-
 import 'following_button.dart';
 
 class TopChefsViewed extends StatelessWidget {
@@ -87,6 +87,6 @@ class TopChefsViewed extends StatelessWidget {
             ),
           ),
       ],
-    );;
+    );
   }
 }

@@ -12,8 +12,8 @@ import '../../../../data/models/top_chef_model.dart';
 import '../manager/top_chef/top_chefs_state.dart';
 import 'following_button.dart';
 
-class TopChefsLiked extends StatelessWidget {
-  TopChefsLiked({
+class TopChefsMostLiked extends StatelessWidget {
+  TopChefsMostLiked({
     super.key,
     required this.state,
   });

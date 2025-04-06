@@ -5,7 +5,6 @@ import 'package:recipe_app/data/repositories/auth_repository.dart';
 import 'package:recipe_app/data/repositories/notification_repository.dart';
 import 'package:recipe_app/data/repositories/onboarding_repository.dart';
 import 'package:recipe_app/data/repositories/recipe_create_repository.dart';
-import 'package:recipe_app/features/Profile/presentation/manager/profile_bloc.dart';
 import 'package:recipe_app/features/notification/presentation/manager/notifications_bloc.dart';
 
 import '../data/models/localization_view_model.dart';
