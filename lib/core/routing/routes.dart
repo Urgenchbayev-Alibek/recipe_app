@@ -4,7 +4,7 @@ class Routes {
   static const signup = '/signup';
   static const onboarding = '/onboarding';
   static const welcome = '/welcome';
-  static const profile = '/profile';
+  static const String profile = '/profile/:userId';
   static const chefProfile = '/user:/userId';
   static const completeProfile = '/completeProfile';
   static const String categories = '/categories';
@@ -14,12 +14,10 @@ class Routes {
   static const String reviews = '/reviews/:recipeId';
   static const String createReview = '/create-review/:recipeId';
   static const String topChefs = '/top-chefs';
-  static const String topChefsProfile = 'auth/details/:topChefId';
+  static const String chefsProfile='/chefs_profile/:UserId';
   static const String trendingRecipe = '/trending-recipe';
   static const String notification = '/notifications/list';
   static const String following = '/notifications/list';
-  static const String recipeCreate = '/recipe-create';
-
   static const String yourRecipes = '/recipes/my-recipes';
 
   static const String recipeCreate = 'recipe-create';
@@ -33,4 +31,9 @@ class Routes {
   static String getCreateReview(int recipeId) => '/create-review/$recipeId';
 
   static String getChefProfile(int id) => '/user/$id';
+  static String getChefsProfile(int userId)=>'/chefs_profile/$userId';
+
+  static String getProfile(int userId) => '/profile/$userId';
+
+  static String getFollow(int id) => '/follow/$id';
 }

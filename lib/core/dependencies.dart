@@ -4,6 +4,8 @@ import 'package:provider/single_child_widget.dart';
 import 'package:recipe_app/data/repositories/auth_repository.dart';
 import 'package:recipe_app/data/repositories/notification_repository.dart';
 import 'package:recipe_app/data/repositories/onboarding_repository.dart';
+import 'package:recipe_app/data/repositories/recipe_create_repository.dart';
+import 'package:recipe_app/features/Profile/presentation/manager/profile_bloc.dart';
 import 'package:recipe_app/features/notification/presentation/manager/notifications_bloc.dart';
 
 import '../data/models/localization_view_model.dart';
@@ -38,7 +40,11 @@ final List<SingleChildWidget> providers = [
   Provider(
     create: (context) => OnboardingRepository(client: context.read()),
   ),
-  Provider(create: (context) => ProfileRepository(client: context.read())),
+  Provider(
+    create: (context) => ProfileRepository(
+      client: context.read(),
+    ),
+  ),
   ChangeNotifierProvider(create: (_) => LocalizationViewModel()),
   ChangeNotifierProvider(create: (_) => SingUpViewModel(authRepo: AuthRepository(client: ApiClient()))),
   Provider(
@@ -50,5 +56,10 @@ final List<SingleChildWidget> providers = [
     create: (context) => NotificationsBloc(
       repo: NotificationsRepository(client: context.read()),
     ),
-  )
+  ),
+  Provider(
+    create: (context) => RecipeCreateRepository(
+      client: ApiClient(),
+    ),
+  ),
 ];

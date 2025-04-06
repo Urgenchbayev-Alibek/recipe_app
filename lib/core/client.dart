@@ -11,7 +11,7 @@ import 'exceptions/auth_exception.dart';
 class ApiClient {
   ApiClient() {
     dio = Dio(
-      BaseOptions(baseUrl: 'http://172.15.232.3:8888/api/v1', validateStatus: (status) => true),
+      BaseOptions(baseUrl:'http://100.65.185.180:8888/api/v1', validateStatus: (status) => true),
     );
     dio.interceptors.add(AuthInterceptor());
   }
@@ -145,13 +145,30 @@ class ApiClient {
     return data;
   }
 
-  Future<List<Map<String, dynamic>>> fetchRecipes() async {
-    var responseRecipe = await dio.get('/recipes/list');
-    if (responseRecipe.statusCode == 200) {
-      List<Map<String, dynamic>> dataRecipe = List<Map<String, dynamic>>.from(responseRecipe.data);
-      return dataRecipe;
+  Future<List<dynamic>> fetchRecipes(int userId) async {
+    var response = await dio.get('/recipes/list?UserId=$userId');
+    if (response.statusCode == 200) {
+      List<dynamic> data = response.data;
+      return data;
+    }
+    throw Exception("xato bor recipe kelishida");
+  }
+
+  Future<List<dynamic>> fetchFollowers(int id) async {
+    final response = await dio.get('/auth/followers/$id');
+    if (response.statusCode == 200) {
+      return List.from(response.data);
     } else {
-      throw Exception("error 404");
+      throw Exception('followers xato ketdi');
+    }
+  }
+
+  Future<List<dynamic>> fetchFollowings(int id) async {
+    final response = await dio.get('/auth/followings/$id');
+    if (response.statusCode == 200) {
+      return List.from(response.data);
+    } else {
+      throw Exception('followings xato ketdi');
     }
   }
 
@@ -254,5 +271,53 @@ class ApiClient {
     var response = await dio.get("/reviews/list?recipeId=$recipeId");
     List<dynamic> data = response.data;
     return data;
+  }
+
+  Future<int> fetchFollowId(int id) async {
+    final response = await dio.post('/auth/follow/$id');
+
+    if (response.statusCode == 200) {
+      if (response.data is int) {
+        return response.data;
+      } else if (response.data is String) {
+        return int.tryParse(response.data) ?? 0;
+      } else {
+        throw Exception("Noto‘g‘ri data turi: ${response.data}");
+      }
+    } else {
+      throw Exception("Server xatosi: ${response.statusCode}");
+    }
+  }
+
+  Future<int> fetchDeleteId(int id) async {
+    final response = await dio.post('/auth/remove-follower/$id');
+
+    if (response.statusCode == 200) {
+      if (response.data is int) {
+        return response.data;
+      } else if (response.data is String) {
+        return int.tryParse(response.data) ?? 0;
+      } else {
+        throw Exception("Noto‘g‘ri data turi: ${response.data}");
+      }
+    } else {
+      throw Exception("Server xatosi: ${response.statusCode}");
+    }
+  }
+
+  Future<int> fetchUnFollowId(int id) async {
+    final response = await dio.post('/auth/unfollow/$id');
+
+    if (response.statusCode == 200) {
+      if (response.data is int) {
+        return response.data;
+      } else if (response.data is String) {
+        return int.tryParse(response.data) ?? 0;
+      } else {
+        throw Exception("Noto‘g‘ri data turi: ${response.data}");
+      }
+    } else {
+      throw Exception("Server xatosi: ${response.statusCode}");
+    }
   }
 }

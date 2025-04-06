@@ -1,152 +1,133 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:recipe_app/features/common/common.dart';
 import '../../../../Core/utils/colors.dart';
-import '../widgets/top_chef_profile_item.dart';
+import '../../../../core/presentation/widgets/recipe_app_text.dart';
+import '../../../../core/routing/routes.dart';
+import '../../../category_detail/presentation/widgets/category_detail_info.dart';
+import '../../../profile/presentation/widgets/recipe_userAppBar_info.dart';
+import '../manager/top_chef_profile/top_chefs_profile_bloc.dart';
+import '../manager/top_chef_profile/top_chefs_profile_state.dart';
+import '../widgets/profile_app_bar.dart';
+import '../widgets/recipe_app_follow_button.dart';
+import '../widgets/recipe_circle_image.dart';
 
-class TopChefProfileView extends StatelessWidget {
-  const TopChefProfileView({super.key});
+class TopChefsProfileView extends StatelessWidget {
+  const TopChefsProfileView({super.key});
+
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 1,
-      child: Scaffold(
-        extendBody: true,
-        backgroundColor: AppColors.beigeColor,
-        appBar: AppBar(
-          backgroundColor: AppColors.beigeColor,
-          leading: Padding(
-            padding: EdgeInsets.all(15.0),
-            child: SvgPicture.asset(
-              'assets/icons/vector.svg',
-              width: 24,
-              height: 14,
-            ),
-          ),
-          title: Text(
-            '@Neil_tran',
-            style: TextStyle(color: AppColors.redPinkMain, fontSize: 20, fontWeight: FontWeight.w500),
-          ),
-          actions: [
-            CircleAvatar(
-              backgroundColor: AppColors.pink,
-              radius: 14,
-              child: SvgPicture.asset(
-                'assets/icons/share.svg',
-                colorFilter: ColorFilter.mode(AppColors.redPinkMain, BlendMode.srcIn),
-              ),
-            ),
-            SizedBox(width: 10),
-            CircleAvatar(
-              backgroundColor: AppColors.pink,
-              radius: 14,
-              child: SvgPicture.asset(
-                'assets/icons/three_dots.svg',
-                colorFilter: ColorFilter.mode(AppColors.redPinkMain, BlendMode.srcIn),
-              ),
-            ),
-            SizedBox(width: 10),
-          ],
-        ),
-        body: Column(
+    return Scaffold(
+      extendBody: true,
+      backgroundColor: AppColors.beigeColor,
+      appBar: ProfileAppBar(),
+      body: Padding(
+        padding: const EdgeInsets.only(left: 37, right: 37, top: 10),
+        child: Column(
           children: [
-            SizedBox(height: 10),
-            Row(
-              children: [
-                SizedBox(width: 25),
-                ClipRRect(
-                    borderRadius: BorderRadius.circular(60),
-                    child: Image(
-                      image: AssetImage('assets/images/neil_tran.png'),
-                      width: 102,
-                      height: 97,
-                    )),
-                SizedBox(width: 20),
-                Column(
+            BlocBuilder<TopChefsProfileBloc, TopChefsProfileState>(builder: (context, state) {
+              final user = state.userInfo;
+              if (state.profileStatus == TopChefsProfileStatus.loading) {
+                return Center(
+                  child: Text('Waiting...'),
+                );
+              } else {
+                return Column(
+                  spacing: 13.h,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Neil Tran-Chef',
-                      style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.white),
-                    ),
-                    Text(
-                      'Passionate chef in creative and \ncontemporary cuisine.',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w300,
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Container(
-                      width: 81,
-                      height: 18,
-                      decoration: BoxDecoration(
-                        color: AppColors.pink,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Following',
-                          style: TextStyle(color: AppColors.redPinkMain, fontSize: 12),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      spacing: 15.w,
+                      children: [
+                        GestureDetector(
+                          onTap: () => context.push(
+                            Routes.getFollow(user.id),
+                          ),
+                          child: RecipeCircleImage(
+                            image: user!.image,
+                            width: 102.w,
+                            height: 97.h,
+                          ),
                         ),
-                      ),
+                        SizedBox(
+                          width: 204.w,
+                          height: 80.h,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              RecipeAppText(
+                                data: '${user.firstName} ${user.lastName} Chef',
+                                color: AppColors.redPinkMain,
+                                size: 15.sp,
+                                line: 1,
+                                weight: FontWeight.w500,
+                              ),
+                              RecipeAppText(
+                                data: user.bio,
+                                color: Colors.white,
+                                size: 12.sp,
+                                line: 2,
+                                weight: FontWeight.w300,
+                              ),
+                              RecipeAppFollowButton(
+                                callback: (){},
+                                text: 'Following'
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                )
-              ],
-            ),
-            SizedBox(height: 20),
-            Container(
-              width: 356,
-              height: 50,
-              decoration: BoxDecoration(
-                border: Border.all(color: AppColors.redPinkMain),
-                color: AppColors.beigeColor,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text('15\nRecipes', style: TextStyle(color: Colors.white)),
-                  Text('10\nFollowing', style: TextStyle(color: Colors.white)),
-                  Text('255.770\nFollowers', style: TextStyle(color: Colors.white)),
-                ],
-              ),
-            ),
-            SizedBox(height: 6),
-            Column(
-              children: [
-                TabBar(
-                  indicatorSize: TabBarIndicatorSize.tab,
-                  indicatorColor: AppColors.redPinkMain,
-                  tabs: [
-                    Tab(
-                      child: Text(
-                        "Recipes",
-                        style: TextStyle(color: Colors.white),
-                      ),
+                    AppbarInfo(user: state.userInfo!),
+                    Column(
+                      children: [
+                        RecipeAppText(
+                          data: "Recipes",
+                          color: AppColors.pinkColor,
+                          size: 12.sp,
+                        ),
+                        Divider(
+                          color: AppColors.redPinkMain,
+                        )
+                      ],
                     ),
+
                   ],
+                );
+              }
+            }),
+            BlocBuilder<TopChefsProfileBloc, TopChefsProfileState>(
+              builder: (context, state) => switch (state.recipeStatus) {
+
+                TopChefsProfileStatus.idle => Text('Loaded...'),
+                TopChefsProfileStatus.loading =>
+                  Center(child: LinearProgressIndicator()),
+                TopChefsProfileStatus.success => Expanded(
+                  child: GridView.builder(
+                    // key: ValueKey<List<RecipeModel>>(state.recipes!),
+                    padding: EdgeInsets.only(bottom:  150.h,top: 20.h),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisExtent: 226.h,
+                      mainAxisSpacing: 30.h,
+                      crossAxisSpacing: 18.w,
+                    ),
+                    itemCount: state.recipes.length,
+                    itemBuilder: (context, index) => CategoryDetailInfo(recipe: state.recipes[index]),
+                  ),
                 ),
-                SizedBox(height: 10),
-                TopChefProfileItem(
-                  title: "Vegan Recipes",
-                  image: 'assets/images/vegan.png',
-                ),
-                SizedBox(height: 30),
-                TopChefProfileItem(
-                  title: 'Asian Heritage',
-                  image: 'assets/images/asian.png',
-                ),
-                SizedBox(height: 30),
-                TopChefProfileItem(title: 'Guilty Pleasures', image: 'assets/images/guilty.png')
-              ],
-            ),
+                TopChefsProfileStatus.error => Text('Something went wrong...'),
+              },
+            )
           ],
         ),
       ),
+      bottomNavigationBar: RecipeBottomNavigationBar(),
     );
   }
 }
